@@ -1,16 +1,23 @@
 <?php
+
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+
 /*
 require_once('./line_class.php');
 $channelAccessToken = 'ISI_DISINI'; //Channel access token
 $channelSecret = 'ISI_DISINI';//Channel secret
-*/
-	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
+
 	$replyToken = $client->parseEvents()[0]['replyToken'];
 	$message 	= $client->parseEvents()[0]['message'];
 	$msg_type = $message['type'];
+*/
 	$botname = "robotkerangdb";
 
 function send($input, $rt){
+
+if ($input == null){
+$result = new TextMessageBuilder('Gunakan command: .apakah, .bagaimana, .kapan');
+} else {
     $send = array(
         'replyToken' => $rt,
         'messages' => array(
@@ -42,6 +49,9 @@ if($msg_type == 'text'){
     $pesan_datang = strtolower($message['text']);
     $filter = explode(' ', $pesan_datang);
     if($filter[0] == '.apakah', '.bagaimana', '.kapan') {
+if ($filter == null){
+$result = new TextMessageBuilder('Jangan typo atuh, gak bot jawab nanti :v');
+} else {
         $balas = send(answers(), $replyToken);
     } else {}
 } else {}
