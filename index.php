@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 foreach (glob("handler/*.php") as $handler){
-		if ($handler != 'handler/post.php', 'handler/robotkerang.php'){
+		if ($handler != 'handler/post.php', $handler != 'handler/robotkerang.php'){
 				include $handler;
 		}
 }
