@@ -38,9 +38,6 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
-	$replyToken = $client->parseEvents()[0]['replyToken'];
-	$message = $client->parseEvents()[0]['message'];
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
