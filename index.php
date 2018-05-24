@@ -62,7 +62,7 @@ $app->post('/', function ($request, $response)
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
 					 } else {
-				$outputMessage = new TextMessageBuilder('Bahasa tidak dapat dimengerti.');
+				$outputMessage = new TextMessageBuilder('');
 					 }
 				
 				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
