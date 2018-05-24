@@ -1,14 +1,16 @@
 <?php
+/*
+require_once('./line_class.php');
+$channelAccessToken = 'ISI_DISINI'; //Channel access token
+$channelSecret = 'ISI_DISINI';//Channel secret
 
-use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
-
+$client = new LINEBotTiny($channelAccessToken, $channelSecret);
+$replyToken = $client->parseEvents()[0]['replyToken'];
+$message 	= $client->parseEvents()[0]['message'];
+$msg_type = $message['type'];
+$botname = "KerangAjaib"; //Nama bot
+*/
 function send($input, $rt){
-
-$botname = "bot";
-
-if ($input == null) {
-$result = new TextMessageBuilder('Jangan typo atuh, gak bot jawab nanti :v');
-} else {
     $send = array(
         'replyToken' => $rt,
         'messages' => array(
@@ -21,8 +23,8 @@ $result = new TextMessageBuilder('Jangan typo atuh, gak bot jawab nanti :v');
     return($send);
 }
 
-function answers(){
-    $answers_list = array(
+function jawabs(){
+    $list_jwb = array(
 		'Ya',
 		'Tidak',
 		'Bisa jadi',
@@ -30,16 +32,16 @@ function answers(){
 		'Tentu tidak',
 		'Coba tanya lagi'
 		);
-    $answr = array_rand($answers_list);
-    $answerr = $answers_list[$answr];
-    return($answerr);
+    $jaws = array_rand($list_jwb);
+    $jawab = $list_jwb[$jaws];
+    return($jawab);
 }
 
 if($msg_type == 'text'){
     $pesan_datang = strtolower($message['text']);
     $filter = explode(' ', $pesan_datang);
     if($filter[0] == 'apakah') {
-        $balas = send(answers(), $replyToken);
+        $balas = send(jawabs(), $replyToken);
     } else {}
 } else {}
 
