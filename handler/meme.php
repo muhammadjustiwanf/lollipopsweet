@@ -9,7 +9,7 @@ function meme($query){
     $apiKey = '62115028-fca1-43c3-897e-57ee3e105eaa';
    
     if ($query == null){
-        $result = new TextMessageBuilder("Meme Generator\n\nUsage:\n/memeid query\n/meme memeid topText|bottomText\n\nExample:\n/memeid One Does Not Simply\n/meme 689854 one does not simply|make memes using line messenger");
+        $result = new TextMessageBuilder("Meme Generator\n\nCara menggunakan:\n/memeid query\n/meme 'memeid' Teks Atas|Teks Bawah\n\nContoh:\n/memeid Kocak\n/meme 689854 Kids zaman now|Generasi micin.\n\nSilahkan dicoba  (((o(*ﾟ▽ﾟ*)o)))");
     } else {
        
         $query = explode(' ', $query, 2);
