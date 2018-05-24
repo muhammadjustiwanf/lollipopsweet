@@ -1,10 +1,10 @@
 <?php
-/*
+
 require_once('./line_class.php');
 
-$channelAccessToken = getenv('CHANNEL_ACCESS_TOKEN');
-$channelSecret = getenv('CHANNEL_SECRET');
-*/
+$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET');
+$replyToken = $client->parseEvents()[0]['replyToken'];
+$message 	= $client->parseEvents()[0]['message'];
 $msg_type = $message['type'];
 $botname = "robotkerangdb";
 
@@ -28,7 +28,9 @@ function jawabs(){
 		'Bisa jadi',
 		'Mungkin',
 		'Tentu tidak',
-		'Coba tanya lagi'
+		'Coba tanya lagi',
+		'Saya tidak tau',
+		'Menurut anda?'
 		);
     $jaws = array_rand($list_jwb);
     $jawab = $list_jwb[$jaws];
