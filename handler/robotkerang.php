@@ -9,6 +9,7 @@ if ($input == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
 $result = new TextMessageBuilder($input);
+}
 /*
     $send = array(
         'replyToken' => $rt,
@@ -20,7 +21,6 @@ $result = new TextMessageBuilder($input);
         )
     );
 */
-}
     return $result;
 }
 
