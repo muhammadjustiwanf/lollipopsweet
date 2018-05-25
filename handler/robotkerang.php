@@ -8,8 +8,16 @@ function apakah($inputMessage){
 if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
-$result = new TextMessageBuilder($inputMessage);
-    return $result;
+    $apakah = array(
+        'replyToken' => $rt,
+        'messages' => array(
+            array(
+                'type' => 'text',					
+                'text' => $input
+            )
+        )
+    );
+return $apakah
 }
 
 function aswers(){
