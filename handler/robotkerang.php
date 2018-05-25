@@ -10,7 +10,7 @@ $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\
 } else {
    $result = array($apakah, $inputMessage);
 return $result;
-}
+}}
 /*
 function aswers(){
     $aswerslist = array(
