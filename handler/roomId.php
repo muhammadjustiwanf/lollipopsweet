@@ -2,12 +2,12 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function roomId($query, $roomId){
+function roomId($profile, $roomId){
 
 		if ($roomId == null){
 				$result = new TextMessageBuilder('Room Id tidak ditemukan.');
 		} else {
-				$result = new TextMessageBuilder('Ini dia roomId nya: ' . $roomId);
+				$result = new TextMessageBuilder('Ini dia roomId nya: ' . $profile->displayName);
 		}
 
 		return $result;
