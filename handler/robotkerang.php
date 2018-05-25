@@ -20,6 +20,7 @@ $result = new TextMessageBuilder($input);
         )
     );
 */
+}
     return $result;
 }
 
@@ -43,7 +44,6 @@ if(strtolower($inputMessage){
         $balas = send(answers());
         $result = new TextMessageBuilder(json_encode, $balas);
     }
-}
 return $result;
 }
 
