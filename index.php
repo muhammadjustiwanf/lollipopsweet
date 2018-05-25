@@ -1,7 +1,6 @@
 <?php
 
 require 'vendor/autoload.php';
-require_once('./line_class.php');
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
@@ -39,14 +38,6 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
-	$userId 	= $client->parseEvents()[0]['source']['userId'];
-	$replyToken = $client->parseEvents()[0]['replyToken'];
-	$timestamp	= $client->parseEvents()[0]['timestamp'];
-	$type 		= $client->parseEvents()[0]['type'];
-	$message 	= $client->parseEvents()[0]['message'];
-	$messageid 	= $client->parseEvents()[0]['message']['id'];
-	$profil = $client->profil($userId);
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
