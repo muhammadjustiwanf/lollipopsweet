@@ -27,7 +27,7 @@ function aswers(){
     return($answrr);
 }
 
-if(strtolower($inputMessage)){
+if(strtolower($inputMessage)){{
     $inputMessage = explode(' ', $inputMessage);
     $balas = apakah(answers(), $replyToken);
     $result = new TextMessageBuilder($balas);
