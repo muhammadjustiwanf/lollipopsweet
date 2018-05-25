@@ -62,7 +62,7 @@ $app->post('/', function ($request, $response)
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
 					 } else {
-				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan, coba kakak ketik .help biar tau apa aja commandnya :v');
+				$outputMessage = new TextMessageBuilder("tipe command tidak ditemukan, coba kakak ketik:\n\n.help\n\nbiar kakak tau apa aja commandnya :v");
 					 }
 				
 				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
