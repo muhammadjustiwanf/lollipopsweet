@@ -26,11 +26,11 @@ function aswers(){
     return($answrr);
 }
 
-if(strtolower($inputMessage))
+if(strtolower($inputMessage)){
     $inputMessage = explode(' ', $inputMessage);
     $balas = apakah(answers());
     $result = new TextMessageBuilder($balas);
-
+}
 return $result;
 }
 */
