@@ -19,7 +19,7 @@ $configs =  [
 $app = new Slim\App($configs);
 
 $app->get('/', function ($request, $response) {
-	return "LINE bot SDK - blog.ashura.id";
+	return "Sukses mendeploy. Silahkan dicoba botnya";
 });
 
 $app->post('/', function ($request, $response)
