@@ -4,7 +4,7 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 $botname = "robotkerangdb";
 
-function apakah($inputMessage){{
+function apakah($inputMessage){
 if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
@@ -34,7 +34,7 @@ if(strtolower($inputMessage)){
         $result = new TextMessageBuilder(json_encode, $balas);
     }
 return $result;
-}}
+}
 
 file_put_contents($botname.'.json',$result);
 
