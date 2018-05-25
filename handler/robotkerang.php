@@ -33,7 +33,7 @@ if(strtolower($inputMessage)){
 }
 return $result;
 }
-*/
+
 file_put_contents($botname.'.json',$result);
 
 /*
