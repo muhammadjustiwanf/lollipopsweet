@@ -60,7 +60,6 @@ $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\
     );
     return($send);
 }
-}
 
 function aswers(){
     $aswerslist = array(
@@ -81,7 +80,7 @@ if(strtolower($inputMessage){
     if($input[0] == 'apakah'){
         $result = new TextMessageBuilder(send(answers(), rand($answerslist));
     }
-
+}
 return $result;
 }
 
