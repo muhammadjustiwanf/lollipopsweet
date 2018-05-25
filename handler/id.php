@@ -7,7 +7,7 @@ function userid($query, $userId){
 		if ($userId == null){
 				$result = new TextMessageBuilder('Kita belum berteman kak, add dulu gih :v');
 				} else {
-				$result = new TextMessageBuilder("Hai Kak $displayName, Ini adalah userid kakak:\n\n $userId \n\nDisimpan baik2 yah userid nya :)");
+				$result = new TextMessageBuilder('Hai kak ' . $displayName . ' Ini adalah userid kakak: ' . $userId);
 		}
 
 		return $result;
