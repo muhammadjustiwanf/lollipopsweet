@@ -52,14 +52,6 @@ $app->post('/', function ($request, $response)
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
 
-				$res = $bot->getProfile('userId');
-						if ($res->isSucceeded()) {
-						$profile = $res->getJSONDecodedBody();
-						$displayName = $profile['displayName'];
-						$statusMessage = $profile['statusMessage'];
-						$pictureUrl = $profile['pictureUrl'];
-}
-
 				if ($inputMessage[0] == '/') {
 
 					 $inputMessage = ltrim($inputMessage, '/');
