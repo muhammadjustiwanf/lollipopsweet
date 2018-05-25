@@ -4,11 +4,11 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 $botname = "robotkerangdb";
 
-function ohkerang($inputMessage){{
+function apakah($inputMessage){{
 if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
-$result = new TextMessageBuilder($input);
+$result = new TextMessageBuilder(array($inputMessage));
 }
     return $result;
 }
@@ -29,8 +29,8 @@ function aswers(){
 
 if(strtolower($inputMessage)){
     $inputMessage = explode(' ', $inputMessage);
-    if($inputMessage[0] == 'apakah'){
-        $balas = ohkerang(answers());
+    if($inputMessage[0] == $inputMessage){
+        $balas = apakah(answers());
         $result = new TextMessageBuilder(json_encode, $balas);
     }
 return $result;
