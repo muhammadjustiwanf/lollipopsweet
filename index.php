@@ -51,6 +51,7 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
+				$roomId = $event['source']['roomId'];
 
 				if ($inputMessage[0] == '/') {
 
