@@ -51,7 +51,7 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$profile = $event->profile($userId);
+				$profile = $event['profile'][$userId];
 
 				if ($inputMessage[0] == '/') {
 
