@@ -11,7 +11,7 @@ $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\
 $result = new TextMessageBuilder(array($inputMessage));
 }
     return $result;
-}
+} else {
 
 function aswers(){
     $aswerslist = array(
@@ -33,6 +33,7 @@ if(strtolower($inputMessage)){
         $balas = apakah(answers());
         $result = new TextMessageBuilder(json_encode, $balas);
     }
+}
 return $result;
 }
 
