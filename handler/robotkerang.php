@@ -10,17 +10,6 @@ $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\
 } else {
 $result = new TextMessageBuilder($input);
 }
-/*
-    $send = array(
-        'replyToken' => $rt,
-        'messages' => array(
-            array(
-                'type' => 'text',					
-                'text' => $input
-            )
-        )
-    );
-*/
     return $result;
 }
 
@@ -38,10 +27,10 @@ function aswers(){
     return($answrr);
 }
 
-if(strtolower($inputMessage){
+if(strtolower($inputMessage)){
     $input = explode(' ', $inputMessage);
     if($input[0] == 'apakah'){
-        $balas = send(answers());
+        $balas = send(answers(), $answr);
         $result = new TextMessageBuilder(json_encode, $balas);
     }
 return $result;
