@@ -60,6 +60,7 @@ $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\
     );
     return($send);
 }
+}
 
 function aswers(){
     $aswerslist = array(
@@ -77,15 +78,18 @@ function aswers(){
 
 if(strtolower($inputMessage){
     $input = explode(' ', $inputMessage);
-    if($input[0] == 'apakah') {
-        $result = send(answers(), rand($answerslist));
-    } else {}
-} else {}
+    if($input[0] == 'apakah'){
+        $result = new TextMessageBuilder(send(answers(), rand($answerslist));
+    }
+
 return $result;
+}
+
+file_put_contents($botname.'.json',$result);
+
 /*
 if(isset($balas)){
     $client->replyMessage($balas); 
     $result =  json_encode($balas);
-    file_put_contents($botname.'.json',$result);
 }
 */
