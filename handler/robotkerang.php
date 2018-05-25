@@ -7,10 +7,12 @@ $botname = "robotkerangdb";
 function apakah($inputMessage){
 if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
-} else {{
+} else {
 $result = new TextMessageBuilder(array($inputMessage));
 }
     return $result;
+}
+/*
 } else {
 
 function aswers(){
@@ -36,7 +38,7 @@ if(strtolower($inputMessage)){
 }
 return $result;
 }
-
+*/
 file_put_contents($botname.'.json',$result);
 
 /*
