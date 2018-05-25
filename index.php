@@ -52,7 +52,7 @@ $app->post('/', function ($request, $response)
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
 
-				$res = $bot->getProfile('user-id');
+				$res = $bot->getProfile('userId');
 						if ($res->isSucceeded()) {
 						$profile = $res->getJSONDecodedBody();
 						$displayName = $profile['displayName'];
