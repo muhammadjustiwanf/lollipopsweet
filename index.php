@@ -38,6 +38,8 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
+	$response = $bot->getProfile('<userId>');
+	$profile = $response->getJSONDecodedBody['displayName'];
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -51,7 +53,6 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$profile = $event['profile'][$userId];
 
 				if ($inputMessage[0] == '/') {
 
