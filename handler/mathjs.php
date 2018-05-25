@@ -11,10 +11,9 @@ function calculate($query) {
 				$result = new TextMessageBuilder("Untuk cara menggunakan kalkulator, ketik /calculate 'nominal'\n\nContoh: /calculate 5+5*5-5\n\nSelamat mencoba (((o(*ﾟ▽ﾟ*)o)))");
 				} else {
 				$result = new TextMessageBuilder($result);
+				}
 
 				return $result;
-
-				}
 
 		}
 
