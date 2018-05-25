@@ -9,11 +9,8 @@ if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
 $result = new TextMessageBuilder(array($inputMessage));
-}
     return $result;
 }
-/*
-} else {
 
 function aswers(){
     $aswerslist = array(
@@ -29,13 +26,11 @@ function aswers(){
     return($answrr);
 }
 
-if(strtolower($inputMessage)){
+if(strtolower($inputMessage))
     $inputMessage = explode(' ', $inputMessage);
-    if($inputMessage[0] == $inputMessage){
-        $balas = apakah(answers());
-        $result = new TextMessageBuilder(json_encode, $balas);
-    }
-}
+    $balas = apakah(answers());
+    $result = new TextMessageBuilder($balas);
+
 return $result;
 }
 */
