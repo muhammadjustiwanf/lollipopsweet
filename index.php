@@ -38,8 +38,13 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$response = $bot->getProfile('<userId>');
-	$profile = $response->getJSONDecodedBody['displayName'];
+	$response = $bot->getProfile('userId');
+	if ($response->isSucceeded()) {
+			$profile = $response->getJSONDecodedBody();
+			echo $profile['displayName'];
+			echo $profile['pictureUrl'];
+			echo $profile['statusMessage'];
+}
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
