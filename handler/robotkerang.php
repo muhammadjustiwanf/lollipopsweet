@@ -9,8 +9,9 @@ if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
    $result = array($apakah, $inputMessage);
+}
 return $result;
-}}
+}
 /*
 function aswers(){
     $aswerslist = array(
