@@ -8,18 +8,10 @@ function apakah($inputMessage){
 if ($inputMessage == null){
 $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
 } else {
-    $apakah = array(
-        'replyToken' => $rt,
-        'messages' => array(
-            array(
-                'type' => 'text',					
-                'text' => $input
-            )
-        )
-    );
-return $apakah
+   $result = array($apakah, $inputMessage);
+return $result;
 }
-
+/*
 function aswers(){
     $aswerslist = array(
 		'Ya',
@@ -36,12 +28,12 @@ function aswers(){
 
 if(strtolower($inputMessage)){
     $inputMessage = explode(' ', $inputMessage);
-    $balas = apakah(answers());
+    $balas = apakah(answers(), $replyToken);
     $result = new TextMessageBuilder($balas);
 }
 return $result;
 }
-
+*/
 file_put_contents($botname.'.json',$result);
 
 /*
