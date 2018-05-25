@@ -1,28 +1,28 @@
 <?php
 
-require_once 'line_class.php';
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
-$replyToken = $client->parseEvents()[0]['replyToken'];
-$message 	= $client->parseEvents()[0]['message'];
-$msg_type = $message['type'];
 $botname = "robotkerangdb";
 
-function send($input, $rt){
-    $send = array(
+function apakah($inputMessage, $rt){
+if ($inputMessage == null){
+$result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\n\nCara menggunakannya:\nKetik: /apakah kata2 yang ingin diajukan.\n\nContoh: /apakah bot pintar?\n\nSelamat mencoba :v");
+} else {
+    $apakah = array(
         'replyToken' => $rt,
         'messages' => array(
             array(
                 'type' => 'text',					
-                'text' => $input
+                'text' => $inputMessage
             )
         )
     );
-    return($send);
 }
-
-function jawabs(){
-    $list_jwb = array(
+return($apakah);
+}
+/*
+function aswers(){
+    $aswerslist = array(
 		'Ya',
 		'Tidak',
 		'Bisa jadi',
@@ -30,21 +30,24 @@ function jawabs(){
 		'Tentu tidak',
 		'Coba tanya lagi'
 		);
-    $jaws = array_rand($list_jwb);
-    $jawab = $list_jwb[$jaws];
-    return($jawab);
+    $answr = array_rand($answerslist);
+    $answrr = $answerslist[$answr];
+    return($answrr);
 }
 
-if($msg_type == 'text'){
-    $pesan_datang = strtolower($message['text']);
-    $filter = explode(' ', $pesan_datang);
-    if($filter[0] == 'apakah') {
-        $balas = send(jawabs(), $replyToken);
-    } else {}
-} else {}
+if(strtolower($inputMessage)){
+    $inputMessage = explode(' ', $inputMessage);
+    $balas = apakah(answers(), $replyToken);
+    $result = new TextMessageBuilder($balas);
+}
+return $result;
+}
+*/
+file_put_contents($botname.'.json',$result);
 
+/*
 if(isset($balas)){
     $client->replyMessage($balas); 
     $result =  json_encode($balas);
-    file_put_contents($botname.'.json',$result);
 }
+*/
