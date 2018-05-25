@@ -17,8 +17,9 @@ $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu..... :v\
             )
         )
     );
+}
 return($apakah);
-}}
+}
 /*
 function aswers(){
     $aswerslist = array(
