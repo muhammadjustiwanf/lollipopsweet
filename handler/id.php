@@ -8,7 +8,7 @@ function userid($query, $userId){
 		if ($userId == null){
 				$result = new TextMessageBuilder('Kita belum berteman kak, add dulu gih :v');
 				} else {
-				$result = new TextMessageBuilder('Hai kak ' . $profil->displayName . ' Ini adalah userid kakak: ' . $userId);
+				$result = new TextMessageBuilder('Hai kak ' . $profile->displayName . ' Ini adalah userid kakak: ' . $userId);
 		}
 
 		return $result;
