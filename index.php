@@ -46,6 +46,8 @@ $app->post('/', function ($request, $response)
 	{
 		if ($event['type'] == 'message')
 		{
+				$getprofile = $bot->getProfile($userId);
+				$profile    = $getprofile->getJSONDecodedBody();
 			if($event['message']['type'] == 'text')
 			{
 				
@@ -53,8 +55,6 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$getprofile = $bot->getProfile($userId);
-				$profile    = $getprofile->getJSONDecodedBody();
 
 				if ($inputMessage[0] == '/') {
 
