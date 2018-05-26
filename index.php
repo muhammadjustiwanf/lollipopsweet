@@ -37,8 +37,8 @@ $app->post('/', function ($request, $response)
 	}
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
-	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$bott = new \LINE\LINEBot(new CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']), [
+	//$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
+	$bot = new \LINE\LINEBot($httpClient, new CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']), [
     'channelSecret' => $_ENV['CHANNEL_SECRET']
 ]);
 
@@ -54,7 +54,7 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$res = $bott->getProfile('user-id');
+				$res = $bot->getProfile('user-id');
 				$profile = $res->getJSONDecodedBody();
 				$displayName = $profile['displayName'];
 				$statusMessage = $profile['statusMessage'];
