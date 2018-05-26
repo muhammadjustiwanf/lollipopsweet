@@ -19,7 +19,6 @@
 require __DIR__ . '/vendor/autoload.php';
 require_once('./LINEBotTiny.php');
 
-include 'index.php';
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
 foreach (glob("robot/*.php") as $robot){include $robot;}
