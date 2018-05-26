@@ -9,11 +9,7 @@ foreach (glob("handler/*.php") as $handler){
 				include $handler;
 		}
 }
-foreach (glob("robot/*.php") as $robot){
-		if ($robot != 'handler/postsamehada.php'){
-				include $robot;
-		}
-}
+foreach (glob("robot/*.php") as $robot){include $robot;}
 
 $dotenv = new Dotenv\Dotenv('env');
 $dotenv->load();
