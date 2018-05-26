@@ -1,17 +1,17 @@
 <?php
 
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+
 function samehadaku($url){
 
-    $data = curl_init();
-    curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($data, CURLOPT_URL, $url);
-    $hasil = curl_exec($data);
-    curl_close($data);
-}
+//include 'postsamehada.php';
+		if ($url == null){
+				$result = new TextMessageBuilder('use /samehadaku to view list update anime');
+} else {
 
 $samehadaku = samehadaku("https://www.samehadaku.tv");
 $dom = new DomDocument();
-@$dom->loadHTML($samehadaku);
+$dom->loadHTML($samehadaku);
 $classname="post-item tie-standard";
 $finder = new DomXPath($dom);
 $spaner = $finder->query("//*[contains(@class, '$classname')]");
@@ -26,9 +26,9 @@ $spaner = $finder->query("//*[contains(@class, '$classname')]");
         'link' => $link->item($no)->getAttribute('href'),
         'tanggal' => $tanggal->item($no)->nodeValue,
         );
+}
 $result = new TextMessageBuilder($data[]);
+}
 return $result;
     $no++;
-
-
-
+}
