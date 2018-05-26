@@ -51,7 +51,11 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$profile = $event->profile($userId);
+				$res = $bot->getProfile('user-id');
+				$profile = $res->getJSONDecodedBody();
+				$displayName = $profile['displayName'];
+				$statusMessage = $profile['statusMessage'];
+				$pictureUrl = $profile['pictureUrl'];
 
 				if ($inputMessage[0] == '/') {
 
