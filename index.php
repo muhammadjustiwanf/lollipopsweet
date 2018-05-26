@@ -9,11 +9,6 @@ foreach (glob("handler/*.php") as $handler){
 				include $handler;
 		}
 }
-foreach (glob("robot/*.php") as $robot){
-		if ($robot != 'robot/bot.php'){
-				include $robot;
-		}
-}
 
 $dotenv = new Dotenv\Dotenv('env');
 $dotenv->load();
@@ -43,15 +38,14 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$bot->getProfile('userId');
+	//$bot->getProfile('userId');
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
 	{
 		if ($event['type'] == 'message')
 		{
-				$getprofile = $bot->getProfile($userId);
-				$profile    = $getprofile->getJSONDecodedBody();
+
 			if($event['message']['type'] == 'text')
 			{
 				
@@ -59,6 +53,8 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
+				$getprofile = $bot->getProfile($userId);
+				$profile    = $getprofile->getJSONDecodedBody();
 
 				if ($inputMessage[0] == '/') {
 
