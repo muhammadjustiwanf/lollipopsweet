@@ -54,18 +54,13 @@ $app->post('/', function ($request, $response)
 				$userId = $event['source']['userId'];
 				$getprofile = $bot->getProfile($userId);
 				$profile    = $getprofile->getJSONDecodedBody();
-				$greetings  = new TextMessageBuilder("Halo, ".$profile['displayName'] ." Terimakasih telah menambahkan saya sebagai teman :)");
-				if(
-                   $event['source']['type'] == 'group' or
-                   $event['source']['type'] == 'room'
-               )
 
-						if ($inputMessage[0] == '/') {
+				if ($inputMessage[0] == '/') {
 
 					 $inputMessage = ltrim($inputMessage, '/');
 					 $inputSplit = explode(' ', $inputMessage, 2);
 
-							 if ( function_exists( $inputSplit[0] ) ){
+					 if ( function_exists( $inputSplit[0] ) ){
 
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
@@ -82,7 +77,7 @@ $app->post('/', function ($request, $response)
 				$wordsLearned = json_decode($wordsLearned, true);
 
 				foreach ($wordsLearned as $word => $answer) {
-								if (strpos(strtolower($inputMessage), $word) !== false) {
+						if (strpos(strtolower($inputMessage), $word) !== false) {
 								$outputMessage = new TextMessageBuilder($answer);
 								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
