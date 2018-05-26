@@ -2,9 +2,9 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function samehadaku($url){
+function samehadaku(){
 
-//include 'postsamehada.php';
+include 'postsamehada.php';
 		if ($url == null){
 				$result = new TextMessageBuilder('use /samehadaku to view list update anime');
 } else {
