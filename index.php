@@ -92,6 +92,4 @@ $app->post('/', function ($request, $response)
 
 });
 
-include 'bot.php';
-
 $app->run();

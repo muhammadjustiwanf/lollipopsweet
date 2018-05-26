@@ -1,27 +1,10 @@
 <?php
 
-/**
- * Copyright 2016 LINE Corporation
- *
- * LINE Corporation licenses this file to you under the Apache License,
- * version 2.0 (the "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at:
- *
- *   https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- */
-
 require __DIR__ . '/vendor/autoload.php';
 require_once('./LINEBotTiny.php');
+require_once('./line_class.php');
 
-use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
-foreach (glob("robot/*.php") as $robot){include $robot;}
 
 //var_dump($client->parseEvents());
 
@@ -77,5 +60,49 @@ $app->post('/', function ($request, $response)
 	$message 	= $client->parseEvents()[0]['message'];
 	$messageid 	= $client->parseEvents()[0]['message']['id'];
 	$profil = $client->profil($userId);
+
+$msg_type = $message['type'];
+$botname = "KerangAjaib"; //Nama bot
+
+function send($input, $rt){
+    $send = array(
+        'replyToken' => $rt,
+        'messages' => array(
+            array(
+                'type' => 'text',					
+                'text' => $input
+            )
+        )
+    );
+    return($send);
+}
+
+function jawabs(){
+    $list_jwb = array(
+		'Ya',
+		'Tidak',
+		'Bisa jadi',
+		'Mungkin',
+		'Tentu tidak',
+		'Coba tanya lagi'
+		);
+    $jaws = array_rand($list_jwb);
+    $jawab = $list_jwb[$jaws];
+    return($jawab);
+}
+
+if($msg_type == 'text'){
+    $pesan_datang = strtolower($message['text']);
+    $filter = explode(' ', $pesan_datang);
+    if($filter[0] == 'apakah') {
+        $balas = send(jawabs(), $replyToken);
+    } else {}
+} else {}
+
+if(isset($balas)){
+    $client->replyMessage($balas); 
+    $result =  json_encode($balas);
+    file_put_contents($botname.'.json',$result);
+}
 
 $app->run();
