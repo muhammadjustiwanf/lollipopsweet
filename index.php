@@ -53,8 +53,8 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$res = $bot->getProfile('user-id');
-				$profile = $res->getJSONDecodedBody();
+				$res = $bot->getProfile('userId');
+				$profile = $res->getJSONDecodedBody;
 				$displayName = $profile['displayName'];
 				$statusMessage = $profile['statusMessage'];
 				$pictureUrl = $profile['pictureUrl'];
