@@ -57,8 +57,8 @@ $app->post('/', function ($request, $response)
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
-			//$userId = $event['source']['userId'];
-				$userId = $client->parseEvents()[0]['source']['userId'];
+				$userId = $event['source']['userId'];
+				//$userId = $client->parseEvents()[0]['source']['userId'];
 
 				if ($inputMessage[0] == '/') {
 
