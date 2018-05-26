@@ -4,11 +4,7 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 $url = 'https://www.samehadaku.net/';
 
-function samehadaku{
-
-if (url == null){
-$result = new TextMessageBuilder('Not Found');
-} else {
+function samehadaku($query){
 
     $ch = curl_init(); 
     curl_setopt($ch, CURLOPT_URL, $url);
