@@ -3,7 +3,7 @@
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 use \LINE\LINEBot\Response;
 
-function userid($query, $userId){
+function userid($query, $userId, $profile){
 
 		if ($userId == null){
 				$result = new TextMessageBuilder('Kita belum berteman kak, add dulu gih :v');
