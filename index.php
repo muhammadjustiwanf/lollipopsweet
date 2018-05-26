@@ -36,9 +36,9 @@ $app->post('/', function ($request, $response)
 		return $response->withStatus(400, 'Invalid signature');
 	}
 	
-	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
+	//$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	//$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$bot = new \LINE\LINEBot(new CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN'], [
+	$bot = new \LINE\LINEBot(new CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']), [
     'channelSecret' => $_ENV['CHANNEL_SECRET']
 ]);
 
