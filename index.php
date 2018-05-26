@@ -44,6 +44,7 @@ $app->post('/', function ($request, $response)
 //$type	= $client->parseEvents()[0]['type'];
 //$message = $client->parseEvents()[0]['message'];
 //$messageid = $client->parseEvents()[0]['message']['id'];
+	$profil = $client->profil($userId);
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -58,7 +59,6 @@ $app->post('/', function ($request, $response)
 				$inputMessage = $event['message']['text'];
 			//$userId = $event['source']['userId'];
 				$userId = $client->parseEvents()[0]['source']['userId'];
-				$profil = $client->profil($userId);
 
 				if ($inputMessage[0] == '/') {
 
