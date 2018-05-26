@@ -4,9 +4,9 @@ require 'vendor/autoload.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
-foreach (glob("handler/*.php") as $handler){
-		if ($handler != 'handler/post.php, handler/postsamehada.php'){
-				include $handler;
+foreach (glob("handler/*.php, robot/*.php") as $handler, $robot){
+		if ($handler, $robot != 'handler/post.php, robot/postsamehada.php'){
+				include $handler, $robot;
 		}
 }
 
