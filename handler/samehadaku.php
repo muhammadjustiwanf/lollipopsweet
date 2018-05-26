@@ -7,8 +7,7 @@ function samehadaku($url){
     curl_setopt($data, CURLOPT_URL, $url);
     $hasil = curl_exec($data);
     curl_close($data);
-    return $hasil;
-} else {
+} else {
 
 $samehadaku = samehadaku("https://www.samehadaku.tv");
 $dom = new DomDocument();
@@ -27,10 +26,13 @@ $spaner = $finder->query("//*[contains(@class, '$classname')]");
         'link' => $link->item($no)->getAttribute('href'),
         'tanggal' => $tanggal->item($no)->nodeValue,
         );
+    if ($data[] == null){
+        $result = new TextMessageBuilder('Tidak dapat menemukan data');
+} else {
 $result = new TextMessageBuilder($data[]);
+}
 return $result;
     $no++;
-}
 }
 
 
