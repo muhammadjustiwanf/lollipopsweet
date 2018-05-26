@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-$url = 'https://www.samehadaku.tv/';
+$url = 'http://samehadaku.tv/';
 
 function samehadaku($url){
 
