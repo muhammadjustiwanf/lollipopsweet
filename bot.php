@@ -77,3 +77,5 @@ $app->post('/', function ($request, $response)
 	$message 	= $client->parseEvents()[0]['message'];
 	$messageid 	= $client->parseEvents()[0]['message']['id'];
 	$profil = $client->profil($userId);
+
+$app->run();
