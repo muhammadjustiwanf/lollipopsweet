@@ -36,10 +36,8 @@ $app->post('/', function ($request, $response)
 		return $response->withStatus(400, 'Invalid signature');
 	}
 	
-	//$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
-	//$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$bot = new \LINE\LINEBot(new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']), [
-    'channelSecret' => $_ENV['CHANNEL_SECRET']]);
+	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
+	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -53,11 +51,13 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$res = $bot->getProfile('userId');
-				$profile = $res->getJSONDecodedBody;
-				$displayName = $profile['displayName'];
-				$statusMessage = $profile['statusMessage'];
-				$pictureUrl = $profile['pictureUrl'];
+				$response = $bot->getProfile('userId');
+						if ($response->isSucceeded()) {
+								$profile = $response->getJSONDecodedBody();
+								$displayName = $profile->displayName;
+								$pictureUrl = $profile->pictureUrl;
+								$statusMessage = $profile->statusMessage;
+}
 
 				if ($inputMessage[0] == '/') {
 
