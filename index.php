@@ -1,6 +1,5 @@
 <?php
 
-include 'bot.php';
 require 'vendor/autoload.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
@@ -92,5 +91,7 @@ $app->post('/', function ($request, $response)
 	}
 
 });
+
+include 'bot.php';
 
 $app->run();
