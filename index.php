@@ -38,6 +38,7 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
+	$bot->getProfile('userId');
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -51,20 +52,20 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$response = $bot->getProfile($userId);
-						if ($response->isSucceeded()) {
-								$profile = $response->getJSONDecodedBody();
-								$displayName = $profile->displayName;
-								$pictureUrl = $profile->pictureUrl;
-								$statusMessage = $profile->statusMessage;
-}
+				$getprofile = $bot->getProfile($userId);
+				$profile    = $getprofile->getJSONDecodedBody();
+				$greetings  = new TextMessageBuilder("Halo, ".$profile['displayName'] ." Terimakasih telah menambahkan saya sebagai teman :)");
+				if(
+                   $event['source']['type'] == 'group' or
+                   $event['source']['type'] == 'room'
+               )
 
-				if ($inputMessage[0] == '/') {
+						if ($inputMessage[0] == '/') {
 
 					 $inputMessage = ltrim($inputMessage, '/');
 					 $inputSplit = explode(' ', $inputMessage, 2);
 
-					 if ( function_exists( $inputSplit[0] ) ){
+							 if ( function_exists( $inputSplit[0] ) ){
 
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
@@ -81,7 +82,7 @@ $app->post('/', function ($request, $response)
 				$wordsLearned = json_decode($wordsLearned, true);
 
 				foreach ($wordsLearned as $word => $answer) {
-						if (strpos(strtolower($inputMessage), $word) !== false) {
+								if (strpos(strtolower($inputMessage), $word) !== false) {
 								$outputMessage = new TextMessageBuilder($answer);
 								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
