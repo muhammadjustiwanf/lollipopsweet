@@ -36,15 +36,8 @@ $app->post('/', function ($request, $response)
 		return $response->withStatus(400, 'Invalid signature');
 	}
 	
-	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-//$replyToken = $client->parseEvents()[0]['replyToken'];
-//$timestamp	= $client->parseEvents()[0]['timestamp'];
-//$type	= $client->parseEvents()[0]['type'];
-//$message = $client->parseEvents()[0]['message'];
-//$messageid = $client->parseEvents()[0]['message']['id'];
-//$profil = $client->profil($userId);
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -58,7 +51,7 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				//$userId = $client->parseEvents()[0]['source']['userId'];
+				$profile = $event->profile($userId);
 
 				if ($inputMessage[0] == '/') {
 
