@@ -10,7 +10,7 @@ function teach($query, $userId){
 		} else {
 
 				if ($query == null){
-						$result = new TextMessageBuilder("Ajari aku kata-kata atau keyword\n\n/teach [keyword] [jawaban] \n\njika tidak terdapat jawaban, maka secara otomatis [keyword] akan terhapus.");
+						$result = new TextMessageBuilder("Ajari bot kata-kata atau keyword\n\n/teach [keyword] [jawaban] \n\njika tidak terdapat jawaban, maka secara otomatis [keyword] akan terhapus.");
 				} else {
 
 						$querySplit = explode(' ', $query, 2);
@@ -22,7 +22,7 @@ function teach($query, $userId){
 						if ($answer == null){
 								$result = new TextMessageBuilder('Jawaban untuk "' . $word . '" telah dihapus.');
 						} else {
-								$result = new TextMessageBuilder('Sukses mengajari, silahkan kakak coba ketik "' . $word . '".');
+								$result = new TextMessageBuilder('Terimakasih sudah mengajari bot kata2, silahkan coba ketik "' . $word . '".');
 						}
 				}
 		}
