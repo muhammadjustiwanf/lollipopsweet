@@ -4,7 +4,7 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 $url = 'https://www.samehadaku.net/';
 
-function samehadaku($query, $data){
+function samehadaku($url, $data){
 
 if ($data == null){
 $result = new TextMessageBuilder ('Not Found');
