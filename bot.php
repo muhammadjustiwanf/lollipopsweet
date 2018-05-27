@@ -63,5 +63,6 @@ $app->post('/', function ($request, $response)
 				$profil = $client->profil($userId);
 		}
 	}
-}
+});
+
 $app->run();
