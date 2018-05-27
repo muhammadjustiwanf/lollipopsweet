@@ -5,11 +5,10 @@ use \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder as MessageT
 use \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder as TemplateMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function postmember($inputMessage){
-if ($inputMessage == null){
+function postmember($query){
+if ($query == null){
     $result = new TextMessageBuilder('Mau memposting orang? Caranya: /postmember orang.');
 } else {
-    if ($inputMessage = billy){
     $template = new ConfirmTemplateBuilder(
    "Posting billy?",
    [
@@ -17,7 +16,6 @@ if ($inputMessage == null){
    new MessageTemplateActionBuilder('Tidak','/tidak'),
    ]
    );
-}
 $templateMessage = new TemplateMessageBuilder('nama template', $template);
 $result = $bot->replyMessage($event['replyToken'], $templateMessage);
 }
