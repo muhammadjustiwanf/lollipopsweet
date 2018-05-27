@@ -9,16 +9,14 @@ function postmember($inputMessage){
 if ($inputMessage == null){
     $result = new TextMessageBuilder('Mau memposting orang? Caranya: /postmember orang.');
 } else {
-    $result = new ConfirmTemplateBuilder(
+    $template = new ConfirmTemplateBuilder(
    "Posting billy?",
    [
    new MessageTemplateActionBuilder('Ya',"/ya"),
    new MessageTemplateActionBuilder('Tidak','/tidak'),
    ]
    );
-return $result;
-} else {
-$templateMessage = new TemplateMessageBuilder('nama template', $result);
+$templateMessage = new TemplateMessageBuilder('nama template', $template);
 $result = $bot->replyMessage($event['replyToken'], $templateMessage);
 }
 return $result;
