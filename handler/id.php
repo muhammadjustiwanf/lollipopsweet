@@ -5,9 +5,9 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 function userid($query, $userId){
 
 		if ($userId == null){
-				$result = new TextMessageBuilder("Kita belum berteman kak, ".$getprofile->displayName." add dulu gih :v");
+				$result = new TextMessageBuilder('Kita belum berteman kak, add dulu gih :v');
 				} else {
-				$result = new TextMessageBuilder("Hai kak ".$getprofile->displayName." Ini adalah userid kakak\n\nUserId: ".$userId."\n\nDisimpan baik2 yah UserId nya :)");
+				$result = new TextMessageBuilder("Hai kak, Ini adalah userid kakak\n\nUserId: ".$userId."\n\nDisimpan baik2 yah UserId nya :)");
 		}
 
 		return $result;
