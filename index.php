@@ -35,7 +35,7 @@ $app->post('/', function ($request, $response)
 	if($_ENV['PASS_SIGNATURE'] == false && ! SignatureValidator::validateSignature($body, $_ENV['CHANNEL_SECRET'], $signature)){
 		return $response->withStatus(400, 'Invalid signature');
 	}
-	
+	{
 	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
 	$userId = $client->parseEvents()[0]['source']['userId'];
 	$replyToken = $client->parseEvents()[0]['replyToken'];
@@ -46,6 +46,47 @@ $app->post('/', function ($request, $response)
 	$profil = $client->profil($userId);
 	$pesan_datang = $message['text'];
 	$msg_type = $message['type'];
+function send($input, $rt){
+    $send = array(
+        'replyToken' => $rt,
+        'messages' => array(
+            array(
+                'type' => 'text',					
+                'text' => $input
+            )
+        )
+    );
+    return($send);
+}
+
+function jawabs(){
+    $list_jwb = array(
+		'Ya',
+		'Tidak',
+		'Bisa jadi',
+		'Mungkin',
+		'Tentu tidak',
+		'Coba tanya lagi'
+		);
+    $jaws = array_rand($list_jwb);
+    $jawab = $list_jwb[$jaws];
+    return($jawab);
+}
+
+if($msg_type == 'text'){
+    $pesan_datang = strtolower($message['text']);
+    $filter = explode(' ', $pesan_datang);
+    if($filter[0] == 'apakah') {
+        $balas = send(jawabs(), $replyToken);
+    } else {}
+} else {}
+
+if(isset($balas)){
+    $client->replyMessage($balas); 
+    $result =  json_encode($balas);
+    file_put_contents($botname.'.json',$result);
+}}
+
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
 	$bot->getProfile('userId');
@@ -62,7 +103,7 @@ $app->post('/', function ($request, $response)
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
-				//$userId = $event['source']['userId'];
+				$userId = $event['source']['userId'];
 				//$getprofile = $bot->getProfile($userId);
 				//$profile = $getprofile->getJSONDecodedBody();
 
