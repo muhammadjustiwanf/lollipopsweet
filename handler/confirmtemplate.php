@@ -16,8 +16,8 @@ if ($inputMessage == null){
    new MessageTemplateActionBuilder('Tidak','/tidak'),
    ]
    );
+}
 $templateMessage = new TemplateMessageBuilder('nama template', $result);
 $result = $bot->replyMessage($event['replyToken'], $templateMessage);
-}
 return $result;
 }
