@@ -10,17 +10,18 @@ function apakah($query, $userId){
   } else {
 
     $answerslist = array(
-		"Ya",
-		"Iya",
-		"Bisa jadi",
-		"Mungkin",
-		"Benar",
-		"Coba tanya lagi"
+		'Iya',
+		'Kalo diliat2 lagi sih iya',
+		'Bisa jadi',
+		'Mungkin',
+		'Tidak',
+		'Coba tanya lagi',
 		);
     $answr = array_rand($answerslist);
     $answrr = $answerslist[$answr];
+    $reply = json_encode($answrr);
 
-    $result = new TextMessageBuilder(json_encode($answrr));
+    $result = new TextMessageBuilder($reply);
   }
   return $result;
   file_put_contents($botname.'.json',$result);
