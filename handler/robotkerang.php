@@ -9,7 +9,7 @@ function apakah($query, $userId){
     $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu......\nCara menggunakannya:\n\n.apakah [pertanyaanmu].\nMisal: .apakah bot pintar?\n\nSilahkan dicoba");
   } else {
 
-    $list_jwb = array(
+    $answerslist = array(
 		'Ya',
 		'Iya',
 		'Bisa jadi',
@@ -17,11 +17,11 @@ function apakah($query, $userId){
 		'Benar',
 		'Coba tanya lagi'
 		);
-    $jaws = array_rand($list_jwb);
-    $jawab = $list_jwb[$jaws];
-    $jawablagi = json_encode($jawab);
+    $answr = array_rand($answerslist);
+    $answrr = $answerslist[$answr];
+    $answrrr = json_decode($answrr);
 
-    $result = new TextMessageBuilder($jawablagi);
+    $result = new TextMessageBuilder($answrrr);
   }
   return $result;
   file_put_contents($botname.'.json',$result);
