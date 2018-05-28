@@ -1,22 +1,15 @@
 <?php
 
-include 'bot.php';
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+
 $botname = "robotkerangdb";
 
-function send($input, $rt){
-    $send = array(
-        'replyToken' => $rt,
-        'messages' => array(
-            array(
-                'type' => 'text',					
-                'text' => $input
-            )
-        )
-    );
-    return($send);
-}
+function apakah($query, $userId){
+  if ($query == null){
+    $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu......\nCara menggunakannya:\n\n.apakah [pertanyaanmu].\nMisal: .apakah bot pintar?\n\nSelamat mencoba");
+  } else {
 
-function jawabs(){
+if answers(){
     $list_jwb = array(
 		'Ya',
 		'Tidak',
@@ -30,16 +23,7 @@ function jawabs(){
     return($jawab);
 }
 
-if($msg_type == 'text'){
-    $pesan_datang = strtolower($message['text']);
-    $filter = explode(' ', $pesan_datang);
-    if($filter[0] == 'apakah') {
-        $balas = send(jawabs(), $replyToken);
-    } else {}
+    $result = new TextMessageBuilder(json_encode(array_rand(answers())));
+  } else {}
 } else {}
-
-if(isset($balas)){
-    $client->replyMessage($balas); 
-    $result =  json_encode($balas);
-    file_put_contents($botname.'.json',$result);
-}
+file_put_contents($botname.'.json',$result);
