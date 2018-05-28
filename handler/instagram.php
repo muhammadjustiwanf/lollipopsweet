@@ -6,7 +6,7 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 function instagram($userName, $userId){
 	
 	if ($userName == null){
-		$result = new TextMessageBuilder("Instagram Random Photo\n\nCara menggunakan:\n/instagram (userName)\n\nContoh:\n/instagram muhammadjustiwanf");
+		$result = new TextMessageBuilder("Instagram Random Photo\n\nCara menggunakan:\n.instagram (userName)\n\nContoh:\n.instagram muhammadjustiwanf\n\nSelamat mencoba");
 	} else {
 		
 		$URL = 'https://www.instagram.com/' . $userName;
@@ -22,7 +22,7 @@ function instagram($userName, $userId){
 		$randomUrl = $urlFound[$randomIndex];
 		
 		if ($randomUrl == null){
-			$result = new TextMessageBuilder('Foto pada akun tidak ditemukan.');
+			$result = new TextMessageBuilder('Foto pada akun ' . $userName . ' tidak ditemukan.');
 		} else {
 			$result = new ImageMessageBuilder($randomUrl, $randomUrl);
 		}

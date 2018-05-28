@@ -10,7 +10,7 @@ function teach($query, $userId){
 	} else {
 
 		if ($query == null){
-			$result = new TextMessageBuilder("Ajari bot kata-kata atau keyword\n\n/teach [keyword] [jawaban] \n\njika tidak terdapat jawaban, maka secara otomatis [keyword] akan terhapus.");
+			$result = new TextMessageBuilder("Ajari bot kata-kata atau keyword dengan cara:\n\n.teach [keyword] [jawaban] \n\njika tidak terdapat jawaban, maka secara otomatis [keyword] akan terhapus.");
 		} else {
 
 			$querySplit = explode(' ', $query, 2);
