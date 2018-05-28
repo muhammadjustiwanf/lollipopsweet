@@ -19,9 +19,8 @@ function apakah($query, $userId){
 		);
     $answr = array_rand($answerslist);
     $answrr = $answerslist[$answr];
-    $reply = json_encode($answrr);
 
-    $result = new TextMessageBuilder($reply);
+    $result = new TextMessageBuilder($answrr);
   }
   return $result;
   file_put_contents($botname.'.json',$result);
