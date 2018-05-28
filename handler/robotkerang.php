@@ -20,10 +20,9 @@ function answers(){
 		);
     $jaws = array_rand($list_jwb);
     $jawab = $list_jwb[$jaws];
-    return($jawab);
 }
 
-    $result = new TextMessageBuilder(apakah(answers()));
+    $result = new TextMessageBuilder($jawab);
   }
   return $result;
 }
