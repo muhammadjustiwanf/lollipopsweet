@@ -9,7 +9,7 @@ function apakah($query, $userId){
     $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu......\nCara menggunakannya:\n\n.apakah [pertanyaanmu].\nMisal: .apakah bot pintar?\n\nSelamat mencoba");
   } else {
 
-if answers(){
+function answers(){
     $list_jwb = array(
 		'Ya',
 		'Tidak',
@@ -23,7 +23,7 @@ if answers(){
     return($jawab);
 }
 
-    $result = new TextMessageBuilder(json_encode(array_rand(answers())));
+    $result = new TextMessageBuilder(apakah(answers()));
   }
   return $result;
 }
