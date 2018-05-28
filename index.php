@@ -53,9 +53,9 @@ $app->post('/', function ($request, $response)
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
 
-				if ($inputMessage[0] == '/') {
+				if ($inputMessage[0] == '.') {
 
-					 $inputMessage = ltrim($inputMessage, '/');
+					 $inputMessage = ltrim($inputMessage, '.');
 					 $inputSplit = explode(' ', $inputMessage, 2);
 
 					 if ( function_exists( $inputSplit[0] ) ){
