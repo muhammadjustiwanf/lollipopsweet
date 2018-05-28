@@ -11,10 +11,10 @@ function apakah($query, $userId){
 
     $list_jwb = array(
 		'Ya',
-		'Tidak',
+		'Iya',
 		'Bisa jadi',
 		'Mungkin',
-		'Tentu tidak',
+		'Benar',
 		'Coba tanya lagi'
 		);
     $jaws = array_rand($list_jwb);
