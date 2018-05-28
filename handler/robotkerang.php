@@ -18,7 +18,6 @@ function apakah($query, $userId){
             )
         )
     );
-    return $send;
 
     $answerslist = array(
 		'Ya',
@@ -30,8 +29,9 @@ function apakah($query, $userId){
 		);
     $answr = array_rand($answerslist);
     $answrr = $answerslist[$answr];
+    $balas = $send, $answrr;
 
-    $result = new TextMessageBuilder(json_encode($send, $answrr));
+    $result = new TextMessageBuilder(json_encode($balas));
   }
   return $result;
   file_put_contents($botname.'.json',$result);
