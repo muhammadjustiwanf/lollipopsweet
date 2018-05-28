@@ -3,7 +3,7 @@
 use  \LINE\LINEBot\MessageBuilder\ImageMessageBuilder as ImageMessageBuilder;
 use  \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
  
-function meme($query){
+function meme($query, $userId){
    
     $URL = 'http://version1.api.memegenerator.net/Instance_Create';
     $apiKey = '62115028-fca1-43c3-897e-57ee3e105eaa';

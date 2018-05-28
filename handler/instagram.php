@@ -3,7 +3,7 @@
 use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder as ImageMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function instagram($userName){
+function instagram($userName, $userId){
 
 		if ($userName == null){
 				$result = new TextMessageBuilder("Instagram Random Photo\n\nCara menggunakan:\n/instagram (userName)\n\nContoh:\n/instagram muhammadjustiwanf");

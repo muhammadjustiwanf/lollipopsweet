@@ -3,7 +3,7 @@
 use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder as ImageMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function xkcd($comicNumber) {
+function xkcd($comicNumber, $userId) {
 
 		if ($comicNumber == null) {
 				$json = file_get_contents('http://xkcd.com/info.0.json');
