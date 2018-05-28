@@ -24,6 +24,7 @@ if answers(){
 }
 
     $result = new TextMessageBuilder(json_encode(array_rand(answers())));
-  } else {}
-} else {}
+  }
+  return $result;
+}
 file_put_contents($botname.'.json',$result);
