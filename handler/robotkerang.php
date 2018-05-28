@@ -16,6 +16,8 @@ function apakah($query, $userId){
 		'Mungkin',
 		'Tidak',
 		'Coba tanya lagi',
+    'Benar',
+    'hoax'
 		);
     $answr = array_rand($answerslist);
     $answrr = $answerslist[$answr];
