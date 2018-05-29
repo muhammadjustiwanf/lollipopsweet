@@ -4,6 +4,8 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function samehadaku($url){
 
+    $url = 'https://www.samehadaku.tv/';
+
     // inisialisasi CURL
 
     $data = curl_init();
@@ -12,15 +14,15 @@ function samehadaku($url){
 
     curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
 
-    curl_setopt($data, CURLOPT_URL, 'https://www.samehadaku.tv');
+    curl_setopt($data, CURLOPT_URL, $url);
 
     // menjalankan CURL untuk membaca isi file
 
     $result = new TextMessageBuilder(curl_exec($data));
 
-    curl_close($data);
-
     return $result;
+
+    curl_close($data);
 }
 /*
 //mengambil data dari kompas
