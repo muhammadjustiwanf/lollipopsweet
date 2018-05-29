@@ -23,9 +23,8 @@ function samehadaku($url){
     $result = new TextMessageBuilder(curl_exec($data));
 
     curl_close($data);
-
+}
     return $result;
-
 }
 /*
 //mengambil data dari kompas
