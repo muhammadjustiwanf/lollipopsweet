@@ -79,7 +79,7 @@ function genemo($query, $userId){
   $str = strtolower($query);
   $str_len = strlen($query);
   $hasil = [];
-  for($i=0;$i<$str_len;$i++){
+  $i=0;$i<$str_len;$i++;
     if($str[$i] == " "){
       $hasil[] = "\x20\x20\x20";
     }elseif(isset($dict[$str[$i]])){
@@ -90,10 +90,10 @@ function genemo($query, $userId){
       $hasil[] = $str[$i];
     }
       return implode("",$hasil);
-});
+);
 		$array = explode(" ",$query);
 			if($array[0] == "/t"){
-				$emo = $generate_emo(str_replace("/t ","",$query));
+				$emo = str_replace($generate_emo("/t ","",$query));
 			} else {
 				$result = new TextMessageBuilder($emo);
 				}
