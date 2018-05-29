@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 foreach (glob("handler/*.php") as $handler){
-		if ($handler != 'handler/post.php'){
+		if ($handler != 'handler/post.php', 'handler/emochar.php'){
 				include $handler;
 		}
 }
@@ -51,7 +51,13 @@ $app->post('/', function ($request, $response)
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
-				$userId = $event['source']['userId'];
+				$response = $bot->getProfile($event['source']['userId']);
+				if ($response->isSucceeded()) {
+					$profile = $response->getJSONDecodedBody();
+			    $displayName = $profile['displayName'];
+					$userId = $event['source']['userId'];
+					$groupId = $event['source']['groupId'];
+					$roomId = $event['source']['roomId'];
 
 				if ($inputMessage[0] == '.') {
 
