@@ -1,5 +1,7 @@
 <?php
 
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+
 function translate($query, $userId){
 
   include 'yandex.php';
