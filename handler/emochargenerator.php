@@ -76,9 +76,8 @@ function genemo($query, $userId){
   ];
 
   $generate_emo = (
-  $str = strtolower($generate_emo);
-  $dict = dictionary();
-  $str_len = strlen($generate_emo);
+  $str = strtolower($query);
+  $str_len = strlen($query);
   $hasil = [];
   for($i=0;$i<$str_len;$i++){
     if($str[$i] == " "){
