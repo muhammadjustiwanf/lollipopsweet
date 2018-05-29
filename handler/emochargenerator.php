@@ -4,7 +4,10 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function tr-emo($query, $userId){
 
-	if($groupId != "" || $roomId != ""){
+  if ($query == null){
+    $result = new TextMessageBuilder("EmoChar Generator.\n\nCara menggunakan:\n.tr-emo [keyword].\n\nSilahkan dicoba~");
+  } else {
+    if($groupId != "" || $roomId != ""){
     $dict = [
     " "   => "   ",
     "0"   => "􂘁􀄾zero􏿿 􂜁􀄾zero􏿿 􂠁􀄾zero􏿿 􂤁􀄾zero􏿿",
@@ -71,6 +74,7 @@ function tr-emo($query, $userId){
     "%"   => "􂘁􀅇%􏿿 􂜁􀅇%􏿿 􂠁􀅇%􏿿 􂤁􀅇%􏿿",
     "^"   => "􂘁􀅈^􏿿 􂜁􀅈^􏿿 􂠁􀅈^􏿿 􂤁􀅈^􏿿"
   ];
+}
 
   $generate_emo(
   $str = strtolower($str);
@@ -98,3 +102,4 @@ function tr-emo($query, $userId){
 				return $result;
 			}
    }
+}
