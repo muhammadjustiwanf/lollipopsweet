@@ -83,4 +83,5 @@ foreach ($link as $val){
 
     $no++;
     $result = new TextMessageBuilder($data);
+    return $result;
 }
