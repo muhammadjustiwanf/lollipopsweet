@@ -78,17 +78,8 @@ function genemo($query, $userId){
   $str = strtolower($query);
   $str_len = strlen($query);
   $hasil = [];
-  $i=0;$i<$str_len;$i++;
-    if($str[$i] == " "){
-      $hasil[] = "\x20\x20\x20";
-    }elseif(isset($dict[$str[$i]])){
-      $array = explode(" ",$dict[$str[$i]]);
-      $chr = $array[rand(0,count($array)-1)];
-      $hasil[] = $chr;
-    }else{
-      $hasil[] = $str[$i];
-    }
-			$result = new TextMessageBuilder($hasil);
-			}
-			return $result;
-	  }
+);
+	$result = new TextMessageBuilder($hasil);
+	}
+	return $result;
+}
