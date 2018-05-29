@@ -3,8 +3,26 @@
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function bacaHTML($url){
+  if ($url == null){
+    $result = new TextMessageBuilder('Url Not Found!');
+  } else {
+    // inisialisasi CURL
 
-//mengambil data dari kompas 
+    $data = curl_init();
+
+    // setting CURL
+
+    curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
+
+    curl_setopt($data, CURLOPT_URL, $url);
+
+    // menjalankan CURL untuk membaca isi file
+
+    $hasil = curl_exec($data);
+
+    curl_close($data);
+
+//mengambil data dari kompas
 
 $bacaHTML = bacaHTML("http://www.kompas.com");
 
@@ -16,7 +34,7 @@ $dom = new DomDocument();
 
 //mengambil html dari kompas untuk di parse
 
-$dom->loadHTML($bacaHTML);
+@$dom->loadHTML($bacaHTML);
 
 
 //nama class yang akan dicari
@@ -28,7 +46,7 @@ $classname="latest__wrap";
 
 $finder = new DomXPath($dom);
 
-$spaner = $finder->query("//*[contains(class, '$classname')]");
+$spaner = $finder->query("//*[contains(@class, '$classname')]");
 
 
 //mengambil data dari class yang pertama
@@ -42,7 +60,6 @@ $link =  $span->getElementsByTagName('a');
 
 $tanggal = $span->getElementsByTagName('span');
 
-
 $no = 0;
 
 
@@ -50,7 +67,7 @@ $no = 0;
 
 $data =array();
 
-foreach ($link as $val){ 
+foreach ($link as $val){
 
     $data[] = array(
 
@@ -63,7 +80,6 @@ foreach ($link as $val){
         );
 
     $no++;
-$result = new TextMessageBuilder($data);
 }
-return $result;
+    $result = new TextMessageBuilder($data);
 }
