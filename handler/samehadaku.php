@@ -2,11 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function youtube($videos, $userId){
-
-  if ($videos == null){
-    $result = new TextMessageBuilder('Videos Not Found!');
-  } else {
+function youtube($userId){
 
     $html = file_get_html('https:// www.youtube.com/feed/trending');
     $videos = [];
@@ -29,8 +25,7 @@ function youtube($videos, $userId){
 
       $i++;
 
-$result = new TextMessageBuilder($videos);
-}
-return $result;
-}
+      $result = new TextMessageBuilder($videos);
+    }
+      return $result;
 }
