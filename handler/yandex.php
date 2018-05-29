@@ -42,22 +42,22 @@ class Yandex {
 					$reply = $respon->text[0];
 					break;
 				case 403:
-					$reply = "Hari ini sudah banyak menerjemahkan, saya sudah lelah. Besok lagi ya ??";
+					$reply = "Hari ini bot sudah banyak menerjemahkan, bot sudah lelah. Besok lagi ya ??";
 					break;
 				case 404:
-					$reply = "Hari ini sudah banyak menerjemahkan, saya sudah lelah. Besok lagi ya ??";
+					$reply = "Hari ini bot sudah banyak menerjemahkan, bot sudah lelah. Besok lagi ya ??";
 					break;
 				case 413:
-					$reply = "Teks terlalu panjang, adek gak sanggup bang ??";
+					$reply = "Teks terlalu panjang, bot gak paham";
 					break;
 				case 422:
-					$reply = "Teks tidak dapat diproses, adek gak sanggup bang ??";
+					$reply = "Teks tidak dapat diproses, bot gak paham";
 					break;
 				case 501:
 					$reply = "Pilihan bahasa tidak diketahui, itu bahasa alien? ??";
 					break;
 				default:
-					$reply = "Terjadi kesalahan menterjemahkan, mungkin saya mulai lelah ??";
+					$reply = "Terjadi kesalahan menterjemahkan, mungkin bot mulai lelah ??";
 			} // end switch
 		}else{
 			echo "Debug\t: Empty responses\n";
@@ -94,7 +94,7 @@ class Yandex {
 			}
 		}else{
 			// Jika reply kosong
-			$reply = "Maaf, saya sedang sibuk, coba lagi nanti ya.";
+			$reply = "Maaf, bot sedang sibuk, coba lagi nanti ya.";
 		}
 		// Return the data
 		return $reply;
