@@ -2,9 +2,9 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function translate($userId){
+function translate($query, $userId){
 
-  include 'yandex.php';
+  //include 'yandex.php';
   if ($query == null){
     $result = new TextMessageBuilder('Jangan typo!');
 /*
