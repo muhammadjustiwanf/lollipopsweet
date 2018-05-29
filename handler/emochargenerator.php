@@ -74,12 +74,11 @@ function genemo($query, $userId){
     "%"   => "􂘁􀅇%􏿿 􂜁􀅇%􏿿 􂠁􀅇%􏿿 􂤁􀅇%􏿿",
     "^"   => "􂘁􀅈^􏿿 􂜁􀅈^􏿿 􂠁􀅈^􏿿 􂤁􀅈^􏿿"
   ];
-}
 
   $generate_emo = (
-  $str = strtolower($str);
+  $str = strtolower($generate_emo);
   $dict = dictionary();
-  $str_len = strlen($str);
+  $str_len = strlen($generate_emo);
   $hasil = [];
   for($i=0;$i<$str_len;$i++){
     if($str[$i] == " "){
@@ -95,10 +94,11 @@ function genemo($query, $userId){
 });
 		$array = explode(" ",$query);
 			if($array[0] == "/t"){
-				$result = $generate_emo(str_replace("/t ","",$query));
+				$emo = $generate_emo(str_replace("/t ","",$query));
 			} else {
-				$result = new TextMessageBuilder($generate_emo($query));
+				$result = new TextMessageBuilder($emo);
 				}
 				return $result;
 			}
    }
+}
