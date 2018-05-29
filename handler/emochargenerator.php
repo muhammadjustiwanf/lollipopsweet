@@ -88,14 +88,7 @@ function genemo($query, $userId){
     }else{
       $hasil[] = $str[$i];
     }
-      return implode("",$hasil);
-);
-		$array = explode(" ",$query);
-			if($array[0] == "/t"){
-				$emo = str_replace($generate_emo("/t ","",$query));
-			} else {
-				$result = new TextMessageBuilder($emo);
-				}
-				return $result;
+			$result = new TextMessageBuilder($hasil);
 			}
-   }
+			return $result;
+	  }
