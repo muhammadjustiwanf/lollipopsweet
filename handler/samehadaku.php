@@ -2,7 +2,9 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function bacaHTML($url){
+$url = 'https://www.samehadaku.tv/';
+
+function samehadaku($url){
   if ($url == null){
     $result = new TextMessageBuilder('Url Not Found!');
   } else {
@@ -18,15 +20,17 @@ function bacaHTML($url){
 
     // menjalankan CURL untuk membaca isi file
 
-    $hasil = curl_exec($data);
+    $result = new TextMessageBuilder(curl_exec($data));
 
     curl_close($data);
 
-}
+    return $result;
 
+}
+/*
 //mengambil data dari kompas
 
-$bacaHTML = bacaHTML("http://www.kompas.com");
+$bacaHTML = samehadaku("http://www.kompas.com");
 
 
 //membuat dom dokumen
@@ -85,3 +89,4 @@ foreach ($link as $val){
     $result = new TextMessageBuilder($data);
     return $result;
 }
+*/
