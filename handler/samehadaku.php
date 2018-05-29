@@ -2,12 +2,8 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-$url = 'https://www.samehadaku.tv/';
-
 function samehadaku($url){
-  if ($url == null){
-    $result = new TextMessageBuilder('Url Not Found!');
-  } else {
+
     // inisialisasi CURL
 
     $data = curl_init();
@@ -16,14 +12,14 @@ function samehadaku($url){
 
     curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
 
-    curl_setopt($data, CURLOPT_URL, $url);
+    curl_setopt($data, CURLOPT_URL, 'https://www.samehadaku.tv');
 
     // menjalankan CURL untuk membaca isi file
 
     $result = new TextMessageBuilder(curl_exec($data));
 
     curl_close($data);
-}
+
     return $result;
 }
 /*
