@@ -7,7 +7,6 @@ function genemo($query, $userId){
   if ($query == null){
     $result = new TextMessageBuilder("EmoChar Generator.\n\nCara menggunakan:\n.genemo [keyword].\n\nSilahkan dicoba~");
   } else {
-    if($groupId != "" || $roomId != ""){
     $dict = [
     " "   => "   ",
     "0"   => "􂘁􀄾zero􏿿 􂜁􀄾zero􏿿 􂠁􀄾zero􏿿 􂤁􀄾zero􏿿",
@@ -100,4 +99,3 @@ function genemo($query, $userId){
 				return $result;
 			}
    }
-}
