@@ -9,9 +9,13 @@ function translate($query, $userId){
     $result = new TextMessageBuilder('Jangan typo!');
   } else {
 
-$yandex = new Yandex();
-$query = $yandex->translate;
-$result = new TextMessageBuilder($query);
-}
+    $yandex = new Yandex();
+    $query = $yandex->translate;
+
+    $result = new TextMessageBuilder($query);
+
+  }
+
 return $result;
+
 }
