@@ -17,18 +17,16 @@ function simsimi($query, $userId){
         $json_data = file_get_contents($url);
         $url=json_decode($json_data,1);
         $diterima = $url['response'];
-        if($message['type']=='text'){
-          if($url['result'] == 404){
-            $result = new TextMessageBuilder('Harap gunakan bahasa yang dapat dimengerti, jangan pakek bahasa alien :v');
-          } else
-            if($url['result'] != 100){
-            $result = new TextMessageBuilder('Maaf '.$profil['displayName'].' Server Kami Sedang Sibuk Sekarang.
-             else {
-              $result = new TextMessageBuilder($diterima);
+        if($url['result'] == 404){
+          $result = new TextMessageBuilder('Harap gunakan bahasa yang dapat dimengerti, jangan pakek bahasa alien :v');
+        } else {
+          if($url['result'] != 100){
+          $result = new TextMessageBuilder('Maaf '.$profil['displayName'].' Server Kami Sedang Sibuk Sekarang.
+          } else {
+            $result = new TextMessageBuilder($diterima);
 	          }
-      }
-              $result = new TextMessageBuilder(json_encode($result));
-              file_put_contents('./reply.json',$result);
+            $result = new TextMessageBuilder(json_encode($result));
+            file_put_contents('./reply.json',$result);
   }
-              return $result;
+            return $result;
 }
