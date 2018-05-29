@@ -10,7 +10,8 @@ function translate($query, $userId){
   } else {
 
 $yandex = new Yandex();
-$result = new TextMessageBuilder($yandex->translate($query));
+$query = $yandex->translate;
+$result = new TextMessageBuilder($query);
 }
 return $result;
 }
