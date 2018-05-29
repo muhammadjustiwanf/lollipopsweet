@@ -4,10 +4,11 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function youtube($userId){
 
-    $html = file_get_html('https:// www.youtube.com/feed/trending');
+    $url = file_get_contents('https:// www.youtube.com/feed/trending');
+
     $videos = [];
     $i = 1;
-    foreach ($html->find('li.expanded-shelf-content-item-wrapper') as $video) {
+    foreach ($url->find('li.expanded-shelf-content-item-wrapper') as $video) {
       if ($i > 10) {
               break;
       }
