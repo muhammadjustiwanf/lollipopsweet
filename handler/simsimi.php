@@ -17,22 +17,18 @@ $url = 'http://sandbox.api.simsimi.com/request.p?key='.$key.'&lc=id&ft=1.0&text=
 $json_data = file_get_contents($url);
 $url=json_decode($json_data, true);
 $diterima = $url['response'];
-  if($message['type']=='text')
-{
+  if($message['type']=='text'){
     if($url['result'] == 404){
       $result = new TextMessageBuilder('Harap gunakan bahasa yang dapat dimengerti, jangan pakek bahasa alien :v');
-    } else
+    } else {
       if($url['result'] != 100){
       $result = new TextMessageBuilder('Maaf '.$profil['displayName'].' Server Kami Sedang Sibuk Sekarang.
     } else {
       $result = new TextMessageBuilder($diterima);
 	  }
-}
-
+  }
       $result = new TextMessageBuilder(json_encode($balas));
-      }
       file_put_contents('./reply.json',$result);
-
-      return $result;
       }
+      return $result;
     }
