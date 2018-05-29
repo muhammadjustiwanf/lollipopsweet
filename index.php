@@ -55,9 +55,10 @@ $app->post('/', function ($request, $response)
 				$response = $bot->getProfile($event['source']['userId']);
 				if ($response->isSucceeded()) {
 					$profile = $response->getJSONDecodedBody();
-			    $displayName = $profile['displayName'];
+					$displayName = $profile['displayName'];
 					$groupId = $event['source']['groupId'];
 					$roomId = $event['source']['roomId'];
+}
 
 				if ($inputMessage[0] == '.') {
 
