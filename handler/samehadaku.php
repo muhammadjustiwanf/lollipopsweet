@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function youtube($html, $userId){
+function youtube($userId){
 
 // Create DOM from URL or file
 $html = file_get_html('https://www.youtube.com/feed/trending');
@@ -33,7 +33,7 @@ foreach ($html->find('li.expanded-shelf-content-item-wrapper') as $video) {
         ];
 
         $i++;
-}
+
 $result = new TextMessageBuilder($videos);
 }
 return $result;
