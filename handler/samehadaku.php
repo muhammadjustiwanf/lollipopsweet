@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function samehadaku($url){
+function bacaHTML($url){
 
     // inisialisasi CURL
 
