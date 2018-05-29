@@ -22,6 +22,8 @@ function bacaHTML($url){
 
     curl_close($data);
 
+}
+
 //mengambil data dari kompas
 
 $bacaHTML = bacaHTML("http://www.kompas.com");
@@ -80,6 +82,5 @@ foreach ($link as $val){
         );
 
     $no++;
-}
     $result = new TextMessageBuilder($data);
 }
