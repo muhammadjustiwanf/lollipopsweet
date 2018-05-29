@@ -2,88 +2,39 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function samehadaku($url){
+function youtube($html, $userId){
 
-    $url = 'https://www.samehadaku.tv/';
+// Create DOM from URL or file
+$html = file_get_html('https://www.youtube.com/feed/trending');
 
-    // inisialisasi CURL
+// creating an array of elements
+$videos = [];
 
-    $data = curl_init();
+// Find top ten videos
+$i = 1;
+foreach ($html->find('li.expanded-shelf-content-item-wrapper') as $video) {
+        if ($i > 10) {
+                break;
+        }
 
-    // setting CURL
+        // Find item link element
+        $videoDetails = $video->find('a.yt-uix-tile-link', 0);
 
-    curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
+        // get title attribute
+        $videoTitle = $videoDetails->title;
 
-    curl_setopt($data, CURLOPT_URL, $url);
+        // get href attribute
+        $videoUrl = 'https://youtube.com' . $videoDetails->href;
 
-    // menjalankan CURL untuk membaca isi file
+        // push to a list of videos
+        $videos[] = [
+                'title' => $videoTitle,
+                'url' => $videoUrl
+        ];
 
-    $result = new TextMessageBuilder(curl_exec($data));
-
-    return $result;
-
-    curl_close($data);
+        $i++;
 }
-/*
-//mengambil data dari kompas
-
-$bacaHTML = samehadaku("http://www.kompas.com");
-
-
-//membuat dom dokumen
-
-$dom = new DomDocument();
-
-
-//mengambil html dari kompas untuk di parse
-
-@$dom->loadHTML($bacaHTML);
-
-
-//nama class yang akan dicari
-
-$classname="latest__wrap";
-
-
-//mencari class memakai dom query
-
-$finder = new DomXPath($dom);
-
-$spaner = $finder->query("//*[contains(@class, '$classname')]");
-
-
-//mengambil data dari class yang pertama
-
-$span = $spaner->item(0);
-
-
-//dari class pertama mengambil 2 elemen yaitu a yang menyimpan judul dan link dan span yang menyimpan tanggal
-
-$link =  $span->getElementsByTagName('a');
-
-$tanggal = $span->getElementsByTagName('span');
-
-$no = 0;
-
-
-//persiapkan array untuk diambil datanya
-
-$data =array();
-
-foreach ($link as $val){
-
-    $data[] = array(
-
-        'judul' => $link->item($no)->nodeValue,
-
-        'link' => $link->item($no)->getAttribute('href'),
-
-        'tanggal' => $tanggal->item($no)->nodeValue,
-
-        );
-
-    $no++;
-    $result = new TextMessageBuilder($data);
-    return $result;
+$result = new TextMessageBuilder($videos);
 }
-*/
+return $result;
+}
