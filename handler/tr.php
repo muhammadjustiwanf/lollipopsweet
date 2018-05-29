@@ -7,6 +7,8 @@ function translate($query, $userId){
   include 'yandex.php';
   if ($query == null){
     $result = new TextMessageBuilder('Jangan typo!');
+}}
+/*
   } else {
 
     $yandex = new Yandex();
@@ -19,3 +21,4 @@ function translate($query, $userId){
 return $result;
 
 }
+*/
