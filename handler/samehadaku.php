@@ -1,33 +1,36 @@
 <?php
 
-require('simple_html_dom.php');
-
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function youtube($userId){
+function youtube($videos, $userId){
 
-$html = file_get_html('https://www.youtube.com/feed/trending');
-$videos = [];
-$i = 1;
-foreach ($html->find('li.expanded-shelf-content-item-wrapper') as $video) {
-        if ($i > 10) {
-                break;
-        }
+  if ($videos == null){
+    $result = new TextMessageBuilder('Videos Not Found!');
+  } else {
 
-        $videoDetails = $video->find('a.yt-uix-tile-link', 0);
+    $html = file_get_html('https:// www.youtube.com/feed/trending');
+    $videos = [];
+    $i = 1;
+    foreach ($html->find('li.expanded-shelf-content-item-wrapper') as $video) {
+      if ($i > 10) {
+              break;
+      }
 
-        $videoTitle = $videoDetails->title;
+      $videoDetails = $video->find('a.yt-uix-tile-link', 0);
 
-        $videoUrl = 'https://youtube.com' . $videoDetails->href;
+      $videoTitle = $videoDetails->title;
 
-        $videos[] = [
+      $videoUrl = 'https://youtube.com' . $videoDetails->href;
+
+      $videos[] = [
                 'title' => $videoTitle,
                 'url' => $videoUrl
-        ];
+      ];
 
-        $i++;
+      $i++;
 
 $result = new TextMessageBuilder($videos);
 }
 return $result;
 }
+
