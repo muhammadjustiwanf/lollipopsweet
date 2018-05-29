@@ -1,7 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
-require('simple_html_dom.php');
+require 'src/sunra/PhpSimple/simplehtmldom_1_5/simple_html_dom.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
