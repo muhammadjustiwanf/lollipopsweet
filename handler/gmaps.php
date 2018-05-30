@@ -17,14 +17,12 @@ function maps($query, $userId){
 		
 		$json = file_get_contents($URL);
 		$json = json_decode($json, true);
-
-    if ($json['status'] == 'OK'){
  
-      $lati = $json['results'][0]['geometry']['location']['lat'];
-      $longi = $json['results'][0]['geometry']['location']['lng'];
-      $formatted_address = $json['results'][0]['formatted_address'];
+    $lati = $json['results'][0]['geometry']['location']['lat'];
+    $longi = $json['results'][0]['geometry']['location']['lng'];
+    $formatted_address = $json['results'][0]['formatted_address'];
 
-      if ($lati, $longi, $formatted_address){
+      if ($lati && $longi && $formatted_address){
          
         $data_arr = array();            
              
@@ -38,7 +36,6 @@ function maps($query, $userId){
       } else {
         $result = new TextMessageBuilder($data_arr);
         }
-	  }
   }
 	
 	  return $result;
