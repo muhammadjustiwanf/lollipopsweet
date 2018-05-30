@@ -2,7 +2,10 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
  
-function geocode($address){
+function geocode($address, $userId){
+  if ($address == null){
+    $result = new TextMessageBuilder('Jangan typo!');
+  } else {
  
     // url encode the address
     $address = urlencode($address);
@@ -11,10 +14,10 @@ function geocode($address){
     $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=AIzaSyDUC3p9FqzmMYgYWKiBpLcQqMddot48xyw";
  
     // get the json response
-    $resp_json = file_get_contents($url);
+    $json = file_get_contents($url);
      
     // decode the json
-    $resp = json_decode($resp_json, true);
+    $jsondecode = json_decode($json, true);
  
     // response status will be 'OK', if able to geocode given address 
     if($resp['status']=='OK'){
@@ -36,11 +39,15 @@ function geocode($address){
                     $longi, 
                     $formatted_address
                 );
-             
+        }
+           if ($data_arr == null){
+             $result = new TextMessageBuilder('Not Found data!');
+           } else {
             $result = new TextMessageBuilder($data_arr);
              
-        }
-         
     }
+         
+  }
             return $result;
+}
 }
