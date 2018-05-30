@@ -13,7 +13,7 @@ function maps($query, $userId){
 
 		$query = urlencode($query);
 		$URL = $URL . '?address=' . $query;
-		$URL = $URL . '&apiKey=' . $apiKey;
+		$URL = $URL . '&key=' . $apiKey;
 		
 		$json = file_get_contents($URL);
 		$json = json_decode($json, true);
