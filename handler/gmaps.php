@@ -8,7 +8,7 @@ function maps($query, $userId){
 	$apiKey = 'AIzaSyDUC3p9FqzmMYgYWKiBpLcQqMddot48xyw';
 	
 	if ($query == null){
-		$result = new TextMessageBuilder("Google Maps Api.\n\nCara menggunakan: .maps [lokasi]\nMisal: .gmaps bandar lampung, kedaton.\n\nSilahkan dicoba (((o(*ﾟ▽ﾟ*)o)))");
+		$result = new TextMessageBuilder("Google Maps Api.\n\nCara menggunakan: .maps [lokasi]\nMisal: .maps bandar lampung, kedaton.\n\nSilahkan dicoba (((o(*ﾟ▽ﾟ*)o)))");
 	} else {
 
 		$query = urlencode($query);
@@ -20,9 +20,9 @@ function maps($query, $userId){
 
     if ($json['status'] == 'OK'){
  
-      $lati = isset(json['results'][0]['geometry']['location']['lat']) ? $json['results'][0]['geometry']['location']['lat'] : "";
-      $longi = isset($json['results'][0]['geometry']['location']['lng']) ? $json['results'][0]['geometry']['location']['lng'] : "";
-      $formatted_address = isset($json['results'][0]['formatted_address']) ? $json['results'][0]['formatted_address'] : "";
+      $lati = isset($json['results'][0]['geometry']['location']['lat']) : "";
+      $longi = isset($json['results'][0]['geometry']['location']['lng']) : "";
+      $formatted_address = isset($json['results'][0]['formatted_address']) : "";
 
       if ($lati && $longi && $formatted_address){
          
@@ -35,9 +35,9 @@ function maps($query, $userId){
                 $formatted_address
             );
         return $data_arr;
-        } else {
-			    $result = new TextMessageBuilder($data_arr);
-          }
+      } else {
+        $result = new TextMessageBuilder($data_arr);
+        }
 	  }
   }
 	
