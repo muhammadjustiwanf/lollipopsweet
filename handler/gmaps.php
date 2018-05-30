@@ -22,13 +22,15 @@ function maps($query, $userId){
     $longi = $json['results'][0]['geometry']['location']['lng'];
     $formatted_address = $json['results'][0]['formatted_address'];
 
-    $data = array_push( 
+    $data = array( 
                 $lati, 
                 $longi, 
                 $formatted_address
             );
+    $dataa = array_push($data);
+    $hasil = $data[$dataa];
         
-    $result = new TextMessageBuilder($data);
+    $result = new TextMessageBuilder($hasil);
   }
 	
 	  return $result;
