@@ -5,6 +5,7 @@
         "linecorp/line-bot-sdk": "^1.4",
         "vlucas/phpdotenv": "^2.4",
         "sunra/php-simple-html-dom-parser": "^1.5",
-        "mashape/unirest-php": "^3.0"
+        "mashape/unirest-php": "^3.0",
+        "paquettg/php-html-parser": "^1.7"
     }
 }
