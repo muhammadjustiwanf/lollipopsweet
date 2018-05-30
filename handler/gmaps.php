@@ -33,7 +33,7 @@ function maps($query, $userId){
     if (isset($hasil))
       $result = new TextMessageBuilder($hasil);
       else
-      $result = new TextMessageBuilder('Hasil dari ' . $hasil . ' tidak ditemukan.');
+      $result = new TextMessageBuilder('Hasil dari ' . $query . ' tidak ditemukan.');
   }
 	
 	  return $result;
