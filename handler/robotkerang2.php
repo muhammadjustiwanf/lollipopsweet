@@ -6,7 +6,7 @@ $botname = "robotkerangdb";
 
 function dimana($query, $userId){
   if ($query == null){
-    $result = new TextMessageBuilder("Puja kulit kerang ajaib ululululululu......\nCara menggunakannya:\n\n.apakah [pertanyaanmu].\nMisal: .apakah bot pintar?\n\nSilahkan dicoba");
+    $result = new TextMessageBuilder("Ini bukan kerang ajaib, kalo kerang ajaib yang satunya :v\nCara menggunakannya:\n\n.dimana [pertanyaanmu].\nMisal: .dimana kamu tadi melihat dia?\n\nSilahkan dicoba");
   } else {
 
     $answerslist = array(

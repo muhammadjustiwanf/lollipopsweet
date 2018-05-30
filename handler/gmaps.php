@@ -31,6 +31,8 @@ function maps($query, $userId){
     $hasil = $data[$dataa];
         
     $result = new TextMessageBuilder($hasil);
+    else
+    $result = new TextMessageBuilder('Hasil dari ' . $hasil . ' tidak ditemukan.');
   }
 	
 	  return $result;
