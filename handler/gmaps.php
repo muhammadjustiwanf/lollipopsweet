@@ -2,13 +2,13 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function gmaps($query, $userId){
+function maps($query, $userId){
 	
 	$URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 	$apiKey = 'AIzaSyDUC3p9FqzmMYgYWKiBpLcQqMddot48xyw';
 	
 	if ($query == null){
-		$result = new TextMessageBuilder("Google Maps Api.\n\nCara menggunakan: .gmaps [lokasi]\nMisal: .gmaps bandar lampung, kedaton.\n\nSilahkan dicoba (((o(*ﾟ▽ﾟ*)o)))");
+		$result = new TextMessageBuilder("Google Maps Api.\n\nCara menggunakan: .maps [lokasi]\nMisal: .gmaps bandar lampung, kedaton.\n\nSilahkan dicoba (((o(*ﾟ▽ﾟ*)o)))");
 	} else {
 
 		$query = urlencode($query);
@@ -33,14 +33,11 @@ function gmaps($query, $userId){
                 $lati, 
                 $longi, 
                 $formatted_address
-        );
-             
-	  	  if ($data_arr == null){
-	  		$result = new TextMessageBuilder('false');
-		  } else {
-			  $result = new TextMessageBuilder($data_arr);
-        }
-	    }
+            );
+        return $data_arr;
+        } else {
+			    $result = new TextMessageBuilder($data_arr);
+          }
 	  }
   }
 	
