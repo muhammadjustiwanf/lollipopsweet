@@ -17,35 +17,40 @@ function maps($query, $userId){
 		
 		$json = file_get_contents($URL);
 		$json = json_decode($json, true);
- 
-    $lati = isset($json['results'][0]['geometry']['location']['lat']) ? $json['results'][0]['geometry']['location']['lat'] : "";
-    $longi = isset($json['results'][0]['geometry']['location']['lng']) ? $json['results'][0]['geometry']['location']['lng'] : "";
-    $formatted_address = isset($json['results'][0]['formatted_address']) ? $json['results'][0]['formatted_address'] : "";
-    
-    if($lati && $longi && $formatted_address){
-    
-      $data_arr = array();            
-             
-      array_push(
-          $data_arr, 
-              $lati, 
-              $longi, 
-              $formatted_address
-          );
-    }
-             
-      return $data_arr;
 
-      if($_POST){
+    if ($json['status']=='OK'){
+      $lati = isset($json['results'][0]['geometry']['location']['lat']) ? $json['results'][0]['geometry']['location']['lat'] : "";
+      $longi = isset($json['results'][0]['geometry']['location']['lng']) ? $json['results'][0]['geometry']['location']['lng'] : "";
+      $formatted_address = isset($json['results'][0]['formatted_address']) ? $json['results'][0]['formatted_address'] : "";
+    
+      if($lati && $longi && $formatted_address){
+    
+        $data_arr = array();            
+             
+        array_push(
+            $data_arr, 
+                $lati, 
+                $longi, 
+                $formatted_address
+            );
+             
+        return $data_arr;
 
-        $data_arr = maps($_POST['address']);
-        if($data_arr){
-         
-          $latitude = $data_arr[0];
-          $longitude = $data_arr[1];
-          $formatted_address = $data_arr[2];
-        }
+      } else {
+        return false;
       }
+    } else
+
+        if($_POST){
+
+          $data_arr = maps($_POST['address']);
+            if($data_arr){
+         
+              $latitude = $data_arr[0];
+              $longitude = $data_arr[1];
+              $formatted_address = $data_arr[2];
+            }
+        }
 
 ?>
  
