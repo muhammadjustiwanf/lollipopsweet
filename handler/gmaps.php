@@ -20,11 +20,11 @@ function maps($query, $userId){
 
     if ($json['status'] == 'OK'){
  
-      $lati = isset($json['results'][0]['geometry']['location']['lat']) ? $json['results'][0]['geometry']['location']['lat'] : "";
-        $longi = isset($json['results'][0]['geometry']['location']['lng']) ? $json['results'][0]['geometry']['location']['lng'] : "";
-        $formatted_address = isset($json['results'][0]['formatted_address']) ? $json['results'][0]['formatted_address'] : "";
+      $lati = $json['results'][0]['geometry']['location']['lat'];
+      $longi = $json['results'][0]['geometry']['location']['lng'];
+      $formatted_address = $json['results'][0]['formatted_address'];
 
-      if ($lati && $longi && $formatted_address){
+      if ($lati, $longi, $formatted_address){
          
         $data_arr = array();            
              
