@@ -2,31 +2,22 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function corynlv($query, $userId){
+function web(){
 	
-	$URL = 'http://coryn.club/leveling.php';
-	
-	if ($query == null){
-		$result = new TextMessageBuilder(".corynlv [level]\n\nSilahkan dicoba  (((o(*ﾟ▽ﾟ*)o)))");
-	} else {
+$url = "http://finance.yahoo.com/gainers?e=aq";
+$raw = file_get_contents($url);
 
-    if ($i == 8){
-		$query = urlencode($query);
-		$URL = $URL . '?lv=' . $query;
-		
-		$json = file_get_contents($URL);
-		$json = json_decode($json, true);
-		
-		$hasil = $json['result'][i]['hasil'];
-		
-		  if ($hasil == null){
-		 	  $result = new TextMessageBuilder('GeneratorID tidak ditemukan.');
-		  } else {
-			  $result = new TextMessageBuilder('GeneratorID: ' . $hasil);
-		  }
-		}
-	}
-	
-	return $result;
+$newlines = array("\	","\
+","\\r","\\x20\\x20","\\0","\\x0B");
+$content = str_replace($newlines, "", html_entity_decode($raw));
 
+$start = strpos($content,'<div id="yfitp" class="yfitabsc">');
+$end = strpos($content,'<div id="yfisrtq">',$start) + 18;
+$content = substr($content,$start,$end-$start);
+
+//set search pattern (using regular expressions)
+$find = '|<td class="first"><b><a href="/q?s=.*?">(.*?)</a></b></td>|is';
+preg_match_all($find, $content, $matches);
+$result = new TextMessageBuilder($matches);
+return $result;
 }
