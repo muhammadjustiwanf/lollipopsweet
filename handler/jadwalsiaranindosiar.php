@@ -1,5 +1,7 @@
 <?php
 
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+
 function fungsiCurl($url, $userId){
   if ($URL == null){
     $result = new TextMessageBuilder('URL Not Found!');
