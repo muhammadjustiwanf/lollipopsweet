@@ -13,15 +13,10 @@ function corynitem($query, $userId){
 		$query = urlencode($query);
 		$URL = $URL . '?name=' . $query;
 		
-		$json = file_get_contents($URL);
-		$json = json_decode($json, true);
-		
-		$item = $json['result'][0]['item'];
-		
-		if ($item == null){
-			$result = new TextMessageBuilder('Item tidak ditemukan.');
+		if ($URL == null){
+			$result = new TextMessageBuilder('Item ' . $query . ' tidak ditemukan.');
 		} else {
-			$result = new TextMessageBuilder('Klik: ' . $item);
+			$result = new TextMessageBuilder('Klik: ' . $URL);
 		}
 		
 	}
