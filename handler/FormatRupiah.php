@@ -2,16 +2,19 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-$angka = '1234567890';
-function rp($angka) {
+function rp($query, $userId) {
+
+  if ($query == null){
+    $result = new TextMessageBuilder($query . " bukan angka yang valid!" . "\n");
+  } else
  
-    if(is_numeric($angka)) {
-        $format_rupiah = 'Rp ' . number_format($angka, '2', ',', '.');
-        return $format_rupiah;
+    if (is_numeric($query)) {
+      $format_rupiah = 'Rp ' . number_format($query, '2', ',', '.');
+      if ($format_rupiah == null){
+        $result = new TextMessageBuilder('Format rupiah gagal dikonversi');
+      } else {
+      $result = new TextMessageBuilder($format_rupiah);
+      }
     }
-    else {
-        $result = new TextMessageBuilder($angka . " bukan angka yang valid!" . "\n");
-    }
-$result = new TextMessageBuilder(formatRupiah($angka));
-return $result;
+    return $result;
 }
