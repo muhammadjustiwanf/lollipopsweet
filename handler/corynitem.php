@@ -7,7 +7,7 @@ function corynitem($query, $userId){
 	$URL = 'http://coryn.club/item.php';
 	
 	if ($query == null){
-		$result = new TextMessageBuilder("Meme Generator\n\nCara menggunakan:\n.memeid query\n.meme 'memeid' Teks atas|Teks bawah\n\nContoh:\n.memeid Kocak\n/meme 689854 Kids zaman now|Generasi Micin.\n\nSilahkan dicoba  (((o(*ﾟ▽ﾟ*)o)))");
+		$result = new TextMessageBuilder("Coryn Item Search Engine.\n\nKetik: .corynitem [nama item]\nContoh: .corynitem mithril\n\nSilahkan dicoba~ (((o(*ﾟ▽ﾟ*)o)))");
 	} else {
 
 		$query = urlencode($query);
