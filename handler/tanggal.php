@@ -4,7 +4,8 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function tanggal($userId){
 	
-	$result = new TextMessageBuilder(date("→Tanggal = j F Y\n→Jam = H:i:s"));
+	//date_default_timezone_set('Asia/Jakarta');
+	$result = new TextMessageBuilder(date("j F Y H:i:s"));
 	return $result;
 	
 }
