@@ -8,7 +8,7 @@ function pass($query, $userId){
     $result = new TextMessageBuilder('~Password Generator~\n\nCara menggunakan: .pass [input password]\nContoh: .pass golden\n\nSilahkan dicoba~');
   } else {
 
-    if ($p = 0; $p < 10; $p++) {
+    for ($p = 0; $p < 10; $p++){
     $string .= $query[mt_rand(0, $ps)];
     }
       if ($string == null){
