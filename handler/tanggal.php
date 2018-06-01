@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function tanggal(){
+function tanggal($userId){
 	
 	$result = new TextMessageBuilder(date('j-F-Y'));
 	return $result;
