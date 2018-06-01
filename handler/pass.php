@@ -9,7 +9,7 @@ function pass($query, $userId){
   } else {
 
     for ($p = 0; $p < 10; $p++){
-    $string .= $query[mt_rand(0, $ps)];
+    $string .= $query[mt_rand(0, $p)];
     }
       if ($string == null){
         $result = new TextMessageBuilder('Error atau ' . $query . ' tidak valid!');
