@@ -2,9 +2,9 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function help($query, $userId){
+function help($userId){
 	
-	$result = new TextMessageBuilder("~List command yang tersedia~\nUSE [.] for prefix.\n\n→ .userid\n→ .instagram\n→ .calculate\n→ .meme\n→ .xkcd\n→ .teach\n→ .apakah\n→ .corynitem\n→ .rp\n\nSilahkan dicoba (*^▽^*)");
+	$result = new TextMessageBuilder("~List command yang tersedia~\nUSE [.] for prefix.\n\n→ .userid\n→ .instagram\n→ .calculate\n→ .meme\n→ .xkcd\n→ .teach\n→ .apakah (Kerang ajaib)\n→ .corynitem\n→ .rp\n→ .tanggal\n\nSilahkan dicoba (*^▽^*)");
 	return $result;
 	
 }
