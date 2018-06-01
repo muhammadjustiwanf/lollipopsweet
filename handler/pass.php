@@ -8,14 +8,14 @@ function pass($query, $userId){
     $result = new TextMessageBuilder('~Password Generator~\n\nCara menggunakan: .pass [input password]\nContoh: .pass golden\n\nSilahkan dicoba~');
   } else {
 
-    for ($p = 0; $p < 10; $p++) {
-    $string = $query[mt_rand(0, $p)];
+    if ($p = 0; $p < 10; $p++) {
+    $string .= $query[mt_rand(0, $ps)];
     }
-    if ($string == null){
-      $result = new TextMessageBuilder('Error atau ' . $query . ' tidak valid!');
-    } else {
-      $result = new TextMessageBuilder($string);
-      }
+      if ($string == null){
+        $result = new TextMessageBuilder('Error atau ' . $query . ' tidak valid!');
+      } else {
+        $result = new TextMessageBuilder($string);
+        }
     }
 
   return $result;
