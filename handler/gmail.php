@@ -29,7 +29,6 @@ function gmail($userId){
             $email_info = imap_fetch_overview($mailbox,$email_id,0);
             $message = imap_fetchbody($inbox,$email_number,2);
             $result = new TextMessageBuilder(("Subject: " . $email_info[0]->subject . "\r\n"), "Message: " . $message . "\n");
-              }
           }
         }
 
