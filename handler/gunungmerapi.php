@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function status($url, $userId){{
+function status($url, $userId){
 
      $data = curl_init();
      curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
@@ -11,8 +11,8 @@ function status($url, $userId){{
      curl_setopt($data, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6");
      $hasil = curl_exec($data);
      curl_close($data);
-}
-$url = status('http://www.vsi.esdm.go.id/');
+
+  $url = status('http://www.vsi.esdm.go.id/');
   if (url == null){
     $result = new TextMessageBuilder('URL Tidak ditemukan.');
   } else {
