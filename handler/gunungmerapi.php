@@ -12,7 +12,7 @@ function status($url, $userId){{
      $hasil = curl_exec($data);
      curl_close($data);
 }
-$url = fungsiCurl('http://www.vsi.esdm.go.id/');
+$url = status('http://www.vsi.esdm.go.id/');
   if (url == null){
     $result = new TextMessageBuilder('URL Tidak ditemukan.');
   } else {
