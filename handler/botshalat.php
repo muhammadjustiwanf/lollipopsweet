@@ -14,23 +14,24 @@ function jadwalshalat($query, $userId){
 
 		$query = urlencode($query);
 		$URL = $URL . 'pray/' . $query;
-		$response = Unirest\Request::get("$URL");
+		$response = Unirest\Requestget("$URL");
 		$json = json_decode($response->raw_body, true);
-  $hasil = (
-    $result = "Jadwal Shalat Sekitar ";
-	$result .= $json['location']['address'];
-	$result .= "\nTanggal : ";
-	$result .= $json['time']['date'];
-	$result .= "\n\nShubuh : ";
-	$result .= $json['data']['Fajr'];
-	$result .= "\nDzuhur : ";
-	$result .= $json['data']['Dhuhr'];
-	$result .= "\nAshar : ";
-	$result .= $json['data']['Asr'];
-	$result .= "\nMaghrib : ";
-	$result .= $json['data']['Maghrib'];
-	$result .= "\nIsya : ";
-	$result .= $json['data']['Isha'];
+			$hasil = (
+		$result = "Jadwal Shalat Sekitar ";
+		$result .= $json['location']['address'];
+		$result .= "\nTanggal : ";
+		$result .= $json['time']['date'];
+		$result .= "\n\nShubuh : ";
+		$result .= $json['data']['Fajr'];
+		$result .= "\nDzuhur : ";
+		$result .= $json['data']['Dhuhr'];
+		$result .= "\nAshar : ";
+		$result .= $json['data']['Asr'];
+		$result .= "\nMaghrib : ";
+		$result .= $json['data']['Maghrib'];
+		$result .= "\nIsya : ";
+		$result .= $json['data']['Isha'];
+			return $hasil;
 );
 		
 		if ($hasil == null){
