@@ -4,8 +4,8 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function jadwalshalat($query, $userId){
 	
-	//include 'line_class.php';
-	//include 'unirest-php-master/src/Unirest.php';
+	include 'line_class.php';
+	include 'unirest-php-master/src/Unirest.php';
 	$URL = 'https://time.siswadi.com/';
 	
 	if ($query == null){
@@ -16,7 +16,8 @@ function jadwalshalat($query, $userId){
 		$URL = $URL . 'pray/' . $query;
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
-		$hasil = array(
+/*
+		$hasil = (
 		$teks = 'Jadwal Shalat Sekitar ' . $query . ':';
 		$teks .= $json['location']['address'];
 		$teks .= "\nTanggal : ";
@@ -33,7 +34,8 @@ function jadwalshalat($query, $userId){
 		$teks .= $json['data']['Isha'];
 		return $hasil;
 );
-		
+	
+*/	
 		if ($hasil == null){
 			$result = new TextMessageBuilder('nothing');
 		} else {
