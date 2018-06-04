@@ -31,7 +31,6 @@ function jadwalshalat($query, $userId){
 	$result .= $json['data']['Maghrib'];
 	$result .= "\nIsya : ";
 	$result .= $json['data']['Isha'];
-    return $result;
 );
 		
 		if ($hasil == null){
