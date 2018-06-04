@@ -16,10 +16,9 @@ function write($query, $userId){
 
     $image = $img->tampilkanGambar();
     $result = new ImageMessageBuilder($image);
+    $img->simpanKePng('hasil-convert','gambar/');
     }
 
   return $result;
 
 }
-
-//$img->simpanKePng('hasil-convert','gambar/');
