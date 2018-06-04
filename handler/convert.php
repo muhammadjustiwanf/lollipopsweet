@@ -5,7 +5,7 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function write($query, $userId){
 
-  require_once 'TeksKeGambar.php';
+  include 'TeksKeGambar.php';
   if ($query == null){
     $result = new TextMessageBuilder('TULIS SESUATU!');
   } else {
