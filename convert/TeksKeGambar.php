@@ -7,7 +7,7 @@ class TeksKeGambar {
     private $img;
 
     //Membuat gambar dari teks
-    function buatGambar($text, $ukuranFont = 20, $lebarGbr = 400, $tinggiGbr = 80){
+    public function buatGambar($text, $ukuranFont = 20, $lebarGbr = 400, $tinggiGbr = 80){
 
         //path font
         $font = 'font/Roboto-Black.ttf';
@@ -43,20 +43,20 @@ class TeksKeGambar {
     }
 
     //Menampilkan gambar
-    function tampilkanGambar(){
+    public function tampilkanGambar(){
         header('Content-Type: image/png');
         return imagepng($this->img);
     }
 
     //Simpan gambar sebagai format png
-    function simpanKePng($namaFile = 'text-image', $lokasi = ''){
+    public function simpanKePng($namaFile = 'text-image', $lokasi = ''){
         $namaFile = $namaFile.".png";
         $namaFile = !empty($lokasi)?$lokasi.$namaFile:$namaFile;
         return imagepng($this->img, $namaFile);
     }
 
     //Simpan gambar sebagai format jpg
-    function simpanKeJpg($namaFile = 'text-image', $lokasi = ''){
+    public function simpanKeJpg($namaFile = 'text-image', $lokasi = ''){
         $namaFile = $namaFile.".jpg";
         $namaFile = !empty($lokasi)?$lokasi.$namaFile:$namaFile;
         return imagejpeg($this->img, $namaFile);
