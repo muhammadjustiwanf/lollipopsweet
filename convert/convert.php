@@ -1,11 +1,11 @@
 <?php
 
+use TeksKeGambar as TeksKeGambar;
 use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder as ImageMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function write($query, $userId){
 
-  include 'TeksKeGambar.php';
   if ($query == null){
     $result = new TextMessageBuilder('TULIS SESUATU!');
   } else {
