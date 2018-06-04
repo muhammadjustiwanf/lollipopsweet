@@ -9,7 +9,11 @@ foreach (glob("handler/*.php") as $handler){
 				include $handler;
 		}
 }
-foreach (glob("convert/*.php") as $convert){include $convert;}
+foreach (glob("convert/*.php") as $convert){
+		if ($convert != 'convert/TeksKeGambar.php'){
+				include $convert;
+		}
+}
 
 $dotenv = new Dotenv\Dotenv('env');
 $dotenv->load();
