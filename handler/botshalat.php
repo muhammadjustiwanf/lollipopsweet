@@ -9,7 +9,7 @@ function jadwalshalat($query, $userId){
 	$URL = 'https://time.siswadi.com/';
 	
 	if ($query == null){
-		$result = new TextMessageBuilder("(((o(*ﾟ▽ﾟ*)o)))");
+		$result = new TextMessageBuilder("Jam berapa waktunya shalat? Nih, bot bisa memberi tahu kamu jadwal kapan waktunya shalat lho..😆 Caranya cukup mudah, yuk cek dengan cara:\n\nKetik: .jadwalshalat [kota]\nContoh: .jadwalshalat Jakarta\n\nSilahkan dicoba yah~ (((o(*ﾟ▽ﾟ*)o)))");
 	} else {
 
 		$query = urlencode($query);
@@ -17,10 +17,10 @@ function jadwalshalat($query, $userId){
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		
-		if ($URL == null){
-			$result = new TextMessageBuilder('nothing');
+		if ($response == null){
+			$result = new TextMessageBuilder('Error atau tidak ditemukan hasil yang relevan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder("Jadwal Shalat Sekitar " . $query . ":\nTanggal: " . $json['time']['date'] . "\n\nSubuh: " . $json['data']['Fajr'] . "\nZuhur: " . $json['data']['Dhuhr'] . "\nAshar: " . $json['data']['Asr'] . "\nMaghrib: " . $json['data']['Maghrib'] . "\nIsya: " . $json['data']['Isha'] . "\n\nTerimakasih :)");
+			$result = new TextMessageBuilder("~Jadwal Shalat Sekitar " . $json['location']['address'] . "~\nTanggal: " . $json['time']['date'] . "\n\nSubuh: " . $json['data']['Fajr'] . "\nZuhur: " . $json['data']['Dhuhr'] . "\nAshar: " . $json['data']['Asr'] . "\nMaghrib: " . $json['data']['Maghrib'] . "\nIsya: " . $json['data']['Isha']");
 		}
 		
 	}
@@ -28,4 +28,4 @@ function jadwalshalat($query, $userId){
 	return $result;
 
 }
-//$json['location']['address'];
+
