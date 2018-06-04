@@ -16,7 +16,7 @@ function jadwalshalat($query, $userId){
 		$URL = $URL . 'pray/' . $query;
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
-  $hasil = [
+  $hasil = (
     $result = "Jadwal Shalat Sekitar ";
 	$result .= $json['location']['address'];
 	$result .= "\nTanggal : ";
@@ -32,9 +32,9 @@ function jadwalshalat($query, $userId){
 	$result .= "\nIsya : ";
 	$result .= $json['data']['Isha'];
     return $result;
-];
+);
 		
-		if ($URL == null){
+		if ($hasil == null){
 			$result = new TextMessageBuilder('nothing');
 		} else {
 			$result = new TextMessageBuilder($hasil);
