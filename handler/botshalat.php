@@ -16,27 +16,11 @@ function jadwalshalat($query, $userId){
 		$URL = $URL . 'pray/' . $query;
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
-
-		$teks = 'Jadwal Shalat Sekitar ' . $query . ':';
-		$teks .= $json['location']['address'];
-		$teks .= "\nTanggal : ";
-		$teks .= $json['time']['date'];
-		$teks .= "\n\nShubuh : ";
-		$teks .= $json['data']['Fajr'];
-		$teks .= "\nDzuhur : ";
-		$teks .= $json['data']['Dhuhr'];
-		$teks .= "\nAshar : ";
-		$teks .= $json['data']['Asr'];
-		$teks .= "\nMaghrib : ";
-		$teks .= $json['data']['Maghrib'];
-		$teks .= "\nIsya : ";
-		$teks .= $json['data']['Isha'];
-			return $teks;
 		
-		if ($teks == null){
+		if ($URL == null){
 			$result = new TextMessageBuilder('nothing');
 		} else {
-			$result = new TextMessageBuilder($teks);
+			$result = new TextMessageBuilder("Jadwal Shalat Sekitar " . $query . ":\nTanggal: " . $json['time']['date'] . "\n\nSubuh: " . $json['data']['Fajr'] . "\nZuhur: " . $json['data']['Dhuhr'] . "\nAshar: " . $json['data']['Asr'] . "\nMaghrib: " . $json['data']['Maghrib'] . "\nIsya: " . $json['data']['Isha'] . "\n\nTerimakasih :)");
 		}
 		
 	}
@@ -44,3 +28,4 @@ function jadwalshalat($query, $userId){
 	return $result;
 
 }
+//$json['location']['address'];
