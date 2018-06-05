@@ -21,20 +21,9 @@ function samehadaku($userId){
     foreach ($html->find('a[rel=category tag]') as $val) :
 	    $category[] = strtolower($val->plaintext);
 endforeach;
-
-      $data = [
-	'publish_at' => date("Y-m-d", strtotime($publishDate)),
-	'title'      => $html->find('h1', 0)->plaintext,
-	'img'        => $html->find('img.size-full', 0)->src,
-	'content'    => $content,
-	'author'	 => $html->find('div.blog-meta a[title]', 0)->plaintext,
-	'category'	 => $category,
-
-];
-
-    $result = new TextMessageBuilder($data);
-
-  }
+      $result = new TextMessageBuilder("
+publish_at: " . date("Y-m-d", strtotime($publishDate)) . " title: " . $html->find('h1', 0)->plaintext . " img: " . $html->find('img.size-full', 0)->src . " content: " . $content . " author: " . $html->find('div.blog-meta a[title]', 0)->plaintext . " category: " . $category);
+    }
 
   return $result;
 
