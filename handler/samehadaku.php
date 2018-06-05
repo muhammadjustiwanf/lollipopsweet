@@ -4,8 +4,8 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function samehadaku($userId){
 
-  include 'PHPHtmlParser/Dom';
-  include 'Sunra/PhpSimple/HtmlDomParser';
+  include 'PHPHtmlParser/Dom/';
+  include 'Sunra/PhpSimple/HtmlDomParser.php';
   if ($userId == null){
     $result = new TextMessageBuilder('SUNRA not');
   } else {
