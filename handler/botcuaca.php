@@ -23,7 +23,7 @@ function prediksicuaca($query, $userId){
 		if ($response == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder("Prediksi Cuaca pada kota " . $json['name'] . ":\n\nCuaca: " . $json['weather']['0']['main'] . "\nDeskripsi: " . $json['weather']['0']['description'] . "\nKecepatan angin: " . $json['wind']['2']['speed'] . "km/h\nTekanan: " . $json['main']['0']['pressure'] . "mb\nTemperatur: " . $json['main']['0']['temp']);
+			$result = new TextMessageBuilder("Prediksi Cuaca pada kota " . $json['name'] . ":\n\nCuaca: " . $json['weather']['0']['main'] . "\nDeskripsi: " . $json['weather']['0']['description'] . "\nKecepatan angin: " . $json['speed'] . "km/h\nTekanan: " . $json['main']['0']['pressure'] . "mb\nTemperatur: " . $json['main']['0']['temp']);
 			}
 		
 		}
