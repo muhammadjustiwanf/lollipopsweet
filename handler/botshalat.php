@@ -18,7 +18,7 @@ function jadwalshalat($query, $userId){
 		$json = json_decode($response->raw_body, true);
 		
 		if ($URL == null){
-			$result = new TextMessageBuilder('Error atau tidak ditemukan hasil yang relevan. Silahkan coba lagi~');
+			$result = new TextMessageBuilder('*'$json['error'] . '* atau tidak ditemukan hasil yang relevan. Silahkan coba lagi~');
 		} else {
 			$result = new TextMessageBuilder("Jadwal shalat untuk wilayah:\n" . $json['location']['address'] . " Dan Sekitarnya.\nTanggal: " . $json['time']['date'] . "\n\nSubuh: " . $json['data']['Fajr'] . "\nZuhur: " . $json['data']['Dhuhr'] . "\nAshar: " . $json['data']['Asr'] . "\nMaghrib: " . $json['data']['Maghrib'] . "\nIsya: " . $json['data']['Isha'] . "\nSepertiga malam: " . $json['data']['SepertigaMalam'] . "\nTengah Malam: " . $json['data']['TengahMalam'] . "\nDuapertiga Malam: " . $json['data']['DuapertigaMalam'] . "\n\nDiakses pada pukul: " . $json['time']['time']);
 		}
