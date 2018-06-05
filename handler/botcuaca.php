@@ -6,6 +6,7 @@ function prediksicuaca($query, $userId){
 	
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
+	date_default_timezone_set('Asia/Jakarta');
 	$URL = 'http://api.openweathermap.org/data/2.5/weather';
 	$appid = 'e172c2f3a3c620591582ab5242e0e6c4';
 	
@@ -23,7 +24,7 @@ function prediksicuaca($query, $userId){
 		if ($response == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder("Prediksi Cuaca pada kota " . $json['name'] . ":\n\nCuaca: " . $json['weather']['0']['main'] . "\nDeskripsi: " . $json['weather']['0']['description'] . "\nKecepatan angin: " . $json['wind']['speed'] . " km/h\nTekanan: " . $json['main']['pressure'] . "mb\nTemperatur: " . $json['main']['temp'] . "°");
+			$result = new TextMessageBuilder("Prediksi Cuaca pada kota " . $json['name'] . "Tanggal: " . date(j F Y) . "\n\nCuaca: " . $json['weather']['0']['main'] . "\nTemperatur: " . $json['main']['temp'] . "° C\nDeskripsi: " . $json['weather']['0']['description'] . "\nKecepatan angin: " . $json['wind']['speed'] . " km/h\nTekanan: " . $json['main']['pressure'] . " mb\n\nDiakses pada pukul: " . date(H:i:s));
 			}
 		
 		}
