@@ -36,22 +36,16 @@ $app->post('/', function ($request, $response)
 		return $response->withStatus(400, 'Invalid signature');
 	}
 	
-	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
+	$bot->getProfile('userId');
+	$bot->getMessageContent('messageId');
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
 	{
 		if ($event['type'] == 'message')
 		{
-			$userId = $client->parseEvents()[0]['source']['userId'];
-			$replyToken = $client->parseEvents()[0]['replyToken'];
-			$timestamp = $client->parseEvents()[0]['timestamp'];
-			$type = $client->parseEvents()[0]['type'];
-			$message 	= $client->parseEvents()[0]['message'];
-			$messageid = $client->parseEvents()[0]['message']['id'];
-			$profil = $client->profil($userId);
 
 			if($event['message']['type'] == 'text')
 			{
@@ -59,8 +53,17 @@ $app->post('/', function ($request, $response)
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
+				$userId = $event['source']['userId'];
+				$getprofile = $bot->getProfile($userId);
+				$profile = $getprofile->getJSONDecodedBody();
+				$greetings = new TextMessageBuilder("Halo, " . $profile['displayName'] . " Terimakasih telah menambahkan bot ke grup/room kalian~");
+				if(
+					$event['source']['type'] == 'group'
+or
+					$event['source']['type'] == 'room'
+				)
 
-				if ($inputMessage[0] == '.') {
+					if ($inputMessage[0] == '.') {
 
 					 $inputMessage = ltrim($inputMessage, '.');
 					 $inputSplit = explode(' ', $inputMessage, 2);
