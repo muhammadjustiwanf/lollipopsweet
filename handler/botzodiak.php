@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function zodiak($query, $userId){
+function zodiak($query, $userId, $displayName){
 	
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
