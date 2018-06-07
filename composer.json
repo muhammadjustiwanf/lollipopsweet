@@ -6,6 +6,7 @@
         "vlucas/phpdotenv": "^2.4",
         "sunra/php-simple-html-dom-parser": "^1.5",
         "mashape/unirest-php": "^3.0",
-        "paquettg/php-html-parser": "^1.7"
+        "paquettg/php-html-parser": "^1.7",
+        "jikan-me/jikan"
     }
 }
