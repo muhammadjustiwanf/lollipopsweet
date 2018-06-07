@@ -24,7 +24,7 @@ function zodiak($query, $displayName){
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		
-		if ($response == null){
+		if (isset($json['error'])){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
 			$result = new TextMessageBuilder("Zodiak " . $nama . ":\n\nTanggal: " . $query . "\nLahir: " . $json['data']['lahir'] . "\nUsia: " . $json['data']['usia'] . "\nUltah: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak']);
