@@ -38,8 +38,6 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-	$bot->getProfile('userId');
-	$bot->getMessageContent('messageId');
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
@@ -54,16 +52,8 @@ $app->post('/', function ($request, $response)
 				
 				$inputMessage = $event['message']['text'];
 				$userId = $event['source']['userId'];
-				$getprofile = $bot->getProfile($userId);
-				$profile = $getprofile->getJSONDecodedBody();
-				$greetings = new TextMessageBuilder("Halo, " . $profile['displayName'] . " Terimakasih telah menambahkan bot ke grup/room kalian~");
-				if(
-					$event['source']['type'] == 'group'
-or
-					$event['source']['type'] == 'room'
-				);
 
-					if ($inputMessage[0] == '.') {
+				if ($inputMessage[0] == '.') {
 
 					 $inputMessage = ltrim($inputMessage, '.');
 					 $inputSplit = explode(' ', $inputMessage, 2);
