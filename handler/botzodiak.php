@@ -21,14 +21,13 @@ function zodiak($query, $userId){
 		$URL = $URL . '&nama=' . $nama;
 		$URL = $URL . '&tanggal=' . $query;
 
-		$res = Unirest\Request::get("$URL");
-		$json = json_decode($res->raw_body, true);
-		$response = $bot->getProfile($event['source']['displayName']);
+		$response = Unirest\Request::get("$URL");
+		$json = json_decode($response->raw_body, true);
 		
 		if (isset($json['error']))
 			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		else
-			$result = new TextMessageBuilder("Zodiak " . $response . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
+			$result = new TextMessageBuilder("Zodiak " . $bot->userId . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
 		
 		}
 	
