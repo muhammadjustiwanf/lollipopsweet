@@ -9,11 +9,6 @@ foreach (glob("handler/*.php") as $handler){
 				include $handler;
 		}
 }
-foreach (glob("convert/*.php") as $convert){
-		if ($convert != 'convert/TeksKeGambar.php'){
-				include $convert;
-		}
-}
 
 $dotenv = new Dotenv\Dotenv('env');
 $dotenv->load();
@@ -43,6 +38,13 @@ $app->post('/', function ($request, $response)
 	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
+	$res = $bot->getProfile('userId');
+if ($res->isSucceeded()) {
+    $profile = $res->getJSONDecodedBody();
+    $displayName = $profile['displayName'];
+    $statusMessage = $profile['statusMessage'];
+    $pictureUrl = $profile['pictureUrl'];
+}
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
