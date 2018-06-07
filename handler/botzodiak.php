@@ -19,7 +19,6 @@ function zodiak($query, $userId){
 		$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
 		$userId = $client->parseEvents()[0]['source']['userId'];
 		$profil = $client->profil($userId);
-		$query = $tgl-$bln-$thn;
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		
