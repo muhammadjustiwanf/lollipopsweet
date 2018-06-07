@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function zodiak($query, $inputdate, $userId){
+function zodiak($query, $userId){
 	
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
@@ -16,15 +16,17 @@ function zodiak($query, $inputdate, $userId){
 
 		$URL = $URL . '?user_content_key=' . $appkey;
 		
-		$tanggal = date('j F Y');
-		$inputdate = $tanggal;
+		$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
+		$userId = $client->parseEvents()[0]['source']['userId'];
+		$profil = $client->profil($userId);
+		$query = $tgl-$bln-$thn;
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		
 		if ($response == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder("Zodiak " . $query . ":\n\nTanggal: " . $inputdate . "\nLahir: " . $json['data']['lahir'] . "\nUsia: " . $json['data']['usia'] . "\nUltah: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak']);
+			$result = new TextMessageBuilder("Zodiak " . $profil->displayName . ":\n\nTanggal: " . $query . "\nLahir: " . $json['data']['lahir'] . "\nUsia: " . $json['data']['usia'] . "\nUltah: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak']);
 			}
 		
 		}
