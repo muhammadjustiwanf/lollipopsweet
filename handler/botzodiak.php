@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function zodiak($query, $profile){
+function zodiak($query, $userId){
 	
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
@@ -27,7 +27,7 @@ function zodiak($query, $profile){
 		if (isset($json['error']))
 			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		else
-			$result = new TextMessageBuilder("Zodiak " . $displayName . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
+			$result = new TextMessageBuilder("Zodiak " . $profile['displayName'] . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
 		
 		}
 	
