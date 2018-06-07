@@ -7,6 +7,6 @@
         "sunra/php-simple-html-dom-parser": "^1.5",
         "mashape/unirest-php": "^3.0",
         "paquettg/php-html-parser": "^1.7",
-        "jikan-me/jikan"
+        "jikan-me/jikan": "^1.0"
     }
 }
