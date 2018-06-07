@@ -6,6 +6,7 @@ function malsearch($query, $userId){
 	
 	include 'jikan-me/jikan';
 	date_default_timezone_set('Asia/Jakarta');
+	$jikan = new Jikan\Jikan;
 	$URL = 'https://myanimelist.net/character.php';
 	
 	if ($query == null){
