@@ -19,7 +19,7 @@ function malsearch($query, $userId){
 		if ($URL == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder(		$jikan->response['result']);
+			$result = new TextMessageBuilder($jikan->response['result'] . "\n\nSee More: " . $URL);
 			}
 		
 		}
