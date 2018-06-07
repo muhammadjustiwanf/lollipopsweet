@@ -8,10 +8,6 @@ function zodiak($query, $userId){
 	include 'unirest-php-master/src/Unirest.php';
 	date_default_timezone_set('Asia/Jakarta');
 	
-	$bot->getProfile('userId');
-	$bot->getMessageContent('messageId');
-	$getprofile = $bot->getProfile($userId);
-	$profile = $getprofile->getJSONDecodedBody();
 	$URL = 'https://script.google.com/macros/exec';
 	$appkey = 'AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w';
 	$nama = 'Anda';
@@ -27,6 +23,8 @@ function zodiak($query, $userId){
 
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
+		$getprofile = $bot->getProfile($userId);
+		$profile = $getprofile->getJSONDecodedBody();
 		
 		if (isset($json['error']))
 			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
