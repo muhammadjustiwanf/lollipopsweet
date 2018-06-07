@@ -61,7 +61,7 @@ $app->post('/', function ($request, $response)
 					$event['source']['type'] == 'group'
 or
 					$event['source']['type'] == 'room'
-				)
+				);
 
 					if ($inputMessage[0] == '.') {
 
