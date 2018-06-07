@@ -15,12 +15,13 @@ function malanime($query, $userId){
 
 		$query = urlencode($query);
 		$URL = $URL . '?q=' . $query;
-		$jikan->Search($URL, ANIME);
+		$search = $jikan->Search($URL, ANIME);
+		//$hasil = $jikan->response($search['result']);
 		
-		if ($jikan == null){
+		if ($search == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder($jikan->response['result_last_page'] . "\n\nSee More: " . $URL);
+			$result = new TextMessageBuilder($jikan->response($search['result']) . "\n\nSee More: " . $URL);
 			}
 		
 		}
