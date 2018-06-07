@@ -27,7 +27,7 @@ function zodiak($query, $userId){
 		if (isset($json['error']))
 			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		else
-			$result = new TextMessageBuilder("Zodiak " . $bot->userId . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
+			$result = new TextMessageBuilder("Zodiak " . $groupId . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
 		
 		}
 	
