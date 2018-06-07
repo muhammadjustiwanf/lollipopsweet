@@ -2,7 +2,7 @@
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
-function prediksicuaca($query, $inputdate, $userId){
+function zodiak($query, $inputdate, $userId){
 	
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
