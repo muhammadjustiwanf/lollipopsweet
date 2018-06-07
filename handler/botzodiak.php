@@ -16,9 +16,8 @@ function zodiak($query, $userId){
 		$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
 		$userId = $client->parseEvents()[0]['source']['userId'];
 		$profil = $client->profil($userId);
-		//$response = Unirest\Request::get("$URL");
-		//$json = json_decode($response->raw_body, true);
-		$json = json_decode_($URL, true);
+		$response = Unirest\Request::get("$URL");
+		$json = json_decode($response->raw_body, true);
 		
 		if ($response == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
