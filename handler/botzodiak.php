@@ -10,7 +10,7 @@ function zodiak($query, $displayName){
 	
 	$URL = 'https://script.google.com/macros/exec';
 	$appkey = 'AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w';
-	$nama = $displayName;
+	$nama = 'anda';
 	$tanggal = $query;
 	
 	if ($query == null){
