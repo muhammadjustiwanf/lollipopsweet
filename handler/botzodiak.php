@@ -7,15 +7,23 @@ function zodiak($query, $userId){
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
 	date_default_timezone_set('Asia/Jakarta');
-	$URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=vAGi-qzG0c1hjd2tJl-pvx1bVNy1VbIduIDVU_6MaTd5TpsRToz2Ya5idTk1XYwIJhX1VOcIqvgrVTFGd6RTNcPkZB-698LKOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuB6lHT6qnqYcmFWggwoSVQQ5YeASoMK9PZPVGfbDuDg1P_UvtMjPxyA1dR6I62-l7IRC_FwXIIs97iVtBFTFTgErNAAsrl-RiPF72dnZtWOR9ArHmXqEYVKo2uU_jsNmrfIKOhNJrljag&lib=M7TYb5FpQbpg081_3slURkuWXe3zpGnIr';
+
+	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
+	$userId = $client->parseEvents()[0]['source']['userId'];
+	$profil = $client->profil($userId);
+
+	$URL = 'https://script.google.com/macros/exec';
+	$appkey = 'AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w';
+	$tanggal = $query;
 	
 	if ($query == null){
 		$result = new TextMessageBuilder("Hmm... Cuaca hari ini mendung, cerah, atau hujan yah? Nih, bot bisa memberi tahu kamu prediksi cuaca di kota kamu lho..😆 Caranya cukup mudah, yuk cek dengan cara:\n\nKetik: .prediksicuaca [kota]\nContoh: .prediksicuaca Jakarta\n\nKarena ini prediksi, jadi tidak 100% akurat yah ^^\nSilahkan dicoba~ (((o(*ﾟ▽ﾟ*)o)))");
 	} else {
 
-		$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
-		$userId = $client->parseEvents()[0]['source']['userId'];
-		$profil = $client->profil($userId);
+		$URL = $URL . '?service=' . $appkey;
+		$URL = $URL . '&nama=' . $profil->displayName;
+		$URL = $URL . '&tanggal=' . $query;
+
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		
