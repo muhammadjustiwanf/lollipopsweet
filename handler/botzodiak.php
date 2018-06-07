@@ -25,7 +25,7 @@ function zodiak($query, $userId){
 		if ($response == null){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
-			$result = new TextMessageBuilder("Zodiak " . $profil->displayName . ":\n\nTanggal: " . $query . "\nLahir: " . $json['data']['lahir'] . "\nUsia: " . $json['data']['usia'] . "\nUltah: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak']);
+			$result = new TextMessageBuilder("Zodiak " . $profil->displayName . ":\n\nTanggal: " . $query . "\nLahir: " . $json['lahir'] . "\nUsia: " . $json['usia'] . "\nUltah: " . $json['ultah'] . "\nZodiak: " . $json['zodiak']);
 			}
 		
 		}
