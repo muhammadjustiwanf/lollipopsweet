@@ -23,8 +23,6 @@ function zodiak($query, $userId){
 
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
-		$getprofile = $bot->getProfile($userId);
-		$profile = $getprofile->getJSONDecodedBody();
 		
 		if (isset($json['error']))
 			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
