@@ -44,16 +44,6 @@
             ],
             "description": "Jikan is an unofficial MyAnimeList API",
             "time": "2018-01-27T02:53:15+00:00"
-        }
-    ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
         },
         {
             "name": "paquettg/php-html-parser",
