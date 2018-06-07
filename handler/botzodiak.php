@@ -14,7 +14,7 @@ function zodiak($query, $displayName){
 	$tanggal = $query;
 	
 	if ($query == null){
-		$result = new TextMessageBuilder("Ketik: .zodiak [tgl-bln-thn kamu]\nContoh: .zodiak 01-01-2000\n\nSilahkan dicoba~ (((o(*ﾟ▽ﾟ*)o)))");
+		$result = new TextMessageBuilder("Bot punya suatu hal yang menarik nih... Sekarang bot bisa membantu kamu mengetahui zodiak, usia, ultahmu loh.. Caranya?\n\nKetik: .zodiak [tgl-bln-thn kamu]\nContoh: .zodiak 1-01-2000\n\nSilahkan dicoba~ (((o(*ﾟ▽ﾟ*)o)))\n\n★Note: Untuk tanggal kelahiran mulai dari tanggal 01-09 agar hasil estimasi ulang tahunnya terdeteksi/tidak NaN, jangan menggunakan angka 01,02,... tetapi menggunakan angka 1,2,...");
 	} else {
 
 		$URL = $URL . '?service=' . $appkey;
@@ -25,9 +25,9 @@ function zodiak($query, $displayName){
 		$json = json_decode($response->raw_body, true);
 		
 		if (isset($json['error']))
-			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. ngetik yang bener, jangan typo! :v');
+			$result = new TextMessageBuilder('Tanggal ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		else
-			$result = new TextMessageBuilder("Zodiak " . $nama . ":\n\nTanggal: " . $query . "\nLahir: " . $json['data']['lahir'] . "\nUsia: " . $json['data']['usia'] . "\nUltah: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak']);
+			$result = new TextMessageBuilder("Zodiak " . $nama . ":\nTanggal: " . $query . "\n\nLahir: " . $json['data']['lahir'] . "\nUmur: " . $json['data']['usia'] . "\nUlang tahun: " . $json['data']['ultah'] . "\nZodiak: " . $json['data']['zodiak'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
 		
 		}
 	
