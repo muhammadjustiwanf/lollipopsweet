@@ -1,11 +1,10 @@
 <?php
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
-use \source\core\playStoreApi as PlayStoreApi;
 
 function playstore($query, $userId){
 	
-	//include 'source/core/playStoreApi.php';
+	include 'source/core/playStoreApi.php';
 	$class_init = new PlayStoreApi;
 	if ($query == null){
 		$result = new TextMessageBuilder("~Playstore App Search Engine~\n\nCara menggunakan: .playstore [app]\nContoh: .playstore whatsapp\n\nSilahkan dicoba~ :v");
