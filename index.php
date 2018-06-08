@@ -10,66 +10,34 @@ foreach (glob("handler/*.php") as $handler){
 		}
 }
 
-spl_autoload_register(function ($class_name){
-		include  $class_name.'.php';
+$dotenv = new Dotenv\Dotenv('env');
+$dotenv->load();
+
+$configs =  [
+	'settings' => ['displayErrorDetails' => true],
+];
+$app = new Slim\App($configs);
+
+$app->get('/', function ($request, $response) {
+	return "Sukses mendeploy. Silahkan dicoba botnya";
 });
 
-// load config
-try{
-		$dotenv = new Dotenv\Dotenv(__DIR__);
-		$dotenv->load();
-}catch (Exception $e){
-}
-
-$config['displayErrorDetails'] = true;
-$config['addContentLengthHeader'] = false;
-
-$app = new Slim\App(['settings' => $config]);
-$container = $app->getContainer();
-
-$app->get('/', function (Request $request, Response $response){
-		ini_set('display_errors', 1);
-		$user = User::findOne(['user_id' => 'Ue84692bbf94c980be363679272ec7eb2']);
-		die(print_r(User::getTopTen(),1 ));
-		return "Sukses mendeploy. Silahkan dicoba botnya";
-});
-
-$app->get('/profile/{id}', function (Request $request, Response $response, $args){
-		$access_token = getenv('CHANNEL_ACCESS_TOKEN');
-		$secret = getenv('CHANNEL_SECRET');
-		$pass_signature = getenv('PASS_SIGNATURE');
-
-	$http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-	$bot = new \LINE\LINEBot($http_client,['channelSecret' => $secret]);
-
-	$profile = $bot->getProfile($args['id']);
-
-	return print("<pre>".print_r($profile->getJSONDecodedBody(),1)."</pre>");
-});
-
-$app->post('/', function (Request $request, Response $response){
-
-	$access_token = getenv('CHANNEL_ACCESS_TOKEN');
-	$secret = getenv('CHANNEL_SECRET');
-	$pass_signature = getenv('PASS_SIGNATURE');
-
-	// get request body and line signature header
+$app->post('/', function ($request, $response)
+{
 	$body 	   = file_get_contents('php://input');
 	$signature = $_SERVER['HTTP_X_LINE_SIGNATURE'];
-
-	// log body and signature
 	file_put_contents('php://stderr', 'Body: '.$body);
-
-	// is LINE_SIGNATURE exists in request header?
+	
 	if (empty($signature)){
-        return $response->withStatus(400, 'Signature not set');
-    }
-	if($pass_signature == 'false' && ! SignatureValidator::validateSignature($body,$secret, $signature)){
-        return $response->withStatus(400, 'Invalid Signature');
-    }
-
-	$http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-	$bot = new \LINE\LINEBot($http_client,['channelSecret' => $secret]);
+		return $response->withStatus(400, 'Signature not set');
+	}
+	
+	if($_ENV['PASS_SIGNATURE'] == false && ! SignatureValidator::validateSignature($body, $_ENV['CHANNEL_SECRET'], $signature)){
+		return $response->withStatus(400, 'Invalid signature');
+	}
+	
+	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
+	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
 
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
