@@ -1,7 +1,7 @@
 <?php
 
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
-use \source\core\playStoreApi as PlayStoreApi
+use \source\core\playStoreApi as PlayStoreApi;
 
 function playstore($query, $userId){
 	
