@@ -24,13 +24,12 @@ function playstore($query, $userId){
 	//$page = 2;
 	//$searchStore = $class_init->searchStore($search_query,$sort,$price,$safe_search,$page);
 		
-		if ($searchStore == null){
+		if($searchStore !== 0)
+		{
+			//print_r($searchStore);
+			$result = new TextMessageBuilder("Result of " . $search_query . ":\nSort by: " . $sort . "\nPrice: " . $price . "\nSafe Search: " . $safe_search . "\n\nResult:\n\n" . $searchStore);
+		} else {
 			$result = new TextMessageBuilder('Pencarian tidak ditemukan!');
-		} else
-			if($searchStore !== 0)
-			{
-				//print_r($searchStore);
-				$result = new TextMessageBuilder("Result of " . $search_query . ":\nSort by: " . $sort . "\nPrice: " . $price . "\nSafe Search: " . $safe_search . "\n\nResult:\n\n" . $searchStore);
 			}
 
 		}
