@@ -24,11 +24,7 @@ function produk($query, $userId){
 		if (isset($json['error']))
 			$result = new TextMessageBuilder('Produk ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		else
-			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . array_push(
-				$json['data']['title'],
-				$json['data']['nomor_sertifikat'],
-				$json['data']['produsen'],
-				$json['data']['berlaku_hingga']) . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
+			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . array($json['data']['title'], $json['data']['nomor_sertifikat'], $json['data']['produsen'], $json['data']['berlaku_hingga']) . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
 		
 		}
 	
