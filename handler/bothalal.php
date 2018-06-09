@@ -23,12 +23,12 @@ function produk($query, $userId){
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		$json = array();
-		//$jsonFound = array_push(
+		/*$jsonFound = array_push(
 				$json['data']['title'],
 				$json['data']['nomor_sertifikat'],
 				$json['data']['produsen'],
 				$json['data']['berlaku_hingga']
-		);
+		);*/
 		
 		if ($jsonFound = 'error'){
 			$result = new TextMessageBuilder('Produk ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
