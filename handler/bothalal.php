@@ -23,7 +23,7 @@ function produk($query, $userId){
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		$json = array();
-		$jsonFound = array_push($json,
+		//$jsonFound = array_push(
 				$json['data']['title'],
 				$json['data']['nomor_sertifikat'],
 				$json['data']['produsen'],
@@ -33,7 +33,7 @@ function produk($query, $userId){
 		if ($jsonFound = 'error'){
 			$result = new TextMessageBuilder('Produk ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		} else {
-			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . $jsonFound("\n\n\n") . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
+			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . $json . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
 				
 			}
 		
