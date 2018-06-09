@@ -28,14 +28,14 @@ function produk($query, $userId){
 				$json['data']['nomor_sertifikat'],
 				$json['data']['produsen'],
 				$json['data']['berlaku_hingga']
-		));
+		);
 		
 		if ($jsonFound = 'error'){
 			$result = new TextMessageBuilder('Produk ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
 		} else {
 			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . $jsonFound("\n\n\n") . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
 				
-				}
+			}
 		
 		}
 	
