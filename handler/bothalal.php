@@ -14,32 +14,23 @@ function produk($query, $userId){
 	if ($query == null){
 		$result = new TextMessageBuilder("(((o(*ﾟ▽ﾟ*)o)))");
 	} else {
-
 		$query = urlencode($query);
 		$URL = $URL . '?service=' . $appkey;
 		$URL = $URL . '&menu=' . 'nama_produk';
 		$URL = $URL . '&query=' . $query;
-
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
-		$json = array();
-		/*$jsonFound = array_push(
+		
+		if (isset($json['error']))
+			$result = new TextMessageBuilder('Produk ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
+		else
+			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . array_push(
 				$json['data']['title'],
 				$json['data']['nomor_sertifikat'],
 				$json['data']['produsen'],
-				$json['data']['berlaku_hingga']
-		);*/
-		
-		if ($jsonFound = 'error'){
-			$result = new TextMessageBuilder('Produk ' . $query . ' tidak ditemukan. Ngetik yang bener yak, jangan typo! :v');
-		} else {
-			$result = new TextMessageBuilder("Hasil pencarian dengan nama produk " . strtoupper(urldecode($query)) . ":\nTanggal: " . date('j F Y') . "\n\n\n" . $json . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
-				
-			}
+				$json['data']['berlaku_hingga']) . "\n\n\nDiakses pada pukul: " . date('H:i:s'));
 		
 		}
 	
 	return $result;
-
 }
-
