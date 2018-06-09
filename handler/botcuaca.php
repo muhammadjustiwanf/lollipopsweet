@@ -21,7 +21,7 @@ function prediksicuaca($query, $userId){
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
 		
-		if ($json == ['error']){
+		if ($json['error']){
 			$result = new TextMessageBuilder('Error atau hasil pencarian tidak ditemukan. Silahkan coba lagi~');
 		} else {
 			$result = new TextMessageBuilder("Prediksi Cuaca pada kota " . $json['name'] . "\nTanggal: " . date('j F Y') . "\n\nCuaca: " . $json['weather']['0']['main'] . "\nTemperatur: " . $json['main']['temp'] . "°C\nDeskripsi: " . $json['weather']['0']['description'] . "\nKelembaban: " . $json['main']['humidity'] . "%\nKecepatan angin: " . $json['wind']['speed'] . " m/s\nTekanan Udara: " . $json['main']['pressure'] . " HPa\n\nDiakses pada pukul: " . date('H:i:s'));
