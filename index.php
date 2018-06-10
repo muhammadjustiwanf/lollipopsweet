@@ -75,7 +75,7 @@ $app->post('/', function ($request, $response)
 					 }
 				
 				$result = $client->replyMessage($outputMessage);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				//return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 
 } else {
 
@@ -86,7 +86,7 @@ $app->post('/', function ($request, $response)
 						if (strpos(strtolower($inputMessage), $word) !== false) {
 								$outputMessage = new TextMessageBuilder($answer);
 								$result = $client->replyMessage($outputMessage);
-								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+								//return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 								break;
 						}
 				}
