@@ -49,6 +49,23 @@ $app->post('/', function ($request, $response)
 		if ($event['type'] == 'message')
 		{
 
+		 if ($message['type'] == 'sticker'){
+			 
+			 $balas = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => $profil->displayName . ', Stikernya keren 😎'										
+									
+									)
+							)
+						);
+
+		$client->replyMessage($balas);
+
+}
+
 			if($event['message']['type'] == 'text')
 			{
 
@@ -317,23 +334,6 @@ if($message['type']=='text') {
   $client->replyMessage($balas);
 
 	} else
-
-		 if ($message['type'] == 'sticker'){
-			 
-			 $balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => $profil->displayName . ', Stikernya keren 😎'										
-									
-									)
-							)
-						);
-
-		$client->replyMessage($balas);
-
-}
 				
 				// --------------------------------------------------------------- NOTICE ME...
 				
