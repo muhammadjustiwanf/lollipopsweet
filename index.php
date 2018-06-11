@@ -92,9 +92,10 @@ $app->post('/', function ($request, $response)
 
 }
 
-else
+else {
 
-							if ($message['type']=='sticker'){	
+							if ($message['type'] == 'sticker'){
+
 					$balas = array(
 							'replyToken' => $replyToken,														
 							'messages' => array(
@@ -107,13 +108,14 @@ else
 						);
 						
 }
-							if (isset($balas)) {
-								$result = json_encode($balas);
+							if (isset($balas)){
+								$hasil = json_encode($balas);
 
-								file_put_contents('./balasan.json', $result);
+								file_put_contents('./balasan.json', $hasil);
 
 								$client->replyMessage($balas);
 								break;
+}
 }
 				
 				// --------------------------------------------------------------- ...SENPAI!
