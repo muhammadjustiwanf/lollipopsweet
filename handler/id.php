@@ -29,9 +29,10 @@ function userid($query, $userId){
 	}
 	
 		if (isset($balas)){
-			$hasil = json_encode($balas);
+			$result = json_encode($balas);
 								
 			$client->replyMessage($balas);
-	
+
+		}
 }
 
