@@ -4,6 +4,7 @@ require 'line_class.php';
 require 'vendor/autoload.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 foreach (glob("handler/*.php") as $handler){
 		if ($handler != 'handler/post.php'){
 				include $handler;
@@ -54,29 +55,12 @@ $app->post('/', function ($request, $response)
 			$messageid = $client->parseEvents()[0]['message']['id'];
 			$profil = $client->profil($userId);
 
-							if ($message['type'] == 'sticker'){
-
-								$outputMessage = array(
-										'replyToken' => $replyToken,														
-										'messages' => array(
-											array(
-													'type' => 'text',									
-													'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
-									
-												)
-										)
-									);
-													$client->replyMessage($outputMessage);
-								break;
-							
-							}
-
-			if ($message['type'] == 'text')
+			if($event['message']['type'] == 'text')
 			{
 				
 				// --------------------------------------------------------------- NOTICE ME...
 				
-				$inputMessage = $message['text'];
+				$inputMessage = $event['message']['text'];
 
 				if ($inputMessage[0] == '.') {
 
@@ -88,19 +72,11 @@ $app->post('/', function ($request, $response)
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
 					 } else {
-				$outputMessage = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => 'tipe command tidak ditemukan :v'
-									
-									)
-							)
-						);
+				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
 					 }
 				
-				$client->replyMessage($outputMessage);
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 
 } else {
 
@@ -109,17 +85,10 @@ $app->post('/', function ($request, $response)
 
 				foreach ($wordsLearned as $word => $answer) {
 						if (strpos(strtolower($inputMessage), $word) !== false) {
-								$result = array(
-										'replyToken' => $replyToken,														
-										'messages' => array(
-											array(
-													'type' => 'text',									
-													'text' => $answer
-									
-											)
-									)
-								);
-									$client->replyMessage($result);
+								$outputMessage = new TextMessageBuilder($answer);
+								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+								break;
 						}
 				}
 
