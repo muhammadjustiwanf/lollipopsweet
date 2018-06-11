@@ -333,7 +333,7 @@ if($message['type']=='text') {
 
   $client->replyMessage($balas);
 
-	} else
+	}
 				
 				// --------------------------------------------------------------- NOTICE ME...
 				
