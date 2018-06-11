@@ -78,8 +78,6 @@ $app->post('/', function ($request, $response)
 						);
 
 		$client->replyMessage($reply);
-						
-}
 
 		}
 	}
