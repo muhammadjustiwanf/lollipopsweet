@@ -57,36 +57,16 @@ $app->post('/', function ($request, $response)
 		$messageid = $client->parseEvents()[0]['message']['id'];
 		$profil = $client->profil($userId);
 
-		 if ($message['type'] == 'sticker'){
-			 
-			 $balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => $profil->displayName . ', Stikernya keren 😎'										
-									
-									)
-							)
-						);
-
-		$client->replyMessage($balas);
-
-}
-
-			if($event['message']['type'] == 'text')
-			{
-
-				$pesan_datang = explode(" ", $message['text']);
-				$msg_type = $message['type'];
-				$command = $pesan_datang[0];
-				$options = $pesan_datang[1];
-					if (count($pesan_datang) > 2) {
-						for ($i = 2; $i < count($pesan_datang); $i++) {
-							$options .= '+';
-							$options .= $pesan_datang[$i];
-						}
-					}
+		$pesan_datang = explode(" ", $message['text']);
+		$msg_type = $message['type'];
+		$command = $pesan_datang[0];
+		$options = $pesan_datang[1];
+			if (count($pesan_datang) > 2) {
+				for ($i = 2; $i < count($pesan_datang); $i++) {
+					$options .= '+';
+					$options .= $pesan_datang[$i];
+				}
+			}
 		 
 if($message['type']=='text') {
 	    if ($command == 'Hi' || $command == 'Hallo' ) {
@@ -333,7 +313,27 @@ if($message['type']=='text') {
 
   $client->replyMessage($balas);
 
-	}
+	} else
+
+		 if ($message['type'] == 'sticker'){
+			 
+			 $result = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => $profil->displayName . ', Stikernya keren 😎'										
+									
+									)
+							)
+						);
+
+		$client->replyMessage($result);
+
+}
+
+			if($event['message']['type'] == 'text')
+			{
 				/*
 				// --------------------------------------------------------------- NOTICE ME...
 				
