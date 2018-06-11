@@ -49,6 +49,14 @@ $app->post('/', function ($request, $response)
 		if ($event['type'] == 'message')
 		{
 
+		$userId = $client->parseEvents()[0]['source']['userId'];
+		$replyToken = $client->parseEvents()[0]['replyToken'];
+		$timestamp	= $client->parseEvents()[0]['timestamp'];
+		$type = $client->parseEvents()[0]['type'];
+		$message 	= $client->parseEvents()[0]['message'];
+		$messageid = $client->parseEvents()[0]['message']['id'];
+		$profil = $client->profil($userId);
+
 		 if ($message['type'] == 'sticker'){
 			 
 			 $balas = array(
@@ -68,14 +76,6 @@ $app->post('/', function ($request, $response)
 
 			if($event['message']['type'] == 'text')
 			{
-
-				$userId = $client->parseEvents()[0]['source']['userId'];
-				$replyToken = $client->parseEvents()[0]['replyToken'];
-				$timestamp	= $client->parseEvents()[0]['timestamp'];
-				$type = $client->parseEvents()[0]['type'];
-				$message 	= $client->parseEvents()[0]['message'];
-				$messageid = $client->parseEvents()[0]['message']['id'];
-				$profil = $client->profil($userId);
 
 				$pesan_datang = explode(" ", $message['text']);
 				$msg_type = $message['type'];
