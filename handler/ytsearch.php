@@ -40,21 +40,3 @@ function ytsearch($query, $userId){
 	return $result;
 
 }
-/*
-			$balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-		            
-                array(
-                    'type' => 'text',
-                    'text'  => $hasil
-                ), array(
-                    'type' => 'image',
-                    'originalContentUrl' => $hasill,
-                    'previewImageUrl' => $hasill
-                )
-            )
-        );
-
-  $client->replyMessage($balas);
-*/
