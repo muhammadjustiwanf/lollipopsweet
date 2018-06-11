@@ -55,7 +55,7 @@ $app->post('/', function ($request, $response)
 			$messageid = $client->parseEvents()[0]['message']['id'];
 			$profil = $client->profil($userId);
 		 
-		 if($message['type'] == 'sticker'){
+		 if ($message['type'] == 'sticker'){
 			 
 			 $reply = array(
 							'replyToken' => $replyToken,														
@@ -72,7 +72,6 @@ $app->post('/', function ($request, $response)
 						
 }
 
-else
 		 if ($type == 'join'){
 				$text = "Halo " . $profil->displayName . " & semuanya, Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, ketik:\n\n.help";
 				$reply = array(
