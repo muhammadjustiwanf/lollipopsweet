@@ -94,7 +94,7 @@ $app->post('/', function ($request, $response)
 
 else {
 
-							if ($message['type'] == 'sticker'){
+							if ($event['message']['type'] == 'sticker'){
 
 					$balas = array(
 							'replyToken' => $replyToken,														
