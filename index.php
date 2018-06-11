@@ -92,7 +92,7 @@ $app->post('/', function ($request, $response)
 				}
 
 }
-/*
+
 else
 
 							if ($message['type'] == 'sticker'){
@@ -114,7 +114,7 @@ else
 								
 								$client->replyMessage($balas);
 								break;
-}*/
+}
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
