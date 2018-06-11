@@ -334,7 +334,7 @@ if($message['type']=='text') {
   $client->replyMessage($balas);
 
 	}
-				
+				/*
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
@@ -382,7 +382,7 @@ if($message['type']=='text') {
 }
 				
 				// --------------------------------------------------------------- ...SENPAI!
-				
+				*/
 			}
 		}
 	}
