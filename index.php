@@ -45,27 +45,31 @@ $app->post('/', function ($request, $response)
 	$data = json_decode($body, true);
 	foreach ($data['events'] as $event)
 	{
+
 		if ($event['type'] == 'message')
 		{
 
-			$userId = $client->parseEvents()[0]['source']['userId'];
-			$replyToken = $client->parseEvents()[0]['replyToken'];
-			$timestamp	= $client->parseEvents()[0]['timestamp'];
-			$type = $client->parseEvents()[0]['type'];
-			$message 	= $client->parseEvents()[0]['message'];
-			$messageid = $client->parseEvents()[0]['message']['id'];
-			$profil = $client->profil($userId);
+			if($event['message']['type'] == 'text')
+			{
 
-			$pesan_datang = explode(" ", $message['text']);
-			$msg_type = $message['type'];
-			$command = $pesan_datang[0];
-			$options = $pesan_datang[1];
-			if (count($pesan_datang) > 2) {
-				for ($i = 2; $i < count($pesan_datang); $i++) {
-					$options .= '+';
-					$options .= $pesan_datang[$i];
-				}
-			}
+				$userId = $client->parseEvents()[0]['source']['userId'];
+				$replyToken = $client->parseEvents()[0]['replyToken'];
+				$timestamp	= $client->parseEvents()[0]['timestamp'];
+				$type = $client->parseEvents()[0]['type'];
+				$message 	= $client->parseEvents()[0]['message'];
+				$messageid = $client->parseEvents()[0]['message']['id'];
+				$profil = $client->profil($userId);
+
+				$pesan_datang = explode(" ", $message['text']);
+				$msg_type = $message['type'];
+				$command = $pesan_datang[0];
+				$options = $pesan_datang[1];
+					if (count($pesan_datang) > 2) {
+						for ($i = 2; $i < count($pesan_datang); $i++) {
+							$options .= '+';
+							$options .= $pesan_datang[$i];
+						}
+					}
 		 
 if($message['type']=='text') {
 	    if ($command == 'Hi' || $command == 'Hallo' ) {
@@ -316,7 +320,7 @@ if($message['type']=='text') {
 
 		 if ($message['type'] == 'sticker'){
 			 
-			 $reply = array(
+			 $balas = array(
 							'replyToken' => $replyToken,														
 							'messages' => array(
 								array(
@@ -327,17 +331,13 @@ if($message['type']=='text') {
 							)
 						);
 
-		$client->replyMessage($reply);
+		$client->replyMessage($balas);
 
 }
-
-			if($event['message']['type'] == 'text')
-			{
 				
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
-				$userId = $event['source']['userId'];
 
 				if ($inputMessage[0] == '.') {
 
