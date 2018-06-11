@@ -2,7 +2,7 @@
 
 require 'line_class.php';
 require 'vendor/autoload.php';
-include 'unirest-php-master/src/Unirest.php';
+require_once('./unirest-php-master/src/Unirest.php');
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
@@ -297,7 +297,16 @@ if (isset($balas)) {
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
 					 } else {
-				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
+				$outputMessage = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Maaf ' . $profil->displayName . ', tipe command yang anda input tidak ditemukan.'										
+									
+									)
+							)
+						);
 					 }
 				
 				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
