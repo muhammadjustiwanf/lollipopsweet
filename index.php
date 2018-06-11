@@ -309,8 +309,7 @@ if (isset($balas)) {
 						);
 					 }
 				
-				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				$client->replyMessage($outputMessage);
 
 } else {
 
