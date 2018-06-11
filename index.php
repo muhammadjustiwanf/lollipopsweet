@@ -72,7 +72,7 @@ $app->post('/', function ($request, $response)
 		$client->replyMessage($reply);
 						
 }
-/*
+
 $pesan_datang = explode(" ", $message['text']);
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
