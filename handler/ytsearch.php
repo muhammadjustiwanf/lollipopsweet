@@ -30,7 +30,7 @@ function ytsearch($query, $userId){
 		if ($json['error']){
 			$result = new TextMessageBuilder('Video ' . $query . ' tidak ditemukan.');
 		} else {
-			$result = new TextMessageBuilder(""Result from " . $query . ":\n\nChannel: " . $json['result']['author'] . "\nJudul: " . $json['result']['title'] . "\nDurasi: " . $json['result']['duration'] . "\nLikes: " . $json['result']['likes'] . "\nDislikes: " . $json['result']['dislikes'] . "\nViewer: " . $json['result']['viewcount'] . "\nLink Thumbnail: " . $json['result']['thumbnail'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
+			$result = new TextMessageBuilder("Result from " . $query . ":\n\nChannel: " . $json['result']['author'] . "\nJudul: " . $json['result']['title'] . "\nDurasi: " . $json['result']['duration'] . "\nLikes: " . $json['result']['likes'] . "\nDislikes: " . $json['result']['dislikes'] . "\nViewer: " . $json['result']['viewcount'] . "\nLink Thumbnail: " . $json['result']['thumbnail'] . "\n\nDiakses pada pukul: " . date('H:i:s'));
 			}
 		
 		}
