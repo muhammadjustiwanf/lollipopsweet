@@ -28,11 +28,11 @@ function userid($query, $userId){
 						);
 	}
 	
-		if (isset($result)){
-			$result = json_encode($result);
-								
-			$client->replyMessage($result);
+		$client->replyMessage($result);
 
 		}
+
+return $result;
+
 }
 
