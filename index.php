@@ -74,9 +74,9 @@ $app->post('/', function ($request, $response)
 				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
 					 }
 				
-				$result = $client->replyMessage($outputMessage);
+				$client->replyMessage($outputMessage);
 				//$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				//return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 
 } else {
 
