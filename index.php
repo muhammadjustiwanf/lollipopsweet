@@ -76,7 +76,7 @@ $app->post('/', function ($request, $response)
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Tipe command tidak ditemukan :v' . $profil->displayName
+										'text' => 'tipe command tidak ditemukan :v'
 									
 									)
 							)
@@ -84,8 +84,6 @@ $app->post('/', function ($request, $response)
 					 }
 				
 				$client->replyMessage($outputMessage);
-				//$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-				//return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 
 } else {
 
@@ -94,20 +92,17 @@ $app->post('/', function ($request, $response)
 
 				foreach ($wordsLearned as $word => $answer) {
 						if (strpos(strtolower($inputMessage), $word) !== false) {
-								$outputMessage = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => $answer
+								$result = array(
+										'replyToken' => $replyToken,														
+										'messages' => array(
+											array(
+													'type' => 'text',									
+													'text' => $answer
 									
+											)
 									)
-							)
-						);
-									$client->replyMessage($outputMessage);
-								//$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-								//return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-								break;
+								);
+									$client->replyMessage($result);
 						}
 				}
 
@@ -120,7 +115,7 @@ $app->post('/', function ($request, $response)
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Keren stikernya ' . $profil->displayName
+										'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
 									
 									)
 							)
