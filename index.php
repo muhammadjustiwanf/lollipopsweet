@@ -1,6 +1,7 @@
 <?php
 
 require 'line_class.php';
+require 'unirest-php-master/src/Unirest.php';
 require 'vendor/autoload.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
