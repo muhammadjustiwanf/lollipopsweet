@@ -5,8 +5,6 @@ require 'vendor/autoload.php';
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 foreach (glob("handler/*.php") as $handler){
-		$botr = glob("botr/*.php");
-		$botr != 'botr/*.php';
 		if ($handler != 'handler/post.php'){
 				include $handler;
 		}
@@ -38,6 +36,7 @@ $app->post('/', function ($request, $response)
 		return $response->withStatus(400, 'Invalid signature');
 	}
 	
+	$client = new LINEBotTiny($_ENV['CHANNEL_ACCESS_TOKEN'], $_ENV['CHANNEL_SECRET']);
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
 
@@ -53,7 +52,13 @@ $app->post('/', function ($request, $response)
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
-				$userId = $event['source']['userId'];
+				$userId = $client->parseEvents()[0]['source']['userId'];
+				$replyToken = $client->parseEvents()[0]['replyToken'];
+				$timestamp	= $client->parseEvents()[0]['timestamp'];
+				$type = $client->parseEvents()[0]['type'];
+				$message 	= $client->parseEvents()[0]['message'];
+				$messageid = $client->parseEvents()[0]['message']['id'];
+				$profil = $client->profil($userId);
 
 				if ($inputMessage[0] == '.') {
 
@@ -85,6 +90,30 @@ $app->post('/', function ($request, $response)
 						}
 				}
 
+}
+
+else
+
+							if ($message['type']=='sticker'){	
+					$balas = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Keren stikernya ' . $profil->displayName										
+									
+									)
+							)
+						);
+						
+}
+							if (isset($balas)) {
+								$result = json_encode($balas);
+
+								file_put_contents('./balasan.json', $result);
+
+								$client->replyMessage($balas);
+								break;
 }
 				
 				// --------------------------------------------------------------- ...SENPAI!
