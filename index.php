@@ -91,7 +91,7 @@ $app->post('/', function ($request, $response)
 						}
 				}
 
-} else {
+}
 							
 							if ($message['type'] == 'sticker'){
 
@@ -113,8 +113,7 @@ $app->post('/', function ($request, $response)
 								break;
 								}
 							}
-							
-	}
+				
 				// --------------------------------------------------------------- ...SENPAI!
 				
 			}
