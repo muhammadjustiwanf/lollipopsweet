@@ -59,6 +59,13 @@ $app->post('/', function ($request, $response)
 			$pesan_datang = explode(" ", $message['text']);
 			$msg_type = $message['type'];
 			$command = $pesan_datang[0];
+			$options = $pesan_datang[1];
+			if (count($pesan_datang) > 2) {
+				for ($i = 2; $i < count($pesan_datang); $i++) {
+					$options .= '+';
+					$options .= $pesan_datang[$i];
+				}
+			}
 		 
 if($message['type']=='text') {
 	    if ($command == 'Hi' || $command == 'Hallo' ) {
