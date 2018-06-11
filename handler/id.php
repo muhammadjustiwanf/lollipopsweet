@@ -5,12 +5,33 @@ use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 function userid($query, $userId){
 	
 	if ($userId == null){
-		$result = new TextMessageBuilder('Kita belum berteman, add dulu gih sono lalu ketik .userid dan kirim di kolom chat :v');
+		$balas = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Ketik .userid di kolom chat!'
+									
+									)
+							)
+						);
 	} else {
-		$result = new TextMessageBuilder("Ini adalah userid " . $profil->displayName . ":\n" . $userId . "\n\nDisimpan baik2 yah userid nya :)");
+		$balas = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'userid ' . $profil->displayName . ': ' . $userId
+									
+									)
+							)
+						);
 	}
 	
-	return $result;
+		if (isset($balas)){
+			$hasil = json_encode($balas);
+								
+			$client->replyMessage($balas);
 	
 }
-
+
