@@ -73,62 +73,6 @@ $app->post('/', function ($request, $response)
 						
 }
 
-$pesan_datang = explode(" ", $message['text']);
-$msg_type = $message['type'];
-$command = $pesan_datang[0];
-$options = $pesan_datang[1];
-if (count($pesan_datang) > 2) {
-    for ($i = 2; $i < count($pesan_datang); $i++) {
-        $options .= '+';
-        $options .= $pesan_datang[$i];
-    }
-}
-
-#-------------------------[Function]-------------------------#
-function ytsearch($keyword) {
-    $uri = "http://rahandiapi.herokuapp.com/youtubeapi/search?key=betakey&q=" . $keyword;
-
-    $response = Unirest\Request::get("$uri");
-
-    $json = json_decode($response->raw_body, true);
-    $result = "Channel : ";
-	$result .= $json['result']['author'];
-	$result .= "\nJudul : ";
-	$result .= $json['result']['title'];
-	$result .= "\nDurasi : ";
-	$result .= $json['result']['duration'];
-	$result .= "\nLikes : ";
-	$result .= $json['result']['likes'];
-	$result .= "\nDislike : ";
-	$result .= $json['result']['dislikes'];
-	$result .= "\nPenonton : ";
-	$result .= $json['result']['viewcount'];
-	$result .= "\nLink Thumbnail : ";
-	$result .= $json['result']['thumbnail'];
-    return $result;
-}
-
-if($message['type']=='text') {
-	    if ($command == '/ytsearch') {
-        $hasil = ytsearch($options);
-        $hasill = thumbnail($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text'  => $hasil
-                ), array(
-                    'type' => 'image',
-                    'originalContentUrl' => $hasill,
-                    'previewImageUrl' => $hasill
-                )
-            )
-        );
-    }
-}
-		$client->replyMessage($balas);
-
 			if ($event['message']['type'] == 'text')
 			{
 				
