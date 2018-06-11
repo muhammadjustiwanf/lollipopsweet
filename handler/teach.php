@@ -1,16 +1,33 @@
 <?php
 
-use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function teach($query, $userId){
 
 	include 'post.php';
 	if ($userId != 'U45a70016f56dbfc99e6a66673002ecbe'){
-		$result = new TextMessageBuilder('Akses Ditolak.');
+		$result = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => "Akses dari " . $profil->displayName . " Ditolak!\nHanya admin yang dapat menggunakan command ini."
+									
+									)
+							)
+						);
 	} else {
 
 		if ($query == null){
-			$result = new TextMessageBuilder("Ajari bot kata-kata atau keyword dengan cara:\n\n.teach [keyword] [jawaban] \n\njika tidak terdapat jawaban, maka secara otomatis [keyword] akan terhapus.");
+			$result = array(
+								'replyToken' => $replyToken,														
+								'messages' => array(
+									array(
+											'type' => 'text',									
+											'text' => "Ajari bot kata-kata atau keyword dengan cara:\n\n.teach [keyword] [jawaban] \n\njika tidak terdapat jawaban, maka secara otomatis [keyword] akan terhapus."
+										
+										)
+								)
+							);
 		} else {
 
 			$querySplit = explode(' ', $query, 2);
@@ -20,15 +37,33 @@ function teach($query, $userId){
 			postData('words/' . $word, $answer);
 
 			if ($answer == null){
-				$result = new TextMessageBuilder('Jawaban untuk "' . $word . '" telah dihapus.');
+				$result = array(
+									'replyToken' => $replyToken,														
+									'messages' => array(
+										array(
+												'type' => 'text',									
+												'text' => 'Jawaban untuk "' . $word . '" telah dihapus.'
+									
+									)
+							)
+						);
 			} else {
-				$result = new TextMessageBuilder('Terimakasih sudah mengajari bot kata2, silahkan coba ketik "' . $word . '".');
+				$result = array(
+									'replyToken' => $replyToken,														
+									'messages' => array(
+										array(
+												'type' => 'text',									
+												'text' => 'Terimakasih sudah mengajari bot kata2 / keyword, silahkan coba ketik "' . $word . '".'
+									
+									)
+							)
+						);
 			}
 
 		}
 	}
 
-	return $result;
+	$client->replyMessage($result);
 
 }
 
