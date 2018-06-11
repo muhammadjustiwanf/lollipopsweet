@@ -26,6 +26,8 @@ function ytsearch($query, $userId){
 		$URL = $URL . '?key=betakey&q=' . $query;
 		$response = Unirest\Request::get("$URL");
 		$json = json_decode($response->raw_body, true);
+		$hasil = ytsearch($options);
+		$hasill = thumbnail($options);
 		
 		if ($json['error']){
 			$result = new TextMessageBuilder('Video ' . $query . ' tidak ditemukan.');
@@ -38,12 +40,11 @@ function ytsearch($query, $userId){
 	return $result;
 
 }
-
+/*
 			$balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
-		            $hasil = ytsearch($options);
-		            $hasill = thumbnail($options);
+		            
                 array(
                     'type' => 'text',
                     'text'  => $hasil
@@ -56,3 +57,4 @@ function ytsearch($query, $userId){
         );
 
   $client->replyMessage($balas);
+*/
