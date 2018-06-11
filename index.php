@@ -106,25 +106,22 @@ $app->post('/', function ($request, $response)
 						}
 				}
 
-}
+} else
 							
-							if ($message['type'] == 'sticker'){
+					if ($message['type'] == 'sticker'){
 
-					$balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
+						$outputMessage = array(
+								'replyToken' => $replyToken,														
+								'messages' => array(
+									array(
+											'type' => 'text',									
+											'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
 									
-									)
-							)
-						);
-						
-								if (isset($balas)){
-									$hasil = json_encode($balas);
-								
-									$client->replyMessage($balas);
+										)
+								)
+							);
+					}
+													$client->replyMessage($outputMessage);
 								break;
 								}
 							}
