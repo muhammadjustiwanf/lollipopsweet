@@ -55,6 +55,10 @@ $app->post('/', function ($request, $response)
 			$message 	= $client->parseEvents()[0]['message'];
 			$messageid = $client->parseEvents()[0]['message']['id'];
 			$profil = $client->profil($userId);
+
+			$pesan_datang = explode(" ", $message['text']);
+			$msg_type = $message['type'];
+			$command = $pesan_datang[0];
 		 
 		 if ($message['type'] == 'sticker'){
 			 
@@ -125,13 +129,22 @@ $app->post('/', function ($request, $response)
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
-			} else
+			}
 
-$pesan_datang = explode(" ", $message['text']);
-$msg_type = $message['type'];
-$command = $pesan_datang[0];
+if($message['type']=='text') {
+	    if ($command == 'Hi' || $command == 'Hallo' ) {
 
-if ($command == '.bantuan'){
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'HALLO '.$profil->displayName
+                )
+            )
+        );
+    }
+} else if ($command == '.bantuan'){
 
 	        $balas = array(
 							'replyToken' => $replyToken,
