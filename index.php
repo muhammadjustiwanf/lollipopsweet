@@ -54,8 +54,25 @@ $app->post('/', function ($request, $response)
 			$message 	= $client->parseEvents()[0]['message'];
 			$messageid = $client->parseEvents()[0]['message']['id'];
 			$profil = $client->profil($userId);
+		 
+		 if($message['type'] == 'sticker'){
+			 
+			 $reply = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => $profil->displayName . ', Stikernya keren 😎'										
+									
+									)
+							)
+						);
+						
+}
 
-			if($event['message']['type'] == 'text')
+    $client->replyMessage($reply);
+
+			if ($event['message']['type'] == 'text')
 			{
 				
 				// --------------------------------------------------------------- NOTICE ME...
