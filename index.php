@@ -1,6 +1,6 @@
 <?php
 
-require_once('./line_class.php');
+//require_once('./line_class.php');
 require 'vendor/autoload.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
