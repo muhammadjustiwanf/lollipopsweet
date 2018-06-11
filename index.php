@@ -310,6 +310,8 @@ if (isset($balas)) {
 					 }
 				
 				$client->replyMessage($outputMessage);
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 
 } else {
 
