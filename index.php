@@ -85,7 +85,7 @@ if (count($pesan_datang) > 2) {
 }
 
 #-------------------------[Function]-------------------------#
-ytsearch($keyword) {
+function ytsearch($keyword) {
     $uri = "http://rahandiapi.herokuapp.com/youtubeapi/search?key=betakey&q=" . $keyword;
 
     $response = Unirest\Request::get("$uri");
