@@ -67,18 +67,20 @@ $app->post('/', function ($request, $response)
 									)
 							)
 						);
+
+		$client->replyMessage($reply);
 						
 }
 
-		 $client->replyMessage($reply);
-
+else
 		 if ($type == 'join'){
+				$text = "Halo " . $profil->displayName . " & semuanya, Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, ketik:\n\n.help";
 				$reply = array(
 							'replyToken' => $replyToken,
 							'messages' => array(
 								array(
 									'type' => 'text',
-									'text' => "Halo " . $profil->displayName . " & semuanya, Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, ketik:\n\n.help"
+									'text' => $text
 									)
 								)
 						);
