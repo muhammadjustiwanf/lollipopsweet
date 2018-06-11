@@ -72,44 +72,6 @@ $app->post('/', function ($request, $response)
 						
 }
 
-			if ($event['message']['type'] == 'text')
-			{
-				
-				// --------------------------------------------------------------- NOTICE ME...
-				
-				$inputMessage = $event['message']['text'];
-
-				if ($inputMessage[0] == '.') {
-
-					 $inputMessage = ltrim($inputMessage, '.');
-					 $inputSplit = explode(' ', $inputMessage, 2);
-
-					 if ( function_exists( $inputSplit[0] ) ){
-
-							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
-
-					 } else {
-				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
-					 }
-				
-				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-
-} else {
-
-				$wordsLearned = file_get_contents('https://bot-line-multifunction.firebaseio.com/words.json');
-				$wordsLearned = json_decode($wordsLearned, true);
-
-				foreach ($wordsLearned as $word => $answer) {
-						if (strpos(strtolower($inputMessage), $word) !== false) {
-								$outputMessage = new TextMessageBuilder($answer);
-								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-								break;
-						}
-				}
-
-}
 $pesan_datang = explode(" ", $message['text']);
 
 $command = $pesan_datang[0];
@@ -314,6 +276,45 @@ if (isset($balas)) {
 
 
     $client->replyMessage($balas);
+
+			if ($event['message']['type'] == 'text')
+			{
+				
+				// --------------------------------------------------------------- NOTICE ME...
+				
+				$inputMessage = $event['message']['text'];
+
+				if ($inputMessage[0] == '.') {
+
+					 $inputMessage = ltrim($inputMessage, '.');
+					 $inputSplit = explode(' ', $inputMessage, 2);
+
+					 if ( function_exists( $inputSplit[0] ) ){
+
+							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
+
+					 } else {
+				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
+					 }
+				
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+
+} else {
+
+				$wordsLearned = file_get_contents('https://bot-line-multifunction.firebaseio.com/words.json');
+				$wordsLearned = json_decode($wordsLearned, true);
+
+				foreach ($wordsLearned as $word => $answer) {
+						if (strpos(strtolower($inputMessage), $word) !== false) {
+								$outputMessage = new TextMessageBuilder($answer);
+								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+								break;
+						}
+				}
+
+}
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
