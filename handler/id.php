@@ -1,22 +1,22 @@
 <?php
 
-use \LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 
 function userid($query, $userId){
 	
 	if ($userId == null){
-		$balas = array(
+		$result = array(
 							'replyToken' => $replyToken,														
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Ketik .userid di kolom chat!'
+										'text' => 'Kita belum berteman, ' . $profil->displayName . '. Add bot dulu gih :v'
 									
 									)
 							)
 						);
 	} else {
-		$balas = array(
+		
+		$result = array(
 							'replyToken' => $replyToken,														
 							'messages' => array(
 								array(
@@ -28,10 +28,10 @@ function userid($query, $userId){
 						);
 	}
 	
-		if (isset($balas)){
-			$result = json_encode($balas);
+		if (isset($result)){
+			$result = json_encode($result);
 								
-			$client->replyMessage($balas);
+			$client->replyMessage($result);
 
 		}
 }
