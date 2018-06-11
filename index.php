@@ -47,19 +47,20 @@ $app->post('/', function ($request, $response)
 		if ($event['type'] == 'message')
 		{
 
-			if($event['message']['type'] == 'text')
+			$userId = $client->parseEvents()[0]['source']['userId'];
+			$replyToken = $client->parseEvents()[0]['replyToken'];
+			$timestamp	= $client->parseEvents()[0]['timestamp'];
+			$type = $client->parseEvents()[0]['type'];
+			$message 	= $client->parseEvents()[0]['message'];
+			$messageid = $client->parseEvents()[0]['message']['id'];
+			$profil = $client->profil($userId);
+
+			if($message['type'] == 'text')
 			{
 				
 				// --------------------------------------------------------------- NOTICE ME...
 				
-				$inputMessage = $event['message']['text'];
-				$userId = $client->parseEvents()[0]['source']['userId'];
-				$replyToken = $client->parseEvents()[0]['replyToken'];
-				$timestamp	= $client->parseEvents()[0]['timestamp'];
-				$type = $client->parseEvents()[0]['type'];
-				$message 	= $client->parseEvents()[0]['message'];
-				$messageid = $client->parseEvents()[0]['message']['id'];
-				$profil = $client->profil($userId);
+				$inputMessage = $message['text'];
 
 				if ($inputMessage[0] == '.') {
 
@@ -71,7 +72,16 @@ $app->post('/', function ($request, $response)
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
 					 } else {
-				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
+				$outputMessage = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Tipe command tidak ditemukan :v'
+									
+									)
+							)
+						);
 					 }
 				
 				$client->replyMessage($outputMessage);
@@ -85,9 +95,19 @@ $app->post('/', function ($request, $response)
 
 				foreach ($wordsLearned as $word => $answer) {
 						if (strpos(strtolower($inputMessage), $word) !== false) {
-								$outputMessage = new TextMessageBuilder($answer);
-								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+								$outputMessage = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => $answer
+									
+									)
+							)
+						);
+									$client->replyMessage($outputMessage);
+								//$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+								//return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 								break;
 						}
 				}
