@@ -72,6 +72,21 @@ $app->post('/', function ($request, $response)
 
 		 $client->replyMessage($reply);
 
+		 if ($type == 'join'){
+				$reply = array(
+							'replyToken' => $replyToken,
+							'messages' => array(
+								array(
+									'type' => 'text',
+									'text' => "Halo " . $profil->displayName . " & semuanya, Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, ketik:\n\n.help"
+									)
+								)
+						);
+
+		$client->replyMessage($reply);
+
+		 }
+
 			if ($event['message']['type'] == 'text')
 			{
 				
@@ -109,22 +124,7 @@ $app->post('/', function ($request, $response)
 						}
 				}
 
-} else
-
-						if ($type == 'join'){
-							$reply = array(
-										'replyToken' => $replyToken,
-										'messages' => array(
-											array(
-												'type' => 'text',
-												'text' => "Halo " . $profil->displayName . " & semuanya, Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, ketik:\n\n.help"
-												)
-											)
-									);
-
-		$client->replyMessage($reply);
-
-						}
+}
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
