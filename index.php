@@ -2,7 +2,7 @@
 
 require 'line_class.php';
 require 'vendor/autoload.php';
-require './unirest-php-master/src/Unirest.php';
+include './unirest-php-master/src/Unirest.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
