@@ -331,10 +331,10 @@ if($message['type']=='text') {
 		$client->replyMessage($result);
 
 }
-
+/*
 			if($event['message']['type'] == 'text')
 			{
-				/*
+				
 				// --------------------------------------------------------------- NOTICE ME...
 				
 				$inputMessage = $event['message']['text'];
@@ -382,8 +382,8 @@ if($message['type']=='text') {
 }
 				
 				// --------------------------------------------------------------- ...SENPAI!
-				*/
-			}
+				
+			}*/
 		}
 	}
 
