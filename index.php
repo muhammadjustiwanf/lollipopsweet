@@ -54,7 +54,24 @@ $app->post('/', function ($request, $response)
 			$messageid = $client->parseEvents()[0]['message']['id'];
 			$profil = $client->profil($userId);
 
-			if($message['type'] == 'text')
+							if ($message['type'] == 'sticker'){
+
+								$outputMessage = array(
+										'replyToken' => $replyToken,														
+										'messages' => array(
+											array(
+													'type' => 'text',									
+													'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
+									
+												)
+										)
+									);
+													$client->replyMessage($outputMessage);
+								break;
+							
+							}
+
+			if ($message['type'] == 'text')
 			{
 				
 				// --------------------------------------------------------------- NOTICE ME...
@@ -107,23 +124,6 @@ $app->post('/', function ($request, $response)
 				}
 
 }
-							
-							if ($message['type'] == 'sticker'){
-
-								$outputMessage = array(
-										'replyToken' => $replyToken,														
-										'messages' => array(
-											array(
-													'type' => 'text',									
-													'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
-									
-												)
-										)
-									);
-													$client->replyMessage($outputMessage);
-								break;
-							
-							}
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
