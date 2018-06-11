@@ -277,6 +277,8 @@ if (isset($balas)) {
 
     $client->replyMessage($balas);
 
+}
+
 			if ($event['message']['type'] == 'text')
 			{
 				
