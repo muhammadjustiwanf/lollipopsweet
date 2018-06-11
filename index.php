@@ -4,7 +4,6 @@ require 'line_class.php';
 require 'vendor/autoload.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
-use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
 foreach (glob("handler/*.php") as $handler){
 		if ($handler != 'handler/post.php'){
 				include $handler;
@@ -77,7 +76,7 @@ $app->post('/', function ($request, $response)
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Tipe command tidak ditemukan :v'
+										'text' => 'Tipe command tidak ditemukan :v' . $profil->displayName
 									
 									)
 							)
