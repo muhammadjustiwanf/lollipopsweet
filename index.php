@@ -4,8 +4,13 @@ require 'vendor/autoload.php';
 require 'line_class.php';
 include 'unirest-php-master/src/Unirest.php';
 
-
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+foreach (glob("handler/*.php") as $handler){
+		if ($handler != 'handler/post.php'){
+				include $handler;
+		}
+}
 
 $dotenv = new Dotenv\Dotenv('env');
 $dotenv->load();
@@ -67,6 +72,7 @@ $app->post('/', function ($request, $response)
 		$client->replyMessage($reply);
 
 }
+
 $pesan_datang = explode(" ", $message['text']);
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
@@ -1597,6 +1603,50 @@ if (isset($balas)) {
 
     $client->replyMessage($balas);
 }
+
+			if($event['message']['type'] == 'text')
+			{
+				
+				// --------------------------------------------------------------- NOTICE ME...
+				
+				$inputMessage = $event['message']['text'];
+				$userId = $event['source']['userId'];
+
+				if ($inputMessage[0] == '.') {
+
+					 $inputMessage = ltrim($inputMessage, '.');
+					 $inputSplit = explode(' ', $inputMessage, 2);
+
+					 if ( function_exists( $inputSplit[0] ) ){
+
+							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
+
+					 } else {
+				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
+					 }
+				
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+
+} else {
+
+				$wordsLearned = file_get_contents('https://bot-line-multifunction.firebaseio.com/words.json');
+				$wordsLearned = json_decode($wordsLearned, true);
+
+				foreach ($wordsLearned as $word => $answer) {
+						if (strpos(strtolower($inputMessage), $word) !== false) {
+								$outputMessage = new TextMessageBuilder($answer);
+								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+								break;
+						}
+				}
+
+}
+				
+				// --------------------------------------------------------------- ...SENPAI!
+				
+			}
 		}
 	}
 
