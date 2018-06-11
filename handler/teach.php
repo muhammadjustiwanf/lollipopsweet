@@ -3,6 +3,7 @@
 
 function teach($query, $userId){
 
+	include 'line_class.php';
 	include 'post.php';
 	if ($userId != 'U45a70016f56dbfc99e6a66673002ecbe'){
 		$result = array(
