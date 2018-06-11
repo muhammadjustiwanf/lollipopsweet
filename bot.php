@@ -19,7 +19,7 @@ $configs =  [
 $app = new Slim\App($configs);
 
 $app->get('/', function ($request, $response) {
-	return "Sukses mendeploy. Silahkan dicoba botnya";
+	return "OK";
 });
 
 $app->post('/', function ($request, $response)
