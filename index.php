@@ -108,22 +108,21 @@ $app->post('/', function ($request, $response)
 
 } else
 							
-					if ($message['type'] == 'sticker'){
+							if ($message['type'] == 'sticker'){
 
-						$outputMessage = array(
-								'replyToken' => $replyToken,														
-								'messages' => array(
-									array(
-											'type' => 'text',									
-											'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
+								$outputMessage = array(
+										'replyToken' => $replyToken,														
+										'messages' => array(
+											array(
+													'type' => 'text',									
+													'text' => 'Keren yak stikernya kang ' . $profil->displayName . ' wkwkwk'
 									
+												)
 										)
-								)
-							);
-					}
+									);
 													$client->replyMessage($outputMessage);
 								break;
-								}
+							
 							}
 				
 				// --------------------------------------------------------------- ...SENPAI!
