@@ -30,9 +30,7 @@ function userid($query, $userId){
 	
 		$client->replyMessage($result);
 
-		}
-
-return $result;
+		return $result;
 
 }
 
