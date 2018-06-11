@@ -60,77 +60,6 @@ $app->post('/', function ($request, $response)
 			$msg_type = $message['type'];
 			$command = $pesan_datang[0];
 		 
-		 if ($message['type'] == 'sticker'){
-			 
-			 $reply = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => $profil->displayName . ', Stikernya keren 😎'										
-									
-									)
-							)
-						);
-
-		$client->replyMessage($reply);
-
-}
-
-			if($event['message']['type'] == 'text')
-			{
-				
-				// --------------------------------------------------------------- NOTICE ME...
-				
-				$inputMessage = $event['message']['text'];
-				$userId = $event['source']['userId'];
-
-				if ($inputMessage[0] == '.') {
-
-					 $inputMessage = ltrim($inputMessage, '.');
-					 $inputSplit = explode(' ', $inputMessage, 2);
-
-					 if ( function_exists( $inputSplit[0] ) ){
-
-							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
-
-					 } else {
-				$outputMessage = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => 'Maaf ' . $profil->displayName . ', tipe command yang anda input tidak ditemukan.'
-									
-									)
-							)
-						);
-					 }
-				
-				$client->replyMessage($outputMessage);
-				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-
-} else {
-
-				$wordsLearned = file_get_contents('https://bot-line-multifunction.firebaseio.com/words.json');
-				$wordsLearned = json_decode($wordsLearned, true);
-
-				foreach ($wordsLearned as $word => $answer) {
-						if (strpos(strtolower($inputMessage), $word) !== false) {
-								$outputMessage = new TextMessageBuilder($answer);
-								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-								break;
-						}
-				}
-
-}
-				
-				// --------------------------------------------------------------- ...SENPAI!
-				
-			}
-
 if($message['type']=='text') {
 	    if ($command == 'Hi' || $command == 'Hallo' ) {
 
@@ -376,7 +305,78 @@ if($message['type']=='text') {
 
   $client->replyMessage($balas);
 
-	}
+	} else
+
+		 if ($message['type'] == 'sticker'){
+			 
+			 $reply = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => $profil->displayName . ', Stikernya keren 😎'										
+									
+									)
+							)
+						);
+
+		$client->replyMessage($reply);
+
+}
+
+			if($event['message']['type'] == 'text')
+			{
+				
+				// --------------------------------------------------------------- NOTICE ME...
+				
+				$inputMessage = $event['message']['text'];
+				$userId = $event['source']['userId'];
+
+				if ($inputMessage[0] == '.') {
+
+					 $inputMessage = ltrim($inputMessage, '.');
+					 $inputSplit = explode(' ', $inputMessage, 2);
+
+					 if ( function_exists( $inputSplit[0] ) ){
+
+							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
+
+					 } else {
+				$outputMessage = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Maaf ' . $profil->displayName . ', tipe command yang anda input tidak ditemukan.'
+									
+									)
+							)
+						);
+					 }
+				
+				$client->replyMessage($outputMessage);
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+
+} else {
+
+				$wordsLearned = file_get_contents('https://bot-line-multifunction.firebaseio.com/words.json');
+				$wordsLearned = json_decode($wordsLearned, true);
+
+				foreach ($wordsLearned as $word => $answer) {
+						if (strpos(strtolower($inputMessage), $word) !== false) {
+								$outputMessage = new TextMessageBuilder($answer);
+								$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+								return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+								break;
+						}
+				}
+
+}
+				
+				// --------------------------------------------------------------- ...SENPAI!
+				
+			}
 		}
 	}
 
