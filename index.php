@@ -125,7 +125,13 @@ $app->post('/', function ($request, $response)
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
-			} else if ($command == '.bantuan') {
+			} else
+
+$pesan_datang = explode(" ", $message['text']);
+$msg_type = $message['type'];
+$command = $pesan_datang[0];
+
+if ($command == '.bantuan'){
 
 	        $balas = array(
 							'replyToken' => $replyToken,
