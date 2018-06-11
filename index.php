@@ -91,9 +91,19 @@ $app->post('/', function ($request, $response)
 							$outputMessage = $inputSplit[0]( $inputSplit[1], $userId );
 
 					 } else {
-				$outputMessage = new TextMessageBuilder('tipe command tidak ditemukan :v');
+				$outputMessage = array(
+							'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'text',									
+										'text' => 'Maaf ' . $profil->displayName . ', tipe command yang anda input tidak ditemukan.'
+									
+									)
+							)
+						);
 					 }
 				
+				$client->replyMessage($outputMessage);
 				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 
@@ -115,7 +125,7 @@ $app->post('/', function ($request, $response)
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
-			} else if ($inputMessage == '.bantuan') {
+			} else if ($command == '.bantuan') {
 
 	        $balas = array(
 							'replyToken' => $replyToken,
