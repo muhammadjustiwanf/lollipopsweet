@@ -111,7 +111,11 @@ $app->post('/', function ($request, $response)
 						}
 				}
 
-} else if ($inputMessage == '.bantuan') {
+}
+				
+				// --------------------------------------------------------------- ...SENPAI!
+				
+			} else if ($inputMessage == '.bantuan') {
 
 	        $balas = array(
 							'replyToken' => $replyToken,
@@ -344,10 +348,6 @@ $app->post('/', function ($request, $response)
   $client->replyMessage($balas);
 
 	}
-				
-				// --------------------------------------------------------------- ...SENPAI!
-				
-			}
 		}
 	}
 
