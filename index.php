@@ -1,8 +1,8 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require_once('./line_class.php');
-require_once('./unirest-php-master/src/Unirest.php');
+//require_once('./line_class.php');
+//require_once('./unirest-php-master/src/Unirest.php');
 
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
 
@@ -78,6 +78,8 @@ $app->post('/', function ($request, $response)
 						);
 
 		$client->replyMessage($reply);
+
+}
 
 		}
 	}
