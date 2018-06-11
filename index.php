@@ -73,6 +73,11 @@ $app->post('/', function ($request, $response)
 						
 }
 
+			if ($event['message']['type'] == 'text')
+			{
+				
+				// --------------------------------------------------------------- NOTICE ME...
+
 $pesan_datang = explode(" ", $message['text']);
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
@@ -1370,13 +1375,15 @@ if($message['type']=='text') {
         );
     }
 }
+if (isset($balas)) {
+    $result = json_encode($balas);
+//$result = ob_get_clean();
+
+    file_put_contents('./balasan.json', $result);
+
 
     $client->replyMessage($balas);
-
-			if ($event['message']['type'] == 'text')
-			{
-				
-				// --------------------------------------------------------------- NOTICE ME...
+}
 				
 				$inputMessage = $event['message']['text'];
 
