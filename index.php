@@ -103,21 +103,21 @@ if ($message['type'] == 'text'){
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => '~ Instagram Random Photo ~',
+										            'label' => 'Cari Foto Instagram',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.instagram'
 										          ),
 										          1 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => '~ Kalkulator ~',
+										            'label' => 'Cari Sinopsis Anime',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.calculate'
 												  ),
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => '~ User ID ~',
+										            'label' => 'Cari Manga',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.userid'
 										          ),
