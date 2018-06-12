@@ -220,9 +220,23 @@ if($message['type']=='text') {
 						);
 				
 	}
-}
-if($message['type']=='text') {
-	    if ($command == '.carigambar') {
+} else if ($command == '.bye') {
+
+$push = array(
+							'to' => $groupId,									
+							'messages' => array(
+								array(
+										'type' => 'text',					
+										'text' => 'Sayonara~'
+									)
+							)
+						);
+						
+		
+		$client->pushMessage($push);
+
+        $psn = $client->leaveGroup($groupId);
+    } else if ($command == '.img') {
 
         $hasil = img_search($options);
         $balas = array(
@@ -236,7 +250,6 @@ if($message['type']=='text') {
             )
         );
     }
-}
 if($message['type']=='text') {
 	    if ($command == '.gitsearch') {
 
