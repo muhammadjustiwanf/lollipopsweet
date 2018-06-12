@@ -222,7 +222,8 @@ if($message['type']=='text') {
 	}
 }
 if($message['type']=='text') {
-	    if ($command == '.searchpict') {
+	    if ($command == '.carigambar') {
+
         $hasil = img_search($options);
         $balas = array(
             'replyToken' => $replyToken,
