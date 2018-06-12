@@ -68,6 +68,29 @@ $app->post('/', function ($request, $response)
 				}
 			}
 
+function ytsearch($keyword) {
+    $uri = "http://rahandiapi.herokuapp.com/youtubeapi/search?key=betakey&q=" . $keyword;
+
+    $response = Unirest\Request::get("$uri");
+
+    $json = json_decode($response->raw_body, true);
+    $result = "Channel : ";
+	$result .= $json['result']['author'];
+	$result .= "\nJudul : ";
+	$result .= $json['result']['title'];
+	$result .= "\nDurasi : ";
+	$result .= $json['result']['duration'];
+	$result .= "\nLikes : ";
+	$result .= $json['result']['likes'];
+	$result .= "\nDislike : ";
+	$result .= $json['result']['dislikes'];
+	$result .= "\nPenonton : ";
+	$result .= $json['result']['viewcount'];
+	$result .= "\nLink Thumbnail : ";
+	$result .= $json['result']['thumbnail'];
+    return $result;
+}
+
 function lokasi($keyword) { 
     $uri = "https://time.siswadi.com/pray/" . $keyword; 
  
@@ -91,6 +114,47 @@ if ($type == 'join' || $command == '.greetings') {
             )
         )
     );
+}
+if($message['type']=='text') {
+	    if ($command == '.myinfo') {
+
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+
+										'type' => 'text',					
+										'text' => '====[Info Profil]====
+
+→ Nama: '.$profil->displayName.'
+
+→ Status: '.$profil->statusMessage.'
+
+→ Gambar Profil: '.$profil->pictureUrl
+									)
+							)
+						);
+				
+	}
+}
+if($message['type']=='text') {
+	    if ($command == '.ytsearch') {
+        $hasil = ytsearch($options);
+        $hasill = thumbnail($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text'  => $hasil
+                ), array(
+                    'type' => 'image',
+                    'originalContentUrl' => $hasill,
+                    'previewImageUrl' => $hasill
+                )
+            )
+        );
+    }
 }
 if($message['type']=='text') {
 	    if ($command == '.lokasi' || $command == '/Lokasi') {
