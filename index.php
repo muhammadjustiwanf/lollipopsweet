@@ -80,7 +80,7 @@ if ($message['type'] == 'text'){
                 )
             )
         );
-    } else if ($command == '.bantuan'){
+    } if ($command == '.bantuan'){
 
 	        $reply = array(
 							'replyToken' => $replyToken,
@@ -309,12 +309,12 @@ if ($message['type'] == 'text'){
 			 
         )
     );
-
+  }
+}
 
   $client->replyMessage($reply);
 
-  }
-} else if ($message['type'] == 'sticker'){
+if ($message['type'] == 'sticker'){
 			 
 			 $reply = array(
 							'replyToken' => $replyToken,														
