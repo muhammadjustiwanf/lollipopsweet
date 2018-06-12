@@ -283,23 +283,23 @@ if ($message['type'] == 'text'){
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Convert',
+										            'label' => 'COMING SOON',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /convert [Link]'
+													'text' => 'COMING SOON'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
 													'label' => 'About',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /about'
+													'text' => '.aboutme'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Creator',
+													'label' => 'COMING SOON',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /translate'
+													'text' => 'COMING SOON'
 										          ),
 										        ),
 										      ),											  
