@@ -80,14 +80,14 @@ if ($message['type'] == 'text'){
                 )
             )
         );
-    } else if ($command == '/bantuan') {
+    } else if ($command == '.keyword') {
 
 	        $balas = array(
 							'replyToken' => $replyToken,
 							'messages' => array(
 								array (
 										  'type' => 'template',
-										  'altText' => 'Silahkan Pilih Keyword Yang Anda Inginkan',
+										  'altText' => 'Silahkan pilih keyword yang anda inginkan',
 										  'template' => 
 										  array (
 										    'type' => 'carousel',
@@ -97,7 +97,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 1',
-										        'text' => 'Silahkan Dipilih, ' . $profil->displayName,
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -127,7 +127,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 2',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -157,7 +157,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 3',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -187,7 +187,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 4',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -217,7 +217,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 5',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -247,7 +247,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 6',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -277,7 +277,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 7',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
 										        'actions' => 
 										        array (
 										          0 => 
