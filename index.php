@@ -310,13 +310,7 @@ if($message['type']=='text') {
         )
     );
   }
-}
-
-if (isset($balas)){
-  $client->replyMessage($balas);
-}
-
-if ($message['type'] == 'sticker'){
+} else if ($message['type'] == 'sticker'){
 			 
 			 $balas = array(
 							'replyToken' => $replyToken,														
@@ -328,12 +322,11 @@ if ($message['type'] == 'sticker'){
 									)
 							)
 						);
+}
 
 		$client->replyMessage($balas);
 
-}
-
-			if($event['message']['type'] == 'text')
+			if ($event['message']['type'] == 'text')
 			{
 				
 				// --------------------------------------------------------------- NOTICE ME...
