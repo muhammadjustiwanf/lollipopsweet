@@ -219,8 +219,7 @@ if($message['type']=='text') {
 							)
 						);
 				
-	}
-} else if ($command == '.bye') {
+	} else if ($command == '.bye') {
 
 $push = array(
 							'to' => $groupId,									
@@ -236,20 +235,24 @@ $push = array(
 		$client->pushMessage($push);
 
         $psn = $client->leaveGroup($groupId);
-    } else if ($command == '.img') {
+    }
+  }
+if($message['type']=='text') {
+	    if ($command == '.img') {
 
-        $hasil = img_search($options);
+        $result = img_search($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'image',
-                    'originalContentUrl' => $hasil,
-                    'previewImageUrl' => $hasil
+                    'originalContentUrl' => $result,
+                    'previewImageUrl' => $result
                 )
             )
         );
     }
+}
 if($message['type']=='text') {
 	    if ($command == '.gitsearch') {
 
