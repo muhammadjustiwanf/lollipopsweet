@@ -104,7 +104,7 @@ function githubrepo($keyword) {
     $result .= "\nResult : ";
     $result .= $json['total_count'];
     $result .= "\nNama Repository : ";
-    $result .= $json['items']['data']['name'];
+    $result .= $json['items']['name'];
     $result .= "\nNama Github : ";
     $result .= $json['items']['full_name'];
     $result .= "\nLanguage : ";
@@ -119,7 +119,7 @@ function githubrepo($keyword) {
     $result .= "\nResult : ";
     $result .= $json['total_count'];
     $result .= "\nNama Repository : ";
-    $result .= $json['items'][['name']];
+    $result .= $json['items']['name'];
     $result .= "\nNama Github : ";
     $result .= $json['items']['full_name'];
     $result .= "\nLanguage : ";
