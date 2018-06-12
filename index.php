@@ -68,8 +68,19 @@ $app->post('/', function ($request, $response)
 				}
 			}
 		 
-if ($message['type'] == 'text') {
-	    if ($command == '.bantuan'){
+if ($message['type'] == 'text'){
+	    if ($command == 'Halo' || $command == 'Hai' ){
+
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Hai '.$profil->displayName
+                )
+            )
+        );
+    } else if ($command == '.bantuan'){
 
 	        $balas = array(
 							'replyToken' => $replyToken,
