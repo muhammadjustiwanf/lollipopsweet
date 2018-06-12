@@ -222,6 +222,21 @@ if($message['type']=='text') {
 	}
 }
 if($message['type']=='text') {
+	    if ($command == '.searchpict') {
+        $hasil = img_search($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'image',
+                    'originalContentUrl' => $hasil,
+                    'previewImageUrl' => $hasil
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
 	    if ($command == '.gitsearch') {
 
         $result = githubrepo($options);
