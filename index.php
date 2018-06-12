@@ -68,7 +68,7 @@ $app->post('/', function ($request, $response)
 				}
 			}
 
-function ytsearch($keyword) {
+ytsearch($keyword) {
     $uri = "http://rahandiapi.herokuapp.com/youtubeapi/search?key=betakey&q=" . $keyword;
 
     $response = Unirest\Request::get("$uri");
@@ -124,13 +124,7 @@ if($message['type']=='text') {
                 array(
 
 										'type' => 'text',					
-										'text' => '====[Info Profil]====
-
-→ Nama: '.$profil->displayName.'
-
-→ Status: '.$profil->statusMessage.'
-
-→ Gambar Profil: '.$profil->pictureUrl
+										'text' => "====[Info Profil]====\n→ Nama: " . $profil->displayName . "\n→ Status: " . $profil->statusMessage . "\n→ Gambar Profil: " . $profil->pictureUrl
 									)
 							)
 						);
