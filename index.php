@@ -6,11 +6,11 @@ include 'unirest-php-master/src/Unirest.php';
 
 use LINE\LINEBot\SignatureValidator as SignatureValidator;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
-/*foreach (glob("handler/*.php") as $handler){
+foreach (glob("handler/*.php") as $handler){
 		if ($handler != 'handler/post.php'){
 				include $handler;
 		}
-}*/
+}
 
 $dotenv = new Dotenv\Dotenv('env');
 $dotenv->load();
@@ -68,7 +68,7 @@ $app->post('/', function ($request, $response)
 				}
 			}
 		 
-if($message['type']=='text') {
+if ($message['type'] == 'text') {
 	    if ($command == 'Hi' || $command == 'Hallo' ) {
 
         $balas = array(
