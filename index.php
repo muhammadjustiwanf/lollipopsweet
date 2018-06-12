@@ -80,7 +80,7 @@ if($message['type']=='text') {
                 )
             )
         );
-    } else if ($command == '/bantuan') {
+    } else if ($command == '.keyword') {
 
 	        $balas = array(
 							'replyToken' => $replyToken,
@@ -97,7 +97,7 @@ if($message['type']=='text') {
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 1',
-										        'text' => 'Silahkan Dipilih, ' . $profil->displayName,
+										        'text' => 'Silahkan Dipilih ',
 										        'actions' => 
 										        array (
 										          0 => 
