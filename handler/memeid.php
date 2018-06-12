@@ -8,7 +8,7 @@ function memeid($query, $userId){
 	$apiKey = '62115028-fca1-43c3-897e-57ee3e105eaa';
 	
 	if ($query == null){
-		$result = new TextMessageBuilder("Meme Generator\n\nCara menggunakan:\n.memeid [search]\nContoh:\n.memeid Spongebob\nSecara Otomatis bot akan mengirimkan Generator IDnya. Copas ID tersebut dan input ke meme maker.\nSilahkan ketik .keyword lalu pilih 'meme maker' untuk lebih jelasnya.\n\nSilahkan dicoba~ (((o(*ﾟ▽ﾟ*)o)))");
+		$result = new TextMessageBuilder("~Meme Generator~\n\nCara menggunakan: .memeid [search]\nContoh: .memeid Spongebob\n\nSecara Otomatis bot akan mengirimkan Generator IDnya. Copas ID tersebut dan input ke meme maker.\n\nSilahkan paste id tersebut ke Meme Maker. ketik .keyword atau .help lalu pilih 'Meme Maker'.\n\nSilahkan dicoba~ (((o(*ﾟ▽ﾟ*)o)))");
 	} else {
 
 		$query = urlencode($query);
