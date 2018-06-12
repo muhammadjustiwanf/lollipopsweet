@@ -331,7 +331,7 @@ if ($message['type'] == 'sticker'){
 		$client->replyMessage($reply);
 
 }
-/*
+
 			if($event['message']['type'] == 'text')
 			{
 				
@@ -383,7 +383,7 @@ if ($message['type'] == 'sticker'){
 				
 				// --------------------------------------------------------------- ...SENPAI!
 				
-			}*/
+			}
 		}
 	}
 
