@@ -67,7 +67,17 @@ $app->post('/', function ($request, $response)
 					$options .= $pesan_datang[$i];
 				}
 			}
-		 
+
+function img_search($keyword) {
+    $uri = 'https://www.google.co.id/search?q=' . $keyword . '&safe=off&source=lnms&tbm=isch';
+
+    $response = Unirest\Request::get("$uri");
+
+    $hasil = str_replace(">", "&gt;", $response->raw_body);
+    $arrays = explode("<", $hasil);
+    return explode('"', $arrays[291])[3];
+}
+
 if ($message['type'] == 'text'){
 	    if ($command == 'Hai'){
 
