@@ -314,8 +314,6 @@ if ($message['type'] == 'text'){
 
   $client->replyMessage($reply);
 
-else
-
 		 if ($message['type'] == 'sticker'){
 			 
 			 $reply = array(
