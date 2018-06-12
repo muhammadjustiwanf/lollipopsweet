@@ -69,9 +69,9 @@ $app->post('/', function ($request, $response)
 			}
 		 
 if ($message['type'] == 'text'){
-	    if ($command == 'Halo' || $command == 'Hai' ){
+	    if ($command == 'Halo' || $command == 'Hai'){
 
-        $balas = array(
+        $result = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
@@ -82,7 +82,7 @@ if ($message['type'] == 'text'){
         );
     } else if ($command == '.bantuan'){
 
-	        $balas = array(
+	        $result = array(
 							'replyToken' => $replyToken,
 							'messages' => array(
 								array (
@@ -310,7 +310,7 @@ if ($message['type'] == 'text'){
         )
     );
 
-  $client->replyMessage($balas);
+  $client->replyMessage($result);
 
    }
 	} else
