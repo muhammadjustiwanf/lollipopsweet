@@ -68,21 +68,21 @@ $app->post('/', function ($request, $response)
 				}
 			}
 		 
-if ($message['type'] == 'text'){
-	    if ($command == 'Halo' || $command == 'Hai'){
+if($message['type']=='text') {
+	    if ($command == 'Hai') {
 
-        $reply = array(
+        $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => 'Hai ' . $profil->displayName
+                    'text' => 'Hai, ' . $profil->displayName
                 )
             )
         );
-    } else if ($command == '.bantuan'){
+    } else if ($command == '/bantuan') {
 
-	        $reply = array(
+	        $balas = array(
 							'replyToken' => $replyToken,
 							'messages' => array(
 								array (
@@ -311,13 +311,13 @@ if ($message['type'] == 'text'){
     );
   }
 
-  $client->replyMessage($reply);
+  $client->replyMessage($balas);
 
 }
 
 if ($message['type'] == 'sticker'){
 			 
-			 $reply = array(
+			 $balas = array(
 							'replyToken' => $replyToken,														
 							'messages' => array(
 								array(
@@ -328,7 +328,7 @@ if ($message['type'] == 'sticker'){
 							)
 						);
 
-		$client->replyMessage($reply);
+		$client->replyMessage($balas);
 
 }
 
