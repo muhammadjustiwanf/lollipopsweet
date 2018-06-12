@@ -68,16 +68,37 @@ $app->post('/', function ($request, $response)
 				}
 			}
 
-function img_search($keyword) {
-    $uri = 'https://www.google.co.id/search?q=' . $keyword . '&safe=off&source=lnms&tbm=isch';
-
-    $response = Unirest\Request::get("$uri");
-
-    $hasil = str_replace(">", "&gt;", $response->raw_body);
-    $arrays = explode("<", $hasil);
-    return explode('"', $arrays[291])[3];
+function lokasi($keyword) { 
+    $uri = "https://time.siswadi.com/pray/" . $keyword; 
+ 
+    $response = Unirest\Request::get("$uri"); 
+ 
+    $json = json_decode($response->raw_body, true); 
+ $result['address'] .= $json['location']['address'];
+ $result['latitude'] .= $json['location']['latitude'];
+ $result['longitude'] .= $json['location']['longitude'];
+    return $result; 
 }
 
+if($message['type']=='text') {
+	    if ($command == '/lokasi' || $command == '/Lokasi') {
+
+        $result = lokasi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'location',
+                    'title' => 'Lokasi',
+                    'address' => $result['address'],
+                    'latitude' => $result['latitude'],
+                    'longitude' => $result['longitude']
+                ),
+            )
+        );
+    }
+
+}
 if ($message['type'] == 'text'){
 	    if ($command == 'Hai'){
 
