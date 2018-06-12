@@ -193,7 +193,7 @@ function lokasi($keyword) {
     return $result; 
 }
 
-if ($type == 'join' || $command == '.greetings') {
+if ($type == 'join') {
     $text = "Hai " . $profil->displayName . ", Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, coba ketik:\n\n.keyword\natau\n.help\n";
     $balas = array(
         'replyToken' => $replyToken,
@@ -214,7 +214,7 @@ if($message['type']=='text') {
                 array(
 
 										'type' => 'text',					
-										'text' => "====[Info Profil]====\n→ Nama: " . $profil->displayName . "\n→ Status: " . $profil->statusMessage . "\n→ Gambar Profil: " . $profil->pictureUrl
+										'text' => "====[Info Profil]====\n\n→ Nama: " . $profil->displayName . "\n→ Status: " . $profil->statusMessage . "\n→ Gambar Profil: " . $profil->pictureUrl
 									)
 							)
 						);
@@ -235,7 +235,7 @@ $push = array(
 		$client->pushMessage($push);
 
         $psn = $client->leaveGroup($groupId);
-    } else if ($command == '.img') {
+    } else if ($command == '.carigambar') {
 
         $result = img_search($options);
         $balas = array(
