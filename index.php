@@ -117,7 +117,7 @@ if ($message['type'] == 'text'){
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'User ID',
+										            'label' => 'ID Pengguna',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.userid'
 										          ),
