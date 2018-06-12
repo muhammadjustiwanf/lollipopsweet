@@ -69,18 +69,7 @@ $app->post('/', function ($request, $response)
 			}
 		 
 if ($message['type'] == 'text') {
-	    if ($command == 'Hi' || $command == 'Hallo' ) {
-
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => 'HALLO '.$profil->displayName
-                )
-            )
-        );
-    } else if ($command == '.bantuan'){
+	    if ($command == '.bantuan'){
 
 	        $balas = array(
 							'replyToken' => $replyToken,
@@ -103,23 +92,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Anime',
+										            'label' => 'Instagram Random Photo',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /anime [Judul Anime]'
+													'text' => '.instagram'
 										          ),
 										          1 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Sinopsis Anime',
+										            'label' => 'Kalkulator',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /anime-syn [Judul Anime]'
+													'text' => '.calculate'
 												  ),
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Manga',
+										            'label' => 'User ID',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /manga [Judul Manga]'
+													'text' => '.userid'
 										          ),
 										        ),
 										      ),
@@ -133,23 +122,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Sinopsis Manga',
+										            'label' => 'Meme Generator ID',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /manga-syn [Judul Manga]'
+													'text' => '.memeid'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Film',
+													'label' => 'Meme Maker',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /film [Judul Film]'
+													'text' => '.meme'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Sinopsis Film',
+													'label' => 'Random Comics (xkcd)',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /film-syn [Judul Film]'
+													'text' => '.xkcd'
 										          ),
 										        ),
 										      ),
@@ -163,23 +152,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Aplikasi',
+										            'label' => 'Kerang Ajaib 1',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /playstore [Nama Aplikasi]'
+													'text' => '.apakah'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Informasi',
+													'label' => 'Kerang Ajaib 2',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /myinfo'
+													'text' => '.dimana'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Zodiak',
+													'label' => 'Tanggal',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /zodiak [Tanggal Lahir]'
+													'text' => '.tanggal'
 										          ),
 										        ),
 										      ),
@@ -193,23 +182,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Music',
+										            'label' => 'Coryn Item Search',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /music [Judul Lagu]'
+													'text' => '.corynitem'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Lirik',
+													'label' => 'Coryn Monster Search',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /lirik [Judul Lagu]'
+													'text' => '.corynmob'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Waktu',
+													'label' => 'Generator Penulisan Rupiah',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /time [Nama Kota]'
+													'text' => '.rp'
 										          ),
 										        ),
 										      ),
@@ -223,23 +212,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Lokasi',
+										            'label' => 'Prediksi Cuaca',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /lokasi [Nama Kota]'
+													'text' => '.prediksicuaca'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Kalender',
+													'label' => 'Jadwal Shalat',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /kalender [Nama Kota]'
+													'text' => '.jadwalshalat'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari KosaKata',
+													'label' => 'Server On/Off Detector',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /def [Kata]'
+													'text' => '.server'
 										          ),
 										        ),
 										      ),
@@ -253,23 +242,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Qiblat',
+										            'label' => 'Cari Zodiak',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /qiblat [Nama Kota]'
+													'text' => '.zodiak'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Jadwal Shalat',
+													'label' => 'Cari Produk Halal MUI',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /shalat [Nama Kota]'
+													'text' => '.produk'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Cuaca',
+													'label' => 'COMING SOON',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /cuaca [Nama Kota]'
+													'text' => '-'
 										          ),
 										        ),
 										      ),
@@ -283,23 +272,23 @@ if ($message['type'] == 'text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Convert',
+										            'label' => 'COMING SOON',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /convert [Link]'
+													'text' => '-'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
 													'label' => 'About',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /about'
+													'text' => '.aboutme'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Creator',
+													'label' => 'COMING SOON',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /translate'
+													'text' => '-'
 										          ),
 										        ),
 										      ),											  
