@@ -70,7 +70,8 @@ $app->post('/', function ($request, $response)
 
 function lokasi($keyword) { 
     $uri = "https://time.siswadi.com/pray/" . $keyword; 
- 
+    
+    $keyword = urlencode($keyword);
     $response = Unirest\Request::get("$uri"); 
  
     $json = json_decode($response->raw_body, true); 
