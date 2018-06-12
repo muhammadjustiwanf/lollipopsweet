@@ -68,6 +68,24 @@ $app->post('/', function ($request, $response)
 				}
 			}
 
+function ytdownload($keyword) {
+    $uri = "http://wahidganteng.ga/process/api/b82582f5a402e85fd189f716399bcd7c/youtube-downloader?url=" . $keyword;
+
+    $keyword = urlencode($keyword);
+    $response = Unirest\Request::get("$uri");
+
+    $json = json_decode($response->raw_body, true);
+    $result = "Judul : \n";
+	$result .= $json['title'];
+	$result .= "\nType : ";
+	$result .= $json['data']['type'];
+	$result .= "\nUkuran : ";
+	$result .= $json['data']['size'];
+	$result .= "\nLink : ";
+	$result .= $json['data']['link'];
+    return $result;
+}
+
 function lokasi($keyword) { 
     $uri = "https://time.siswadi.com/pray/" . $keyword; 
     
@@ -108,6 +126,21 @@ if($message['type']=='text') {
 						);
 				
 	}
+}
+if($message['type']=='text') {
+	    if ($command == '.ytdown') {
+
+        $result = ytdownload($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => ytdownload($options)
+                )
+            )
+        );
+    }
 }
 if($message['type']=='text') {
 	    if ($command == '.lokasi' || $command == '/Lokasi') {
