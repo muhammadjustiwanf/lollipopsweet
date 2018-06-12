@@ -80,8 +80,20 @@ function lokasi($keyword) {
     return $result; 
 }
 
+if ($type == 'join' || $command == '.greetings') {
+    $text = "Hai " . $profil->displayName . ", Terimakasih telah menambahkan bot ke grup kalian. Untuk info keyword, coba ketik:\n\n.keyword\natau\n.help\n";
+    $balas = array(
+        'replyToken' => $replyToken,
+        'messages' => array(
+            array(
+                'type' => 'text',
+                'text' => $text
+            )
+        )
+    );
+}
 if($message['type']=='text') {
-	    if ($command == '/lokasi' || $command == '/Lokasi') {
+	    if ($command == '.lokasi' || $command == '/Lokasi') {
 
         $result = lokasi($options);
         $balas = array(
@@ -94,21 +106,6 @@ if($message['type']=='text') {
                     'latitude' => $result['latitude'],
                     'longitude' => $result['longitude']
                 ),
-            )
-        );
-    }
-
-}
-if ($message['type'] == 'text'){
-	    if ($command == 'Hai'){
-
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => 'Hai, ' . $profil->displayName
-                )
             )
         );
     } else if ($command == '.keyword') {
