@@ -103,21 +103,21 @@ if ($message['type'] == 'text'){
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Instagram Random Photo',
+										            'label' => '~ Instagram Random Photo ~',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.instagram'
 										          ),
 										          1 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Kalkulator',
+										            'label' => '~ Kalkulator ~',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.calculate'
 												  ),
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'ID Pengguna',
+										            'label' => '~ User ID ~',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.userid'
 										          ),
