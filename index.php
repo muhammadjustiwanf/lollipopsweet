@@ -87,7 +87,7 @@ if ($message['type'] == 'text'){
 							'messages' => array(
 								array (
 										  'type' => 'template',
-										  'altText' => 'Silahkan pilih keyword yang anda inginkan',
+										  'altText' => 'Silahkan pilih keyword yang kamu inginkan',
 										  'template' => 
 										  array (
 										    'type' => 'carousel',
@@ -97,27 +97,27 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 1',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih ',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => "Instagram Random Photo",
+										            'label' => 'Instagram Photo',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.instagram'
 										          ),
 										          1 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Sinopsis Anime',
+										            'label' => 'Kalkulator',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.calculate'
 												  ),
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Manga',
+										            'label' => 'User ID',
 										            'data' => 'action=add&itemid=111',
 													'text' => '.userid'
 										          ),
@@ -127,29 +127,29 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 2',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Sinopsis Manga',
+										            'label' => 'Meme Generator ID',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /manga-syn [Judul Manga]'
+													'text' => '.memeid'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Film',
+													'label' => 'Meme Maker',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /film [Judul Film]'
+													'text' => '.meme'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Sinopsis Film',
+													'label' => 'Random Comics (xkcd)',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /film-syn [Judul Film]'
+													'text' => '.xkcd'
 										          ),
 										        ),
 										      ),
@@ -157,29 +157,29 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 3',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Aplikasi',
+										            'label' => 'Kerang Ajaib 1',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /playstore [Nama Aplikasi]'
+													'text' => '.apakah'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Informasi',
+													'label' => 'Kerang Ajaib 2',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /myinfo'
+													'text' => '.dimana'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Zodiak',
+													'label' => 'Tanggal',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /zodiak [Tanggal Lahir]'
+													'text' => '.tanggal'
 										          ),
 										        ),
 										      ),
@@ -187,29 +187,29 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 4',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Music',
+										            'label' => 'Coryn Item Search',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /music [Judul Lagu]'
+													'text' => '.corynitem'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Lirik',
+													'label' => 'Coryn Monster Search',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /lirik [Judul Lagu]'
+													'text' => '.corynmob'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Waktu',
+													'label' => 'Penulisan Rupiah',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /time [Nama Kota]'
+													'text' => '.rp'
 										          ),
 										        ),
 										      ),
@@ -217,29 +217,29 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 5',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Lokasi',
+										            'label' => 'Prediksi Cuaca',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /lokasi [Nama Kota]'
+													'text' => '.prediksicuaca'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Kalender',
+													'label' => 'Jadwal Shalat',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /kalender [Nama Kota]'
+													'text' => '.jadwalshalat'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari KosaKata',
+													'label' => 'Server Checker',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /def [Kata]'
+													'text' => '.server'
 										          ),
 										        ),
 										      ),
@@ -247,29 +247,29 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 6',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Qiblat',
+										            'label' => 'Cari Zodiak',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /qiblat [Nama Kota]'
+													'text' => '.zodiak'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Jadwal Shalat',
+													'label' => 'Produk Halal MUI',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /shalat [Nama Kota]'
+													'text' => '.produk'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Cuaca',
+													'label' => 'COMING SOON',
 													'data' => 'action=add&itemid=111',
-													'text' => 'Ketik /cuaca [Nama Kota]'
+													'text' => '-'
 										          ),
 										        ),
 										      ),
@@ -277,7 +277,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 7',
-										        'text' => 'Silahkan dipilih yah, ' . $profil->displayName . '.',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
@@ -285,7 +285,7 @@ if ($message['type'] == 'text'){
 										            'type' => 'postback',
 										            'label' => 'COMING SOON',
 										            'data' => 'action=add&itemid=111',
-													'text' => 'COMING SOON'
+													'text' => '-'
 										          ),
 										          1 => 
 										          array (
@@ -299,7 +299,7 @@ if ($message['type'] == 'text'){
 													'type' => 'postback',
 													'label' => 'COMING SOON',
 													'data' => 'action=add&itemid=111',
-													'text' => 'COMING SOON'
+													'text' => '-'
 										          ),
 										        ),
 										      ),											  
@@ -309,9 +309,8 @@ if ($message['type'] == 'text'){
 			 
         )
     );
-	}
-	
-} else if ($message['type'] == 'sticker') {
+  }
+} else if ($message['type'] == 'sticker') {
 			 
 			 $balas = array(
 							'replyToken' => $replyToken,														
