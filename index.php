@@ -103,7 +103,7 @@ if ($message['type'] == 'text'){
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Instagram Random P',
+										            'label' => "Instagram Random Photo",
 										            'data' => 'action=add&itemid=111',
 													'text' => '.instagram'
 										          ),
