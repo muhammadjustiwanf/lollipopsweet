@@ -97,7 +97,7 @@ if ($message['type'] == 'text'){
 										      array (
 										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
 										        'title' => 'Keyword 1',
-										        'text' => 'Silahkan Dipilih',
+										        'text' => 'Silahkan Dipilih, ' . $profil->displayName,
 										        'actions' => 
 										        array (
 										          0 => 
