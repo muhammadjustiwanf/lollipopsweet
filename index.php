@@ -310,9 +310,10 @@ if($message['type']=='text') {
         )
     );
   }
+}
 
+if (isset($balas)){
   $client->replyMessage($balas);
-
 }
 
 if ($message['type'] == 'sticker'){
