@@ -68,6 +68,30 @@ $app->post('/', function ($request, $response)
 				}
 			}
 
+function ytsearch($keyword) {
+    $uri = "http://rahandiapi.herokuapp.com/youtubeapi/search?key=betakey&q=" . $keyword;
+
+    $keyword = urlencode($keyword);
+    $response = Unirest\Request::get("$uri");
+
+    $json = json_decode($response->raw_body, true);
+    $result = "Channel : ";
+	$result .= $json['result']['author'];
+	$result .= "\nJudul : ";
+	$result .= $json['result']['title'];
+	$result .= "\nDurasi : ";
+	$result .= $json['result']['duration'];
+	$result .= "\nLikes : ";
+	$result .= $json['result']['likes'];
+	$result .= "\nDislike : ";
+	$result .= $json['result']['dislikes'];
+	$result .= "\nPenonton : ";
+	$result .= $json['result']['viewcount'];
+	$result .= "\nLink Thumbnail : ";
+	$result .= $json['result']['thumbnail'];
+    return $result;
+}
+
 function ytdownload($keyword) {
     $uri = "http://wahidganteng.ga/process/api/b82582f5a402e85fd189f716399bcd7c/youtube-downloader?url=" . $keyword;
 
@@ -126,6 +150,46 @@ if($message['type']=='text') {
 						);
 				
 	}
+}
+if($message['type']=='text') {
+	    if ($command == '.ytsearch') {
+        $hasil = ytsearch($options);
+        $hasill = thumbnail($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text'  => $hasil
+                ), array(
+                    'type' => 'image',
+                    'originalContentUrl' => $hasill,
+                    'previewImageUrl' => $hasill
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+	    if ($command == '.ytcont') {
+        $keyword = '';
+        $keyword = urlencode($keyword);
+        $image = 'https://img.youtube.com/vi/' . $keyword . '/2.jpg';
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'image',
+                    'originalContentUrl' => $image,
+                    'previewImageUrl' => $image
+                ), array(
+                    'type' => 'video',
+                    'originalContentUrl' => vid_search($keyword),
+                    'previewImageUrl' => $image
+                )
+            )
+        );
+    }
 }
 if($message['type']=='text') {
 	    if ($command == '.ytdown') {
