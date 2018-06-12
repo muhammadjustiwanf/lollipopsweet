@@ -103,21 +103,21 @@ if ($message['type'] == 'text'){
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Anime',
+										            'label' => 'Instagram Random Photo',
 										            'data' => 'action=add&itemid=111',
 													'text' => 'Ketik /anime [Judul Anime]'
 										          ),
 										          1 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Sinopsis Anime',
+										            'label' => 'Kalkulator',
 										            'data' => 'action=add&itemid=111',
 													'text' => 'Ketik /anime-syn [Judul Anime]'
 												  ),
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Manga',
+										            'label' => 'User ID',
 										            'data' => 'action=add&itemid=111',
 													'text' => 'Ketik /manga [Judul Manga]'
 										          ),
