@@ -61,15 +61,15 @@ $app->post('/', function ($request, $response)
 		$msg_type = $message['type'];
 		$command = $pesan_datang[0];
 		$options = $pesan_datang[1];
-			if (count($pesan_datang) > 2) {
-				for ($i = 2; $i < count($pesan_datang); $i++) {
+			if (count($pesan_datang) > 2){
+				for ($i = 2; $i < count($pesan_datang); $i++){
 					$options .= '+';
 					$options .= $pesan_datang[$i];
 				}
 			}
 		 
-if($message['type']=='text') {
-	    if ($command == 'Hai') {
+if ($message['type'] == 'text'){
+	    if ($command == 'Hai'){
 
         $balas = array(
             'replyToken' => $replyToken,
@@ -80,14 +80,14 @@ if($message['type']=='text') {
                 )
             )
         );
-    } else if ($command == '.keyword') {
+    } else if ($command == '/bantuan') {
 
 	        $balas = array(
 							'replyToken' => $replyToken,
 							'messages' => array(
 								array (
 										  'type' => 'template',
-										  'altText' => 'Silahkan pilih keyword yang kamu inginkan',
+										  'altText' => 'Silahkan Pilih Keyword Yang Anda Inginkan',
 										  'template' => 
 										  array (
 										    'type' => 'carousel',
@@ -95,37 +95,37 @@ if($message['type']=='text') {
 										    array (
 										      0 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 1',
-										        'text' => 'Silahkan Dipilih ',
+										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
 										        array (
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Instagram Random Photo',
+										            'label' => 'Cari Anime',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.instagram'
+													'text' => 'Ketik /anime [Judul Anime]'
 										          ),
 										          1 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Kalkulator',
+										            'label' => 'Cari Sinopsis Anime',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.calculate'
+													'text' => 'Ketik /anime-syn [Judul Anime]'
 												  ),
 										          2 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'User ID',
+										            'label' => 'Cari Manga',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.userid'
+													'text' => 'Ketik /manga [Judul Manga]'
 										          ),
 										        ),
 										      ),
 										      1 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 2',
 										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
@@ -133,29 +133,29 @@ if($message['type']=='text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Meme Generator ID',
+										            'label' => 'Cari Sinopsis Manga',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.memeid'
+													'text' => 'Ketik /manga-syn [Judul Manga]'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Meme Maker',
+													'label' => 'Cari Film',
 													'data' => 'action=add&itemid=111',
-													'text' => '.meme'
+													'text' => 'Ketik /film [Judul Film]'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Random Comics (xkcd)',
+													'label' => 'Cari Sinopsis Film',
 													'data' => 'action=add&itemid=111',
-													'text' => '.xkcd'
+													'text' => 'Ketik /film-syn [Judul Film]'
 										          ),
 										        ),
 										      ),
 										      2 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 3',
 										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
@@ -163,29 +163,29 @@ if($message['type']=='text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Kerang Ajaib 1',
+										            'label' => 'Cari Aplikasi',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.apakah'
+													'text' => 'Ketik /playstore [Nama Aplikasi]'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Kerang Ajaib 2',
+													'label' => 'Cari Informasi',
 													'data' => 'action=add&itemid=111',
-													'text' => '.dimana'
+													'text' => 'Ketik /myinfo'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Tanggal',
+													'label' => 'Cari Zodiak',
 													'data' => 'action=add&itemid=111',
-													'text' => '.tanggal'
+													'text' => 'Ketik /zodiak [Tanggal Lahir]'
 										          ),
 										        ),
 										      ),
 										      3 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 4',
 										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
@@ -193,29 +193,29 @@ if($message['type']=='text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Coryn Item Search',
+										            'label' => 'Cari Music',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.corynitem'
+													'text' => 'Ketik /music [Judul Lagu]'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Coryn Monster Search',
+													'label' => 'Cari Lirik',
 													'data' => 'action=add&itemid=111',
-													'text' => '.corynmob'
+													'text' => 'Ketik /lirik [Judul Lagu]'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Generator Penulisan Rupiah',
+													'label' => 'Cari Waktu',
 													'data' => 'action=add&itemid=111',
-													'text' => '.rp'
+													'text' => 'Ketik /time [Nama Kota]'
 										          ),
 										        ),
 										      ),
 										      4 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 5',
 										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
@@ -223,29 +223,29 @@ if($message['type']=='text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Prediksi Cuaca',
+										            'label' => 'Cari Lokasi',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.prediksicuaca'
+													'text' => 'Ketik /lokasi [Nama Kota]'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Jadwal Shalat',
+													'label' => 'Cari Kalender',
 													'data' => 'action=add&itemid=111',
-													'text' => '.jadwalshalat'
+													'text' => 'Ketik /kalender [Nama Kota]'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Server On/Off Detector',
+													'label' => 'Cari KosaKata',
 													'data' => 'action=add&itemid=111',
-													'text' => '.server'
+													'text' => 'Ketik /def [Kata]'
 										          ),
 										        ),
 										      ),
 										      5 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 6',
 										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
@@ -253,29 +253,29 @@ if($message['type']=='text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'Cari Zodiak',
+										            'label' => 'Cari Qiblat',
 										            'data' => 'action=add&itemid=111',
-													'text' => '.zodiak'
+													'text' => 'Ketik /qiblat [Nama Kota]'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'Cari Produk Halal MUI',
+													'label' => 'Cari Jadwal Shalat',
 													'data' => 'action=add&itemid=111',
-													'text' => '.produk'
+													'text' => 'Ketik /shalat [Nama Kota]'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'COMING SOON',
+													'label' => 'Cari Cuaca',
 													'data' => 'action=add&itemid=111',
-													'text' => '-'
+													'text' => 'Ketik /cuaca [Nama Kota]'
 										          ),
 										        ),
 										      ),
 										      6 => 
 										      array (
-										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/muhammadjustiwanf/lollipopsweet/master/pict.png',
+										        'thumbnailImageUrl' => 'https://raw.githubusercontent.com/TobyGaming74/TobyBotOa/master/Toby.png',
 										        'title' => 'Keyword 7',
 										        'text' => 'Silahkan Dipilih',
 										        'actions' => 
@@ -283,23 +283,23 @@ if($message['type']=='text') {
 										          0 => 
 										          array (
 										            'type' => 'postback',
-										            'label' => 'COMING SOON',
+										            'label' => 'Convert',
 										            'data' => 'action=add&itemid=111',
-													'text' => '-'
+													'text' => 'Ketik /convert [Link]'
 										          ),
 										          1 => 
 										          array (
 													'type' => 'postback',
 													'label' => 'About',
 													'data' => 'action=add&itemid=111',
-													'text' => '.aboutme'
+													'text' => 'Ketik /about'
 										          ),
 										          2 => 
 										          array (
 													'type' => 'postback',
-													'label' => 'COMING SOON',
+													'label' => 'Creator',
 													'data' => 'action=add&itemid=111',
-													'text' => '-'
+													'text' => 'Ketik /translate'
 										          ),
 										        ),
 										      ),											  
@@ -309,8 +309,9 @@ if($message['type']=='text') {
 			 
         )
     );
-  }
-} else if ($message['type'] == 'sticker'){
+	}
+	
+} else if ($message['type'] == 'sticker') {
 			 
 			 $balas = array(
 							'replyToken' => $replyToken,														
