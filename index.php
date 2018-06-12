@@ -92,6 +92,76 @@ function ytsearch($keyword) {
     return $result;
 }
 
+function githubrepo($keyword) { 
+    $uri = "https://api.github.com/search/repositories?q=" . $keyword; 
+ 
+    $keyword = urlencode($keyword);
+    $response = Unirest\Request::get("$uri"); 
+ 
+    $json = json_decode($response->raw_body, true); 
+    $result = "====[GithubRepo]====";
+    $result .= "\n====[1]====";
+    $result .= "\nResult : ";
+    $result .= $json['total_count'];
+    $result .= "\nNama Repository : ";
+    $result .= $json['items']['data']['name'];
+    $result .= "\nNama Github : ";
+    $result .= $json['items']['full_name'];
+    $result .= "\nLanguage : ";
+    $result .= $json['items']['language'];
+    $result .= "\nUrl Github : ";
+    $result .= $json['items']['owner']['html_url'];
+    $result .= "\nUrl Repository : ";
+    $result .= $json['items']['html_url'];
+    $result .= "\nPrivate : ";
+    $result .= $json['items']['private'];
+    $result .= "\n====[2]====";
+    $result .= "\nResult : ";
+    $result .= $json['total_count'];
+    $result .= "\nNama Repository : ";
+    $result .= $json['items'][['name']];
+    $result .= "\nNama Github : ";
+    $result .= $json['items']['full_name'];
+    $result .= "\nLanguage : ";
+    $result .= $json['items']['language'];
+    $result .= "\nUrl Github : ";
+    $result .= $json['items']['owner']['html_url'];
+    $result .= "\nUrl Repository : ";
+    $result .= $json['items']['html_url'];
+    $result .= "\nPrivate : ";
+    $result .= $json['items']['private'];
+    $result .= "\n====[3]====";
+    $result .= "\nResult : ";
+    $result .= $json['total_count'];
+    $result .= "\nNama Repository : ";
+    $result .= $json['items']['name'];
+    $result .= "\nNama Github : ";
+    $result .= $json['items']['full_name'];
+    $result .= "\nLanguage : ";
+    $result .= $json['items']['language'];
+    $result .= "\nUrl Github : ";
+    $result .= $json['items']['owner']['html_url'];
+    $result .= "\nUrl Repository : ";
+    $result .= $json['items']['html_url'];
+    $result .= "\nPrivate : ";
+    $result .= $json['items']['private'];
+    $result .= "\n====[GithubRepo]====\n";
+    $result .= "\n\nPencarian : Google";
+    $result .= "\n====[GithubRepo]====";
+    return $result; 
+}
+
+function img_search($keyword) {
+    $uri = 'https://www.google.co.id/search?q=' . $keyword . '&safe=off&source=lnms&tbm=isch';
+
+    $keyword = urlencode($keyword);
+    $response = Unirest\Request::get("$uri");
+
+    $hasil = str_replace(">", "&gt;", $response->raw_body);
+    $arrays = explode("<", $hasil);
+    return explode('"', $arrays[291])[3];
+}
+
 function ytdownload($keyword) {
     $uri = "http://wahidganteng.ga/process/api/b82582f5a402e85fd189f716399bcd7c/youtube-downloader?url=" . $keyword;
 
@@ -150,6 +220,21 @@ if($message['type']=='text') {
 						);
 				
 	}
+}
+if($message['type']=='text') {
+	    if ($command == '.gitsearch') {
+
+        $result = githubrepo($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
 }
 if($message['type']=='text') {
 	    if ($command == '.ytsearch') {
