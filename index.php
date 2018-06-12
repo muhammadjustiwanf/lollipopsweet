@@ -235,10 +235,7 @@ $push = array(
 		$client->pushMessage($push);
 
         $psn = $client->leaveGroup($groupId);
-    }
-  }
-if($message['type']=='text') {
-	    if ($command == '.img') {
+    } else if ($command == '.img') {
 
         $result = img_search($options);
         $balas = array(
@@ -251,10 +248,7 @@ if($message['type']=='text') {
                 )
             )
         );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '.gitsearch') {
+    } else if ($command == '.gitsearch') {
 
         $result = githubrepo($options);
         $balas = array(
@@ -266,10 +260,8 @@ if($message['type']=='text') {
                 )
             )
         );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '.ytsearch') {
+    } else if ($command == '.ytsearch') {
+
         $hasil = ytsearch($options);
         $hasill = thumbnail($options);
         $balas = array(
@@ -285,10 +277,8 @@ if($message['type']=='text') {
                 )
             )
         );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '.ytcont') {
+    } else if ($command == '.ytcont') {
+
         $keyword = '';
         $keyword = urlencode($keyword);
         $image = 'https://img.youtube.com/vi/' . $keyword . '/2.jpg';
@@ -306,10 +296,7 @@ if($message['type']=='text') {
                 )
             )
         );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '.ytdown') {
+    } else if ($command == '.ytdown') {
 
         $result = ytdownload($options);
         $balas = array(
@@ -321,10 +308,7 @@ if($message['type']=='text') {
                 )
             )
         );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '.lokasi' || $command == '/Lokasi') {
+    } else if ($command == '.lokasi') {
 
         $result = lokasi($options);
         $balas = array(
@@ -569,7 +553,8 @@ if($message['type']=='text') {
         )
     );
   }
-} /*else if ($message['type'] == 'sticker') {
+}
+/*if ($message['type'] == 'sticker') {
 			 
 			 $balas = array(
 							'replyToken' => $replyToken,														
