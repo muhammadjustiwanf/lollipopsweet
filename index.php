@@ -310,11 +310,11 @@ if ($message['type'] == 'text'){
         )
     );
    }
+}
 
   $client->replyMessage($reply);
 
-   
-	} else
+else
 
 		 if ($message['type'] == 'sticker'){
 			 
