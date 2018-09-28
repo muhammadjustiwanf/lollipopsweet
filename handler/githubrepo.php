@@ -6,7 +6,7 @@ function repo($query, $userId) {
 
 	include 'line_class.php';
 	include 'unirest-php-master/src/Unirest.php';
-	$URL = "https://api.github.com/" . $query;
+	$URL = 'https://api.github.com/';
 
 	if ($query == null){
 		$result = new TextMessageBuilder("Github Repositories\n-------------------\n\nCommand: .repo [text]\nContoh: .repo selfbot line");
